@@ -98,13 +98,13 @@ name: Score history survives a restart, replays the same maze, can be cleared (A
     visible:
       id: "victory-overlay"
     timeout: 30000
-- assertVisible: "1 000 points · Sans faute"
+- assertVisible: "1.000 points · Sans faute"
 - tapOn:
     id: "victory-scores"
 # AC-21: clear with confirmation.
 - tapOn:
     id: "scores-clear"
-- assertVisible: "Confirmer ?"
+- assertVisible: "Confirmer.*"
 - tapOn:
     id: "scores-clear"
 - assertVisible:

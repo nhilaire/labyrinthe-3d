@@ -1,0 +1,35 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Leaving the app during a game shows the pause overlay on return (AC-24)
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-skip"
+- openLink: "labyrinthe3d://play?size=large&seed=31"
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 20000
+- tapOn:
+    id: "intro-plan"
+- extendedWaitUntil:
+    visible:
+      id: "hud-pause"
+    timeout: 10000
+# The app goes to the background, then comes back (stopApp: false brings the running app back).
+- pressKey: Home
+- launchApp:
+    stopApp: false
+- extendedWaitUntil:
+    visible:
+      id: "pause-overlay"
+    timeout: 10000
+- takeScreenshot: 15-back-from-background
+- tapOn:
+    id: "pause-resume"
+- assertNotVisible:
+    id: "pause-overlay"
+- assertVisible:
+    id: "hud-pause"

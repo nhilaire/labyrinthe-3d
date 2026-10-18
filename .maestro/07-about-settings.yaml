@@ -12,7 +12,9 @@ name: About story, settings and the scary mode (AC-33, AC-29)
 - assertVisible: "Pourquoi ce jeu"
 - assertVisible: ".*GFA Basic.*Atari ST.*The 7th Guest.*partager en famille.*"
 - assertVisible: ".*développeur indépendant passionné.*sans lien avec ses auteurs.*"
-- assertVisible: "Version 0.1.0"
+- scrollUntilVisible:
+    element: "Version 0.1.0"
+    direction: DOWN
 - takeScreenshot: 12-about
 - tapOn:
     id: "about-back"

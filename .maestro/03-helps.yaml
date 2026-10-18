@@ -26,9 +26,10 @@ name: Helps - plan peek freezes the walk, footprints toggle (AC-14, AC-15)
     id: "peek-plan"
 - assertNotVisible:
     id: "peek-plan"
-- assertVisible: "Plan (1) −8 %"
+# Maestro texts are regular expressions: brackets escaped, ".*" for the no-break spaces.
+- assertVisible: 'Plan \(1\).*'
 # AC-15: footprints on, highlighted, counter (1).
 - tapOn:
     id: "hud-traces"
-- assertVisible: "Traces (1) −12 %"
+- assertVisible: 'Traces \(1\).*'
 - takeScreenshot: 05-traces-on

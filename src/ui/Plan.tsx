@@ -61,7 +61,7 @@ function OpeningMark(props: {
   // Horizontal borders: the label goes beyond the arrow; vertical borders: above the arrow, so it stays on paper.
   const vertical = d.dx !== 0;
   // On a left/right border the label starts just outside the wall, away from it, above the arrow.
-  const tx = vertical ? cx(opening.x) + d.dx * cell * 0.62 : cx(opening.x);
+  const tx = vertical ? cx(opening.x) + d.dx * cell * 0.82 : cx(opening.x);
   const ty = vertical ? cy(opening.y) - cell * 0.42 : cy(opening.y) + d.dy * cell * 1.25 + cell * 0.12;
   const anchor = !vertical ? 'middle' : d.dx > 0 ? 'start' : 'end';
   return (
