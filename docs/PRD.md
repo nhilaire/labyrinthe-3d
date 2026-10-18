@@ -5,7 +5,7 @@ Project slug: labyrinthe-3d
 Final app name: Labyrinthe 3D
 Android package: io.github.nhilaire.labyrinthe3d
 Version target: 0.1.0
-Last updated: 2026-10-18 (approved by the user after the prd-reviewer pass; D5 chosen by the user)
+Last updated: 2026-10-18 (approved by the user after the prd-reviewer pass; D5 chosen by the user; D4 amended with the user during the build)
 
 > Written in English. Player-facing French copy is quoted in the "French copy" section.
 > Status becomes `approved` only after the user explicitly approves this document.
@@ -206,8 +206,9 @@ unit-tested with fixed seeds. Coordinates: x to the right, y down; directions 0 
 - D2: player-facing text uses « tu » (the source used « vous ») and the plan markers read « ENTRÉE » / « SORTIE »
   (source: « IN » / « OUT »).
 - D3: the maze size is chosen on the home screen (source: fixed 14 × 9 on Android).
-- D4: a debug-only deep link `labyrinthe3d://play?size=<small|medium|large>&seed=<uint32>` starts a game on a given
-  maze, for the Maestro flows; it is compiled out of release builds.
+- D4: a testing deep link `labyrinthe3d://play?size=<small|medium|large>&seed=<uint32>` starts a game on a given
+  maze, for the Maestro flows. It stays in release builds (the flows run on the signed release APK); it is harmless:
+  it only starts a normal game on that maze (amended with the user on 2026-10-18, as in Loto Quine).
 - D5: taps on the intro plan are ignored during its first 3 s (as on the web version; the Android source closed it on
   the first tap), so a child cannot skip it by accident.
 
@@ -299,7 +300,7 @@ Navigation
   exit crossing, follows corners, and the step count grows by the number of cells entered.
 - AC-10 [unit] Given 200 seeds, when the camera walker follows any planned route, then it never crosses a wall and
   ends on the route's last cell facing its end direction.
-- AC-11 [e2e] Given a game on a known small maze (debug deep link, D4), when the player taps the offered arrows along the shortest path,
+- AC-11 [e2e] Given a game on a known small maze (testing deep link, D4), when the player taps the offered arrows along the shortest path,
   then the victory screen appears with « 1000 points · Sans faute ».
 - AC-12 [e2e] Given the walk in progress, when the camera is moving, then no arrow is shown; at a decision point the
   arrows shown match the passable moves.
