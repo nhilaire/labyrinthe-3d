@@ -8,7 +8,7 @@ Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the bo
 - [ ] T-01 3D spike on Expo SDK 57: expo-gl + three, landscape, immersive fullscreen, a lit test scene rendered in a release build on the emulator (AC-32) - proof: device
 - [x] T-02 Seeded RNG, maze generation, BFS validation, border openings, replay without quality check (D1), golden fixtures from the source JS (AC-04, AC-05, AC-06) - proof: unit
 - [x] T-03 Landmarks, navigation (available moves, route planning), journey history (AC-07, AC-08, AC-09) - proof: unit
-- [ ] T-04 Score, ratings, aid penalty, wall-follower baseline (AC-16, AC-17) - proof: unit
+- [x] T-04 Score, ratings, aid penalty, wall-follower baseline (AC-16, AC-17) - proof: unit
 - [ ] T-05 Game session state machine: intro (3 s tap lock, D5), walking/choosing, peeks, traces, pause, victory, guided steps, active duration (AC-13, AC-36, AC-25) - proof: unit
 - [ ] T-06 Camera walker port (turn in place, rounded corners, speed profile) with wall-crossing tests (AC-10) - proof: unit
 - [ ] T-07 Renderer: stage, procedural textures, merged walls, emblem plaques, footprints, manor mood and scary mode, frame stats (AC-29, AC-30) - proof: device
