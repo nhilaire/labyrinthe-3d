@@ -8,6 +8,7 @@ import * as THREE from 'three';
 import type { Landmark } from '../game/landmarks';
 import { Cell, DIRS, Dir, Maze } from '../game/maze';
 import { outsideOf } from '../game/navigation';
+import { ApparitionsView } from './apparitionsView';
 import { CELL, EYE_H, WALL_H, WALL_T, worldOf } from './dimensions';
 import { FrameStats } from './frameStats';
 import { Footprints, createFootprints } from './footprints';
@@ -61,6 +62,8 @@ export class MazeScene {
   private footTexture = footprintTexture();
   private mood: Mood = MOODS.manor;
   private mounted: Mounted | null = null;
+  private apparitions: ApparitionsView | null = null;
+  private scary = false;
   private wallMaterials: THREE.MeshLambertMaterial[] = [];
 
   constructor(gl: ExpoWebGLRenderingContext) {
@@ -91,7 +94,9 @@ export class MazeScene {
   }
 
   setMood(scary: boolean): void {
+    this.scary = scary;
     this.mood = scary ? MOODS.scary : MOODS.manor;
+    this.apparitions?.setScary(scary);
     this.fog.density = this.mood.fog;
     this.ambient.intensity = this.mood.ambient;
     for (const m of this.wallMaterials) m.color.setHex(this.mood.wallTint);
@@ -178,6 +183,10 @@ export class MazeScene {
 
     const footprints = createFootprints({ texture: this.footTexture });
     group.add(footprints.mesh);
+    // Scary-mode ghosts, spiders, cobwebs and candle dips (hidden in the manor mood).
+    this.apparitions = new ApparitionsView(maze, seed);
+    this.apparitions.setScary(this.scary);
+    group.add(this.apparitions.group);
     this.scene.add(group);
     this.mounted = {
       group,
@@ -198,6 +207,8 @@ export class MazeScene {
     if (!m) return;
     this.scene.remove(m.group);
     m.footprints.dispose();
+    this.apparitions?.dispose();
+    this.apparitions = null;
     m.materials.forEach((x) => x.dispose());
     m.geometries.forEach((x) => x.dispose());
     m.textures.forEach((x) => x.dispose());
@@ -249,7 +260,8 @@ export class MazeScene {
     }
     const t = nowMs / 1000;
     const f = this.mood.flicker;
-    this.torch.intensity = this.mood.torch * (1 + (Math.sin(t * 7.3) * 0.044 + Math.sin(t * 17.1) * 0.022) * f);
+    const dim = this.apparitions ? this.apparitions.update(dtMs, frozen, this.pose(), this.camera) : 1;
+    this.torch.intensity = this.mood.torch * dim * (1 + (Math.sin(t * 7.3) * 0.044 + Math.sin(t * 17.1) * 0.022) * f);
     this.renderer.render(this.scene, this.camera);
     this.gl.endFrameEXP();
     return arrived;

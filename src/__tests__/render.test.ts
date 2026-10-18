@@ -1,6 +1,9 @@
 // Rendering parts that run without WebGL: frame statistics, merged geometry, procedural textures, emblems.
+import * as THREE from 'three';
+
 import { newMaze } from '../game/config';
 import { EMBLEM_COUNT } from '../game/landmarks';
+import { ApparitionsView } from '../render/apparitionsView';
 import { emblemColor, emblemInk, emblemShapes } from '../render/emblems';
 import { FrameStats, MIN_FRAMES_FOR_SAMPLE } from '../render/frameStats';
 import { buildPillarGeometry, buildWallGeometry, horizontalWall, verticalWall } from '../render/mazeGeometry';
@@ -65,5 +68,30 @@ describe('emblems and moods', () => {
     expect(MOODS.scary.fog).toBeCloseTo(MOODS.manor.fog * 1.8);
     expect(MOODS.scary.torch).toBeCloseTo(MOODS.manor.torch * 0.65);
     expect(MOODS.scary.flicker).toBeGreaterThan(MOODS.manor.flicker);
+  });
+});
+
+describe('scary-mode apparitions view (AC-41 wiring)', () => {
+  it('hides cobwebs and does nothing in the manor mood, dims the torch and shows decor in scary mode', () => {
+    const { maze, seed } = newMaze('large', 12);
+    const view = new ApparitionsView(maze, seed);
+    const camera = new THREE.PerspectiveCamera();
+    const pose = { cell: { x: maze.entrance.x, y: maze.entrance.y }, dir: 0 as const };
+    const cobwebs = view.group.children[0];
+    expect(cobwebs.visible).toBe(false);
+    expect(cobwebs.children.length).toBeGreaterThan(0);
+    for (let i = 0; i < 3000; i++) expect(view.update(16, false, pose, camera)).toBe(1);
+    view.setScary(true);
+    expect(cobwebs.visible).toBe(true);
+    let minTorch = 1;
+    let shown = 0;
+    for (let i = 0; i < 60 * 120; i++) {
+      minTorch = Math.min(minTorch, view.update(16, false, pose, camera));
+      if (view.group.children.some((c, k) => k > 0 && c.visible)) shown++;
+    }
+    expect(shown + (minTorch < 0.6 ? 1 : 0)).toBeGreaterThan(0);
+    view.setScary(false);
+    expect(view.group.children.slice(1).every((c) => !c.visible)).toBe(true);
+    view.dispose();
   });
 });
