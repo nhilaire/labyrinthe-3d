@@ -1,0 +1,3545 @@
+{
+ "generator": "original shared/core",
+ "cases": [
+  {
+   "size": "small",
+   "seed": 1000,
+   "acceptedSeed": 1000,
+   "attempts": 1,
+   "walls": "050505050309010309050505060a0a0a0c05050505060a0a090505050501060a0a0d050505060b080c0505050505060e",
+   "entrance": {
+    "x": 0,
+    "y": 0,
+    "dir": 3
+   },
+   "exit": {
+    "x": 7,
+    "y": 4,
+    "dir": 1
+   },
+   "solutionLength": 24,
+   "landmarks": [
+    {
+     "x": 5,
+     "y": 3,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 0,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 25,
+    "decisions": 2
+   }
+  },
+  {
+   "size": "small",
+   "seed": 8919,
+   "acceptedSeed": 2654444680,
+   "attempts": 2,
+   "walls": "01030903090505030a0a0a0a0a09030a0a0a0a0a0a0e0a0a0a0c060e0805060a08050505060905000c050505070e0d06",
+   "entrance": {
+    "x": 0,
+    "y": 0,
+    "dir": 3
+   },
+   "exit": {
+    "x": 7,
+    "y": 4,
+    "dir": 1
+   },
+   "solutionLength": 20,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 4,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 4,
+     "y": 3,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 5,
+     "dir": 3,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 45,
+    "decisions": 6
+   }
+  },
+  {
+   "size": "small",
+   "seed": 16838,
+   "acceptedSeed": 2654452599,
+   "attempts": 2,
+   "walls": "09050103090505030a0b0a0a0a09030a0a0a0a0a0a0a0a0a0a0a0a0e0c060a0a020a0c0505030a0e0c040505070c0403",
+   "entrance": {
+    "x": 7,
+    "y": 5,
+    "dir": 2
+   },
+   "exit": {
+    "x": 0,
+    "y": 4,
+    "dir": 3
+   },
+   "solutionLength": 17,
+   "landmarks": [
+    {
+     "x": 2,
+     "y": 0,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 1,
+     "y": 5,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 5,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 36,
+    "decisions": 9
+   }
+  },
+  {
+   "size": "small",
+   "seed": 24757,
+   "acceptedSeed": 24757,
+   "attempts": 1,
+   "walls": "09050309030905030a09060a0a0a0b0a020a0b0a0a0a0a0a0a0a0a0e0a0a08040a0c04070a0a0a0b0c05050504060c06",
+   "entrance": {
+    "x": 7,
+    "y": 3,
+    "dir": 1
+   },
+   "exit": {
+    "x": 0,
+    "y": 2,
+    "dir": 3
+   },
+   "solutionLength": 19,
+   "landmarks": [
+    {
+     "x": 4,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 2,
+     "y": 2,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 1,
+     "dir": 0,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 34,
+    "decisions": 9
+   }
+  },
+  {
+   "size": "small",
+   "seed": 32676,
+   "acceptedSeed": 1013936902,
+   "attempts": 3,
+   "walls": "09030905050309030a0a0a09070c02080a0a0a0a0d030a0a0a0a0a08030a0a0a020a0a0e0a0a0e0a0e0c0405060c0506",
+   "entrance": {
+    "x": 7,
+    "y": 1,
+    "dir": 1
+   },
+   "exit": {
+    "x": 0,
+    "y": 4,
+    "dir": 3
+   },
+   "solutionLength": 25,
+   "landmarks": [
+    {
+     "x": 6,
+     "y": 1,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 2,
+     "y": 5,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 3,
+     "y": 3,
+     "dir": 3,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 72,
+    "decisions": 16
+   }
+  },
+  {
+   "size": "small",
+   "seed": 40595,
+   "acceptedSeed": 1013944821,
+   "attempts": 3,
+   "walls": "090504070d0505030c05050505050502090505010505030a0c05030a09070a0a09070a0a0c05060a0c05060805050506",
+   "entrance": {
+    "x": 3,
+    "y": 5,
+    "dir": 2
+   },
+   "exit": {
+    "x": 2,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 19,
+   "landmarks": [
+    {
+     "x": 3,
+     "y": 2,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 7,
+     "y": 1,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 1,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 68,
+    "decisions": 9
+   }
+  },
+  {
+   "size": "small",
+   "seed": 48514,
+   "acceptedSeed": 48514,
+   "attempts": 1,
+   "walls": "090503090505060b020b0a0a090505020a0a0a0a0a09030a0a0a0a0a0a0e0a0a0a0a0a0a0c05060a0c060c0405050506",
+   "entrance": {
+    "x": 0,
+    "y": 1,
+    "dir": 3
+   },
+   "exit": {
+    "x": 6,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 18,
+   "landmarks": [
+    {
+     "x": 3,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 7,
+     "y": 1,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 1,
+     "y": 1,
+     "dir": 0,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 19,
+    "decisions": 2
+   }
+  },
+  {
+   "size": "small",
+   "seed": 56433,
+   "acceptedSeed": 56433,
+   "attempts": 1,
+   "walls": "09050709010503090a09030a0a0b0a0a0a0a0a0a0a0a0a0a0a0a0e0a0a0a0a0a0a0c05060a0a0c020c010505060c0506",
+   "entrance": {
+    "x": 7,
+    "y": 0,
+    "dir": 1
+   },
+   "exit": {
+    "x": 1,
+    "y": 5,
+    "dir": 2
+   },
+   "solutionLength": 20,
+   "landmarks": [
+    {
+     "x": 7,
+     "y": 4,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 4,
+     "y": 0,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 2,
+     "y": 3,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 35,
+    "decisions": 5
+   }
+  },
+  {
+   "size": "small",
+   "seed": 64352,
+   "acceptedSeed": 64352,
+   "attempts": 1,
+   "walls": "09050505050504030a0901030905030a0a0a0a0a0a0b0a0e0a0a0a0e0a0a08030a0e0c0504060a080c0505050505060e",
+   "entrance": {
+    "x": 6,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 7,
+    "y": 4,
+    "dir": 1
+   },
+   "solutionLength": 22,
+   "landmarks": [
+    {
+     "x": 6,
+     "y": 3,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 2,
+     "y": 1,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 73,
+    "decisions": 15
+   }
+  },
+  {
+   "size": "small",
+   "seed": 72271,
+   "acceptedSeed": 72271,
+   "attempts": 1,
+   "walls": "03090504050505030a0c05050505030a0c0505030905060a0905030a0a0d030a0a0d060a0c05060a0c05050405050506",
+   "entrance": {
+    "x": 3,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 0,
+    "y": 0,
+    "dir": 3
+   },
+   "solutionLength": 22,
+   "landmarks": [
+    {
+     "x": 3,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 5,
+     "y": 3,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 3,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 41,
+    "decisions": 4
+   }
+  },
+  {
+   "size": "small",
+   "seed": 80190,
+   "acceptedSeed": 80190,
+   "attempts": 1,
+   "walls": "09050505050505030a0901030d05030a0a0e0a0c0505060a0a0b0a090505050604060a0a0d0505030d05040405050106",
+   "entrance": {
+    "x": 0,
+    "y": 4,
+    "dir": 3
+   },
+   "exit": {
+    "x": 6,
+    "y": 5,
+    "dir": 2
+   },
+   "solutionLength": 24,
+   "landmarks": [
+    {
+     "x": 2,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 4,
+     "y": 1,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 1,
+     "y": 2,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 35,
+    "decisions": 5
+   }
+  },
+  {
+   "size": "small",
+   "seed": 88109,
+   "acceptedSeed": 88109,
+   "attempts": 1,
+   "walls": "09030d05050505020a0a0d050505030a0a0c05050505060a08050505050505060a0d0501050505010c0505060d050506",
+   "entrance": {
+    "x": 7,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 7,
+    "y": 4,
+    "dir": 1
+   },
+   "solutionLength": 21,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 3,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 4,
+     "y": 5,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 2,
+     "y": 0,
+     "dir": 3,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 26,
+    "decisions": 6
+   }
+  },
+  {
+   "size": "small",
+   "seed": 96028,
+   "acceptedSeed": 1014000254,
+   "attempts": 3,
+   "walls": "0d050503090105030d05030a0a0a0b0a09070a0a0a0a0a0a08030a0c060a08060a0a0a0905060c010e0c00060d050506",
+   "entrance": {
+    "x": 2,
+    "y": 5,
+    "dir": 2
+   },
+   "exit": {
+    "x": 7,
+    "y": 4,
+    "dir": 1
+   },
+   "solutionLength": 17,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 3,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 6,
+     "y": 3,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 5,
+     "y": 0,
+     "dir": 0,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 68,
+    "decisions": 14
+   }
+  },
+  {
+   "size": "small",
+   "seed": 103947,
+   "acceptedSeed": 103947,
+   "attempts": 1,
+   "walls": "0c0505050505030b0905050505030a0a0a090505070a0a0a0208050505060a0a0a0c05050709060a0c05050505040506",
+   "entrance": {
+    "x": 0,
+    "y": 3,
+    "dir": 3
+   },
+   "exit": {
+    "x": 0,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 20,
+   "landmarks": [
+    {
+     "x": 5,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 1,
+     "y": 3,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 7,
+     "y": 0,
+     "dir": 0,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 63,
+    "decisions": 8
+   }
+  },
+  {
+   "size": "small",
+   "seed": 111866,
+   "acceptedSeed": 111866,
+   "attempts": 1,
+   "walls": "030905050105030b0a0a09030a0b0c0208060a0a0a08030a0a0d060a0a0a0a0a0c0505020a0a0e080d0505060e0c0506",
+   "entrance": {
+    "x": 0,
+    "y": 0,
+    "dir": 3
+   },
+   "exit": {
+    "x": 7,
+    "y": 4,
+    "dir": 1
+   },
+   "solutionLength": 16,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 2,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 3,
+     "y": 4,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 7,
+     "y": 1,
+     "dir": 1,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 19,
+    "decisions": 6
+   }
+  },
+  {
+   "size": "small",
+   "seed": 119785,
+   "acceptedSeed": 119785,
+   "attempts": 1,
+   "walls": "0d050505050105030905050505060b0a020905050505020a0e0a0d050505060a09040505050505060c05050505050505",
+   "entrance": {
+    "x": 0,
+    "y": 2,
+    "dir": 3
+   },
+   "exit": {
+    "x": 7,
+    "y": 5,
+    "dir": 1
+   },
+   "solutionLength": 29,
+   "landmarks": [
+    {
+     "x": 6,
+     "y": 2,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "dir": 3,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 40,
+    "decisions": 5
+   }
+  },
+  {
+   "size": "small",
+   "seed": 127704,
+   "acceptedSeed": 1014031930,
+   "attempts": 3,
+   "walls": "09050101050504070a0b0a0e0d0505030a0a0c050501070a0c040505070a09060105050505060a0b0c05050505050406",
+   "entrance": {
+    "x": 0,
+    "y": 4,
+    "dir": 3
+   },
+   "exit": {
+    "x": 6,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 17,
+   "landmarks": [
+    {
+     "x": 1,
+     "y": 3,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 5,
+     "y": 2,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 5,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 40,
+    "decisions": 11
+   }
+  },
+  {
+   "size": "small",
+   "seed": 135623,
+   "acceptedSeed": 135623,
+   "attempts": 1,
+   "walls": "09040503090505030a0b09060a0905060a0a0a0b0a0c05030a0a0a0a0a0903080a0c04060a0e0a0e0c05050504050407",
+   "entrance": {
+    "x": 1,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 7,
+    "y": 3,
+    "dir": 1
+   },
+   "solutionLength": 26,
+   "landmarks": [
+    {
+     "x": 4,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 1,
+     "y": 1,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 7,
+     "y": 4,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 55,
+    "decisions": 9
+   }
+  },
+  {
+   "size": "small",
+   "seed": 143542,
+   "acceptedSeed": 143542,
+   "attempts": 1,
+   "walls": "09010309050505030a0a0a0a090505060a0a0a0e0a0905030a0a0a0b0a0a0b0a020a0c060a0a0a080e0c050504060c06",
+   "entrance": {
+    "x": 0,
+    "y": 4,
+    "dir": 3
+   },
+   "exit": {
+    "x": 7,
+    "y": 4,
+    "dir": 1
+   },
+   "solutionLength": 22,
+   "landmarks": [
+    {
+     "x": 1,
+     "y": 0,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 4,
+     "y": 5,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 0,
+     "y": 5,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 65,
+    "decisions": 8
+   }
+  },
+  {
+   "size": "small",
+   "seed": 151461,
+   "acceptedSeed": 2654587222,
+   "attempts": 2,
+   "walls": "09050505050505030a0d03090505030a08030a0a09030c06020a0a0a0a0c05030a0e0a0a0c05070a0c05060c05050504",
+   "entrance": {
+    "x": 0,
+    "y": 3,
+    "dir": 3
+   },
+   "exit": {
+    "x": 7,
+    "y": 5,
+    "dir": 1
+   },
+   "solutionLength": 26,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 2,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 6,
+     "y": 4,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 2,
+     "emblem": 2
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 47,
+    "decisions": 5
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 1000,
+   "acceptedSeed": 1000,
+   "attempts": 1,
+   "walls": "09030d050309050505050105030b0a0c05030a0a090505030a0b0a0a0a09030a0a0a0a09030a0a0c04040a0a0a0a0a0a0a0a0a0a0c0505030a0a0a0a0a0a0a0e0a0a090505020a0a0a0a0a0a0c05060a0a09030a0a0a0e0a0c04050505060a0e0a0a0a0c0504050505050505060b08060c05050505050505050505020c07",
+   "entrance": {
+    "x": 11,
+    "y": 8,
+    "dir": 2
+   },
+   "exit": {
+    "x": 13,
+    "y": 2,
+    "dir": 1
+   },
+   "solutionLength": 55,
+   "landmarks": [
+    {
+     "x": 12,
+     "y": 2,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 12,
+     "y": 7,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 3,
+     "y": 7,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 2,
+     "y": 0,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 7,
+     "y": 4,
+     "dir": 2,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 148,
+    "decisions": 14
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 8919,
+   "acceptedSeed": 3668348906,
+   "attempts": 4,
+   "walls": "0905050505050103090401050503020d050505030a0a0a0b0a0d05060c05050505020a0a0a0a0c05050309050505030a0a0a0a080105030a0a0905030a0e0a0a0a0e0a0b0a0a0a0c070a0c05020e0a090608060e0a09050405070a09060a0d0609030a0c05050505060a0d040505060a0c05050505050504050505050506",
+   "entrance": {
+    "x": 0,
+    "y": 1,
+    "dir": 3
+   },
+   "exit": {
+    "x": 9,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 43,
+   "landmarks": [
+    {
+     "x": 3,
+     "y": 6,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 7,
+     "y": 8,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 5,
+     "y": 2,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 11,
+     "y": 5,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 10,
+     "y": 0,
+     "dir": 0,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 92,
+    "decisions": 13
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 16838,
+   "acceptedSeed": 2654452599,
+   "attempts": 2,
+   "walls": "09050503090501050505030905030a0d05060a0b0a0905070a0c030808050505060a0a0c050504070a0a0a09050505060c05050505030a0a0a080505050505050505030a0a0a0a0c05050505050505030a0c060a0c050505050505030d0608070d060b0905010505070c05030c0501030c0407080505050505040505060e",
+   "entrance": {
+    "x": 13,
+    "y": 1,
+    "dir": 1
+   },
+   "exit": {
+    "x": 3,
+    "y": 8,
+    "dir": 2
+   },
+   "solutionLength": 50,
+   "landmarks": [
+    {
+     "x": 9,
+     "y": 8,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 10,
+     "y": 2,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 1,
+     "y": 8,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 0,
+     "y": 2,
+     "dir": 3,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 141,
+    "decisions": 21
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 24757,
+   "acceptedSeed": 3668364744,
+   "attempts": 4,
+   "walls": "0d0505050505010505050505050309050505050506090501030d030a0a0b09050505030a0b0a0a09020a0a0a0a0905030a0c020a0a0a0a0a0a0a0a0a0b0a08030a0a0a0a0a0a020c04060c060a0e0a0a0c060a0a0c05050505070c05060a09070a0a090505050505050505060c05060a0c05010505050505050505050506",
+   "entrance": {
+    "x": 2,
+    "y": 8,
+    "dir": 2
+   },
+   "exit": {
+    "x": 0,
+    "y": 5,
+    "dir": 3
+   },
+   "solutionLength": 38,
+   "landmarks": [
+    {
+     "x": 6,
+     "y": 4,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 9,
+     "y": 1,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 2,
+     "y": 5,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 11,
+     "y": 6,
+     "dir": 1,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 203,
+    "decisions": 27
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 32676,
+   "acceptedSeed": 2654468437,
+   "attempts": 2,
+   "walls": "0b0901030b0901050505050504030a0a0a0a0a0a0a0905050505030a0a0a0a0a0c060a0a090501030a0a0a0a0a0c05030a0a0c070a0a0a0a0a0a0a09030a0a0c0505060a0a0a0a0a0a0a0a0a0a090505070a0c060a0a0a0a0a0a0a080505050405070a0a0a0e0c04060e0905050505010c060c050505050504050505070e",
+   "entrance": {
+    "x": 12,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 13,
+    "y": 7,
+    "dir": 1
+   },
+   "solutionLength": 45,
+   "landmarks": [
+    {
+     "x": 5,
+     "y": 7,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 2,
+     "y": 0,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 11,
+     "y": 6,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 10,
+     "y": 2,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 8,
+     "y": 8,
+     "dir": 2,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 150,
+    "decisions": 22
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 40595,
+   "acceptedSeed": 2654476356,
+   "attempts": 2,
+   "walls": "0b0b09050501050503090503090308060c05070a09030a0a0b0a0a080c050505030a0a0e0a0a0a0a0a0a090505030a0a0805060a0c04060e0c05070a0a0a0a09050405050503090505020a0a0a0c05050505070a0a09030a0a0a0c050505050505020a0e0c060a0c050309070901070a08050505040505060c05060c0506",
+   "entrance": {
+    "x": 13,
+    "y": 1,
+    "dir": 1
+   },
+   "exit": {
+    "x": 0,
+    "y": 8,
+    "dir": 2
+   },
+   "solutionLength": 57,
+   "landmarks": [
+    {
+     "x": 9,
+     "y": 4,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 13,
+     "y": 6,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 3,
+     "y": 5,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 5,
+     "y": 0,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 0,
+     "y": 1,
+     "dir": 3,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 100,
+    "decisions": 20
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 48514,
+   "acceptedSeed": 48514,
+   "attempts": 1,
+   "walls": "0905040505010503090505070d030c0505030b0a0b0a0a090505050209030b0a0a0a0c060a0a090505060a0a08060a0a09030a0a0c0709030a0a0c05020a0a0a0a080505060a0a0a0905060c060a0a0a090503080a0a0e09050505020a0a0c070a0a0a0c05060d0505060a0c0505060a0c05050505050505040505050506",
+   "entrance": {
+    "x": 13,
+    "y": 5,
+    "dir": 1
+   },
+   "exit": {
+    "x": 2,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 51,
+   "landmarks": [
+    {
+     "x": 13,
+     "y": 1,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 8,
+     "y": 8,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 5,
+     "y": 0,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 9,
+     "y": 4,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 4,
+     "y": 4,
+     "dir": 1,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 92,
+    "decisions": 15
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 56433,
+   "acceptedSeed": 56433,
+   "attempts": 1,
+   "walls": "09050504070d05050505050505010c030901050505050505050505020b0a0a0a0905050309050505030a0a0a0a0a0a0d030a0a0905030a0a08060a0e0c05020a0a0a0b0a0a0a0a09040505030a0a0a0a0a0a0a0a0a0c0505070a0a0a0a0a0c060a0a0c050505030c060a0a0c0505060a0d050505040505060c0505050506",
+   "entrance": {
+    "x": 13,
+    "y": 0,
+    "dir": 1
+   },
+   "exit": {
+    "x": 3,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 59,
+   "landmarks": [
+    {
+     "x": 4,
+     "y": 8,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 2,
+     "y": 5,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 4,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 13,
+     "y": 1,
+     "dir": 1,
+     "emblem": 3
+    },
+    {
+     "x": 3,
+     "y": 1,
+     "dir": 0,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 162,
+    "decisions": 16
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 64352,
+   "acceptedSeed": 2654500113,
+   "attempts": 2,
+   "walls": "09010503090505020d01050505030a0a0d060a09070c030c0505030a0a0c05030a0a09030a0905030a0a0a09030a08060a0c020a0b0a0a0a0a0a0a0c060b0a0d060a0a0a0a0a0a0a0c030b0a0c050504060a0a0a0a08030a0a0c0505050505060a0a0a0e0a0a0c01050505030d05060a0c05060c05060d05050405050106",
+   "entrance": {
+    "x": 12,
+    "y": 8,
+    "dir": 2
+   },
+   "exit": {
+    "x": 7,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 50,
+   "landmarks": [
+    {
+     "x": 9,
+     "y": 8,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 1,
+     "y": 6,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 8,
+     "y": 3,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 1,
+     "y": 0,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 5,
+     "y": 7,
+     "dir": 0,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 65,
+    "decisions": 11
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 72271,
+   "acceptedSeed": 72271,
+   "attempts": 1,
+   "walls": "09050505050309050503090505030a0b0905030a0a09070a0a0d030a020a0a09020a0a0c05060c05020a0a0a0a0a0a0a0c0505050505060a0a0a0a0a0a0c05050505050505020a0a0a0a0c0505050505050709060c060a0c0505050505050505060909070a0d050501050505050505020c0504050505060d050505050506",
+   "entrance": {
+    "x": 0,
+    "y": 2,
+    "dir": 3
+   },
+   "exit": {
+    "x": 13,
+    "y": 6,
+    "dir": 1
+   },
+   "solutionLength": 60,
+   "landmarks": [
+    {
+     "x": 4,
+     "y": 2,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 13,
+     "y": 4,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 2,
+     "y": 8,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 6,
+     "y": 7,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 8,
+     "y": 1,
+     "dir": 1,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 131,
+    "decisions": 14
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 80190,
+   "acceptedSeed": 80190,
+   "attempts": 1,
+   "walls": "09050505050505050309050309020a090105050105070a0a0b0a0a0a0a0a0a09030a0905060a0a0a0a0e020a0a0a0e0a0a0905060a0a08030a0e0a0c05060a0a090504060e0a0a0b0a090505060a0c05050505020c060a0a09050506090505030d06090504060c0505050405070c05030c05050505050505050505050506",
+   "entrance": {
+    "x": 0,
+    "y": 3,
+    "dir": 3
+   },
+   "exit": {
+    "x": 13,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 87,
+   "landmarks": [
+    {
+     "x": 8,
+     "y": 7,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 2,
+     "y": 1,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 10,
+     "y": 4,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 2,
+     "y": 7,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 7,
+     "y": 1,
+     "dir": 1,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 94,
+    "decisions": 11
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 88109,
+   "acceptedSeed": 88109,
+   "attempts": 1,
+   "walls": "010309030d05050504050505030b0a0a0e0a09050505010505030a0a0a0c05060c0505030a09030a0a0a0c0505050501030a0a0a0a0a0a0a0905010505060e0a0a0e0a0a0a0a0a0b0a09050505060a09020a0a0a0a0a0a0a090105030a0a0e0a0a0a0a0c060a0e0a0b0a0a0c05060a0a0c05050405060c060c0505050406",
+   "entrance": {
+    "x": 8,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 0,
+    "y": 0,
+    "dir": 3
+   },
+   "solutionLength": 63,
+   "landmarks": [
+    {
+     "x": 12,
+     "y": 8,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 10,
+     "y": 5,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 2,
+     "y": 4,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 3,
+     "y": 8,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 8,
+     "y": 1,
+     "dir": 0,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 106,
+    "decisions": 15
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 96028,
+   "acceptedSeed": 1014000254,
+   "attempts": 3,
+   "walls": "09050501050505050309050505010c05070a0d0105070a0a0b0905020d05030a09060905060a0a0a0d0609030a0a0c030a0d0504060805030a0a0a08030a0a090505030c030a0a0a0a0a0a0a0c0609030a0b0a0a0e0a0a0e0a080505060a0a0c060a09060c030a0a0d0505060c0505020c050104060c0505050505050506",
+   "entrance": {
+    "x": 13,
+    "y": 0,
+    "dir": 1
+   },
+   "exit": {
+    "x": 2,
+    "y": 8,
+    "dir": 2
+   },
+   "solutionLength": 46,
+   "landmarks": [
+    {
+     "x": 13,
+     "y": 7,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 3,
+     "y": 8,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 5,
+     "y": 1,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 13,
+     "y": 1,
+     "dir": 1,
+     "emblem": 3
+    },
+    {
+     "x": 9,
+     "y": 3,
+     "dir": 2,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 113,
+    "decisions": 20
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 103947,
+   "acceptedSeed": 3668443934,
+   "attempts": 4,
+   "walls": "09050505010505050505050505030a0905030a09050505050505030a0c060b0a0a0a090309050505020a010504060a0a0e0a0a0d0505060a0a0d0309060c05060a09050505060c05060a09050505020a0d0505030905070a0a0905070a0c050505020c0505060a0c050504050505070a0d05050504050505010505050506",
+   "entrance": {
+    "x": 8,
+    "y": 8,
+    "dir": 2
+   },
+   "exit": {
+    "x": 0,
+    "y": 3,
+    "dir": 3
+   },
+   "solutionLength": 46,
+   "landmarks": [
+    {
+     "x": 12,
+     "y": 2,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 13,
+     "y": 6,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 8,
+     "y": 7,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 4,
+     "y": 8,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 2,
+     "y": 3,
+     "dir": 2,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 197,
+    "decisions": 27
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 111866,
+   "acceptedSeed": 1014016092,
+   "attempts": 3,
+   "walls": "0d0505050505050309050405050309050505050505060c050505030a0805050505050505050505030a0a0a09030d0309050505030b0a0a0a0a0a0c05060a0905030a0a0a0a0a0a0c05050504060d060a0a08060a0c0505050505050505020a0c070a090505050505050505060c0505060c05050505050505050505050505",
+   "entrance": {
+    "x": 10,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 13,
+    "y": 8,
+    "dir": 1
+   },
+   "solutionLength": 64,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 2,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 5,
+     "y": 5,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 9,
+     "y": 6,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 10,
+     "y": 3,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 3,
+     "y": 3,
+     "dir": 3,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 157,
+    "decisions": 14
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 119785,
+   "acceptedSeed": 119785,
+   "attempts": 1,
+   "walls": "08010709050105050505030d05030e0c0504070a090505030a0905000905050505060c05070a0a0a0b0a0a0905050505050505020a0a0a0a0e0a0d050505010505060a0a0c060904050505030c0505070a0805030a090505070c05050505060a0b0a0a0c05050505050505050504060a0c05050505050505050505050506",
+   "entrance": {
+    "x": 13,
+    "y": 1,
+    "dir": 1
+   },
+   "exit": {
+    "x": 0,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 57,
+   "landmarks": [
+    {
+     "x": 5,
+     "y": 0,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 11,
+     "y": 5,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 4,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 1,
+     "y": 5,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 0,
+     "y": 1,
+     "dir": 2,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 152,
+    "decisions": 25
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 127704,
+   "acceptedSeed": 127704,
+   "attempts": 1,
+   "walls": "0b090505040309050507090505030a0a0905030a0c0505050405070a0a0a0a0d060c0505050505050502020e08050501050505050505030a08030a0d030a0905030d05030a0a0a0a0c05020a0a0d040505060a0a0a0c05030a0a080505050505060a0a0d05060a0a0c0505050505070a0c050505060c0505050505050506",
+   "entrance": {
+    "x": 4,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 0,
+    "y": 3,
+    "dir": 3
+   },
+   "solutionLength": 50,
+   "landmarks": [
+    {
+     "x": 10,
+     "y": 1,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 5,
+     "y": 3,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 8,
+     "y": 5,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 0,
+     "y": 4,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 12,
+     "y": 7,
+     "dir": 1,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 87,
+    "decisions": 15
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 135623,
+   "acceptedSeed": 1014039849,
+   "attempts": 3,
+   "walls": "09040505030901050503090501070a0905030a0a0a09070a0a0b0a0b0a0c070a0a0a0a0c05060a0a0a0a0c0505060c060c05050504020a0809050505050501050505030a0a0a0a09050505070a09030b0a0a0a0a0a0805050505060a0a0a0a0e0a0a0a0c0505070905060a0c0405060a0c050505050405070c0505050506",
+   "entrance": {
+    "x": 1,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 13,
+    "y": 3,
+    "dir": 1
+   },
+   "solutionLength": 74,
+   "landmarks": [
+    {
+     "x": 5,
+     "y": 8,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 10,
+     "y": 3,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 1,
+     "y": 6,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 12,
+     "y": 0,
+     "dir": 0,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 137,
+    "decisions": 22
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 143542,
+   "acceptedSeed": 143542,
+   "attempts": 1,
+   "walls": "09050505050309050505030905050a0d050505060a0b09030a0805030a09050505030a0a0a0a0a0a0b0a08040505070a0e0a0a0a0a0c020a02090505050209060a0a0a0b0a0a0e0a0905070a0c05060a0a0a0a0a09060c050504050505020a0c060a08050505050505030d060c0505020c0505050505070c050505050506",
+   "entrance": {
+    "x": 0,
+    "y": 4,
+    "dir": 3
+   },
+   "exit": {
+    "x": 13,
+    "y": 0,
+    "dir": 1
+   },
+   "solutionLength": 44,
+   "landmarks": [
+    {
+     "x": 13,
+     "y": 7,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 1,
+     "y": 3,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 0,
+     "y": 7,
+     "dir": 3,
+     "emblem": 2
+    },
+    {
+     "x": 5,
+     "y": 6,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 12,
+     "y": 3,
+     "dir": 1,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 187,
+    "decisions": 27
+   }
+  },
+  {
+   "size": "medium",
+   "seed": 151461,
+   "acceptedSeed": 3668491448,
+   "attempts": 4,
+   "walls": "09070905050501050505050505030805040505070a0d03090501070a0a090505050504030a0a0b0c05060a0a0905050505060a0a080501010a0a0a09050505030a0a0a0b0a0a020a0c060905070a0a0a0c060a0a0a0a09070805030a0a0c0505060e0a0a0c0504070c060c05050505030e0c050505050505050505050506",
+   "entrance": {
+    "x": 13,
+    "y": 3,
+    "dir": 1
+   },
+   "exit": {
+    "x": 0,
+    "y": 5,
+    "dir": 3
+   },
+   "solutionLength": 38,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 1,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 10,
+     "y": 3,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 4,
+     "y": 7,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 0,
+     "y": 8,
+     "dir": 2,
+     "emblem": 4
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 197,
+    "decisions": 29
+   }
+  },
+  {
+   "size": "large",
+   "seed": 1000,
+   "acceptedSeed": 1000,
+   "attempts": 1,
+   "walls": "0905050505050505030d050003090505050505030a090505050505050405030a0a0a09050505030a0a0a090505050505030b0a0a0e0a0a0905070a0a0a0e0a0d050309030a0a0a0c0504060c0505060a0c050405030a0a0a0a0c040505050505050505020905030d04060a0a0a09030905050309050505060a0d04050505060c060a0a0a09070a0a09050103080505050505050505060a0a0805060a0c070a0a0a0903090505050505030a0a0a0b09040505060a0a0a0e0a0d050505030a0a0a0c060a0b0d0505060a0c050405050505060a0a0c0505060c050505030c0505050505050505060c050505050105050506",
+   "entrance": {
+    "x": 15,
+    "y": 11,
+    "dir": 2
+   },
+   "exit": {
+    "x": 11,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 100,
+   "landmarks": [
+    {
+     "x": 19,
+     "y": 4,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 10,
+     "y": 4,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 3,
+     "y": 10,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 15,
+     "y": 8,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 2,
+     "y": 4,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 8,
+     "y": 1,
+     "dir": 2,
+     "emblem": 5
+    },
+    {
+     "x": 0,
+     "y": 7,
+     "dir": 3,
+     "emblem": 6
+    },
+    {
+     "x": 13,
+     "y": 3,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 12,
+     "y": 7,
+     "dir": 3,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 233,
+    "decisions": 25
+   }
+  },
+  {
+   "size": "large",
+   "seed": 8919,
+   "acceptedSeed": 1013913145,
+   "attempts": 3,
+   "walls": "090505050505050505050505040309010709050308050505050505050505030905060a0a0904070a0a0d05050505010309030a0a0d030a0a0a0905020c0505050505060c060e0a0c05060a0a0a0a0b0a090505050505050505030c050505060c060a0c060a090505050505050504050505050505050609030a0e09050505050505050505050505050505060a080506090505050505010505050505030b09030a0a0b09060905010505060d050505030c060a0c060a0c0209060d06090505050105030c05030805030c030e0c050505040505070a0b0a0d030a0c070a0d0405050505050505050506080405060c050506",
+   "entrance": {
+    "x": 12,
+    "y": 11,
+    "dir": 2
+   },
+   "exit": {
+    "x": 12,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 98,
+   "landmarks": [
+    {
+     "x": 11,
+     "y": 9,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 0,
+     "y": 1,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 8,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 0,
+     "y": 7,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 9,
+     "y": 5,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 17,
+     "y": 1,
+     "dir": 2,
+     "emblem": 5
+    },
+    {
+     "x": 6,
+     "y": 2,
+     "dir": 0,
+     "emblem": 6
+    },
+    {
+     "x": 1,
+     "y": 11,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 17,
+     "y": 9,
+     "dir": 3,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 145,
+    "decisions": 23
+   }
+  },
+  {
+   "size": "large",
+   "seed": 16838,
+   "acceptedSeed": 2654452599,
+   "attempts": 2,
+   "walls": "09050709050501050503090505030905010309030805050609070a09030a0c05030a0a0b0a0a0a0a0a0b090308030a0a0a0a0d030a0c060a0a0a0a0a0a0c060a0a0a0a0a0e0c05020c0505020a0a0a0a0a0905060a0a0a080501030a0905030a0a0a0e0a0a0a09030a0a0a0a0b0a0e0a0a0b0c060a0c05020a0c060a0a0a0a0a0a0c05060a0c05030a09030a0a0905060a0a0a0c040505070a0905020a0a0e0a0a0c0505060a0c0505050505060a0d060a0c05060c0505050504050505030905050405030a0d05030905050505050505070a0c050505070a0805070a040505050505050505040505050505060c050504",
+   "entrance": {
+    "x": 19,
+    "y": 11,
+    "dir": 1
+   },
+   "exit": {
+    "x": 0,
+    "y": 11,
+    "dir": 3
+   },
+   "solutionLength": 92,
+   "landmarks": [
+    {
+     "x": 9,
+     "y": 4,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 16,
+     "y": 10,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 0,
+     "y": 1,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 9,
+     "y": 11,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 16,
+     "y": 0,
+     "dir": 0,
+     "emblem": 5
+    },
+    {
+     "x": 19,
+     "y": 5,
+     "dir": 1,
+     "emblem": 6
+    },
+    {
+     "x": 5,
+     "y": 9,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 11,
+     "y": 7,
+     "dir": 1,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 227,
+    "decisions": 27
+   }
+  },
+  {
+   "size": "large",
+   "seed": 24757,
+   "acceptedSeed": 3041737435,
+   "attempts": 7,
+   "walls": "09050105050505050505030d05050505050505030a0b0a09050505070905040505050505050505020a0a0a0c0505050504070903090505050505070a0a0a0c050505050505030a0a0c050505050505020a08050505050505030a0a0c050505050505030a0a0a0d05050105070a0c06090505050505030a0a0a0c05050502090504030b0a09050505030a0a0a0c05030905060a09030a0a0a0a09030b0a0a0a0a09030a0c05070a0a0a0a0a0a0a0a0a0a0a0a0a0a020a0c050505060e0a0a0a0a0a0a0c060a0a0a0a0a08050505050505060a0a0a0a0c0505060a0a0a0e0c0505050505050504060e0c0501050504060e",
+   "entrance": {
+    "x": 14,
+    "y": 11,
+    "dir": 2
+   },
+   "exit": {
+    "x": 0,
+    "y": 9,
+    "dir": 3
+   },
+   "solutionLength": 79,
+   "landmarks": [
+    {
+     "x": 2,
+     "y": 0,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 9,
+     "y": 11,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 17,
+     "y": 11,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 5,
+     "y": 6,
+     "dir": 1,
+     "emblem": 3
+    },
+    {
+     "x": 19,
+     "y": 3,
+     "dir": 1,
+     "emblem": 4
+    },
+    {
+     "x": 10,
+     "y": 1,
+     "dir": 2,
+     "emblem": 5
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 3,
+     "emblem": 6
+    },
+    {
+     "x": 1,
+     "y": 10,
+     "dir": 3,
+     "emblem": 7
+    },
+    {
+     "x": 10,
+     "y": 6,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 246,
+    "decisions": 29
+   }
+  },
+  {
+   "size": "large",
+   "seed": 32676,
+   "acceptedSeed": 3668372663,
+   "attempts": 4,
+   "walls": "09070905050501050505050309050309030801030a09040505070a0d0501030a0a09060a0a0a0a0a0806090505030a09030e0a0a0a0a0d020a0e0a0a0a0b0a09030a0a0a0a09020a0a0c05060c05060a0a0a0a0a0a0a0a0a0a0a0a0a0a09050505030d060a0a0a0a0a0a0c060a0a0e0a0a0a0905070c05070c060a0e0c040505060805060a0a0a090505050309030805050505030b0a0b09020a0a0a0905030a0a0a0a0d0505030a0a0a08060a0a0a0a0a0b0a0a0a0a0c050505060a0a0a0c070a0a0a0a0c060a0a0a0c0505050505060c040505060a0c040505060a0c05050505050505050505050504050501050506",
+   "entrance": {
+    "x": 16,
+    "y": 11,
+    "dir": 2
+   },
+   "exit": {
+    "x": 17,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 119,
+   "landmarks": [
+    {
+     "x": 5,
+     "y": 6,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 12,
+     "y": 7,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 15,
+     "y": 2,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 18,
+     "y": 0,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 13,
+     "y": 11,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 9,
+     "y": 1,
+     "dir": 0,
+     "emblem": 5
+    },
+    {
+     "x": 9,
+     "y": 10,
+     "dir": 2,
+     "emblem": 6
+    },
+    {
+     "x": 0,
+     "y": 2,
+     "dir": 3,
+     "emblem": 7
+    },
+    {
+     "x": 19,
+     "y": 5,
+     "dir": 1,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 202,
+    "decisions": 33
+   }
+  },
+  {
+   "size": "large",
+   "seed": 40595,
+   "acceptedSeed": 1013944821,
+   "attempts": 3,
+   "walls": "0905030b09030d050505010105050504050505070a0b0a0a0a0c050505070e0a09050505050505030a0a0a0a0a090503090105020a0905050505030a0a0c020a0a0a0b0a0a0a0b0a0a0a090309030a0a08030a0a0a0a0a0a0a0a0a0a0a0a0a0a0e0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0c05060a0a0e0a0c020a0a0a0a0a0a0a0a0a0a0a090505020a09060b0a0a0a0a0a0a0a0a0a0a0c020a09030a0a0a09020a0a0a0a0a0a0a0a0a0a0d060a0a0a0a0a020a0e0a0a0a0a0a0a0a0c060c0505060a0e0a0a0a0c05060a0a0a0a0e0c0505050505050405060a0c05050504060c04050505050505050505050506",
+   "entrance": {
+    "x": 0,
+    "y": 9,
+    "dir": 3
+   },
+   "exit": {
+    "x": 15,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 103,
+   "landmarks": [
+    {
+     "x": 14,
+     "y": 7,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 0,
+     "y": 4,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 3,
+     "y": 6,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 4,
+     "y": 11,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 16,
+     "y": 10,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 11,
+     "y": 2,
+     "dir": 1,
+     "emblem": 5
+    },
+    {
+     "x": 18,
+     "y": 6,
+     "dir": 1,
+     "emblem": 6
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 3,
+     "emblem": 7
+    },
+    {
+     "x": 8,
+     "y": 10,
+     "dir": 2,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 312,
+    "decisions": 43
+   }
+  },
+  {
+   "size": "large",
+   "seed": 48514,
+   "acceptedSeed": 2654484275,
+   "attempts": 2,
+   "walls": "090309050501050505030d0503090505010505030a0a0a09030a0d05050405030a0a09070a09070a0a0e0a0e0a0c05010505030a0a0a0c030a080506080506090609030c05030a0a0a0c05020a0c05030a0b0904030a0c030d060a0c0405030a0a09030a0a0a0a0b0a0a0d040505060d0505060a0a0a0e0a0a0a0a0a0a0c050505050505050505060a0805060a0a0a0a0a0905050105050505050505060a0903020c04060a0a0d05060d05030905030905060a0a0a090505060c05050505030a0a0d060a09070a0a0a0c05050501050505030a0a0805030a0c05060a0c05050505060d0505060c060c070c0405050502",
+   "entrance": {
+    "x": 0,
+    "y": 8,
+    "dir": 3
+   },
+   "exit": {
+    "x": 19,
+    "y": 11,
+    "dir": 2
+   },
+   "solutionLength": 81,
+   "landmarks": [
+    {
+     "x": 2,
+     "y": 8,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 16,
+     "y": 0,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 17,
+     "y": 6,
+     "dir": 3,
+     "emblem": 2
+    },
+    {
+     "x": 12,
+     "y": 4,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 15,
+     "y": 11,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 5,
+     "y": 0,
+     "dir": 0,
+     "emblem": 5
+    },
+    {
+     "x": 0,
+     "y": 3,
+     "dir": 3,
+     "emblem": 6
+    },
+    {
+     "x": 7,
+     "y": 5,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 5,
+     "y": 10,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 172,
+    "decisions": 27
+   }
+  },
+  {
+   "size": "large",
+   "seed": 56433,
+   "acceptedSeed": 387333350,
+   "attempts": 6,
+   "walls": "09050505050505050505040505030905010505030a090505050505050505050505060a0b0a0d05060a0c050505050507090505050505060a0a0905030805050505050505040505030d0501020a0a0b0a0c0505050505030905030d040505060e0a0a0a0a0905050505070a0a0d04050505050505020a0a0e080505050505060a0903090505050505060a0c030a090501030905020a0a0a0d05050503090609020a0a0b0a0a0a0b0a0a0a0c05050505060c05060a0a0c020a0e0a0c060a0c0505050505050105030a0c030e0c030c05050609050505030d030a0d060a0d0405050405050505060d05050405060c010506",
+   "entrance": {
+    "x": 10,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 17,
+    "y": 11,
+    "dir": 2
+   },
+   "solutionLength": 77,
+   "landmarks": [
+    {
+     "x": 4,
+     "y": 11,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 16,
+     "y": 9,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 15,
+     "y": 3,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 3,
+     "y": 7,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 8,
+     "y": 3,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 19,
+     "y": 7,
+     "dir": 1,
+     "emblem": 5
+    },
+    {
+     "x": 0,
+     "y": 3,
+     "dir": 3,
+     "emblem": 6
+    },
+    {
+     "x": 13,
+     "y": 11,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 11,
+     "y": 7,
+     "dir": 3,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 246,
+    "decisions": 27
+   }
+  },
+  {
+   "size": "large",
+   "seed": 64352,
+   "acceptedSeed": 3668404339,
+   "attempts": 4,
+   "walls": "09050505050505050501050503090309050501030a0d010503090505050609070a0e0c0405070a0a0c05060b0a0a0d0505050405040505050505060e01030904060a09050505050505050505050505030a0e0c0309060a0905050505050505050505030a0a0905060c05060a0d0505050505010505030a0a0a0a0d05050309040505050505030a09030a0a0a0a0a090505020a0b09050505030a0a0a0a0a0a0a0a0a0a09070a0a0a0a0d05030a0a0e0a0a0a0a0a0a0a0a0c05060a0c040505060a0a0b0a0c060a0a0a0a0c050505040505050505060a0a0c0505060a0c04050505050505050505050506080505050506",
+   "entrance": {
+    "x": 0,
+    "y": 3,
+    "dir": 3
+   },
+   "exit": {
+    "x": 14,
+    "y": 11,
+    "dir": 2
+   },
+   "solutionLength": 81,
+   "landmarks": [
+    {
+     "x": 8,
+     "y": 9,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 12,
+     "y": 2,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 3,
+     "y": 3,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 5,
+     "y": 7,
+     "dir": 1,
+     "emblem": 3
+    },
+    {
+     "x": 1,
+     "y": 11,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 9,
+     "y": 0,
+     "dir": 0,
+     "emblem": 5
+    },
+    {
+     "x": 18,
+     "y": 0,
+     "dir": 0,
+     "emblem": 6
+    },
+    {
+     "x": 14,
+     "y": 5,
+     "dir": 0,
+     "emblem": 7
+    },
+    {
+     "x": 15,
+     "y": 1,
+     "dir": 2,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 156,
+    "decisions": 28
+   }
+  },
+  {
+   "size": "large",
+   "seed": 72271,
+   "acceptedSeed": 3041784949,
+   "attempts": 7,
+   "walls": "09010505050505050505050505030905050405030a0a0b090505050501050505070a0a09050309020e0a0a0c030905070c05050505060a0a0b0a0a0a090608070a08050505050105030b0a0a0a0a0a0a0a090609060a090505030a0b0a0a0a0a0a0a0a0a020805060d04060d05060a0a0a0a0a0a0a0a0a0a0a0a0905050505050505060a0c020a0a0a0a0a0a0a0a0a0b090505050505050405060a0a0a0a0a0a0a0a0a0c040505050505070905030a0c060a0a0a0a0a0c050505050505050504070c040505060a0a0a0c05050505050505050505050505050505060a0c050505050505070d0505050505050505050506",
+   "entrance": {
+    "x": 0,
+    "y": 5,
+    "dir": 3
+   },
+   "exit": {
+    "x": 17,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 75,
+   "landmarks": [
+    {
+     "x": 1,
+     "y": 0,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 5,
+     "y": 5,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 11,
+     "y": 9,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 8,
+     "y": 1,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 19,
+     "y": 1,
+     "dir": 1,
+     "emblem": 4
+    },
+    {
+     "x": 13,
+     "y": 6,
+     "dir": 1,
+     "emblem": 5
+    },
+    {
+     "x": 8,
+     "y": 11,
+     "dir": 3,
+     "emblem": 6
+    },
+    {
+     "x": 4,
+     "y": 8,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 2,
+     "y": 3,
+     "dir": 3,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 318,
+    "decisions": 42
+   }
+  },
+  {
+   "size": "large",
+   "seed": 80190,
+   "acceptedSeed": 1013984416,
+   "attempts": 3,
+   "walls": "09050209050501030b0905030d050505050501030c070a0a09070a0a0a0a0d040505050505030a0a0905060a0c030a0a0a0805050505030b09060a0a0c05050405060a0a0a0a0d0501030a0a0a0b0a0a090505050505060a0a0c05030e0a0a0a0a0a0a0a0a0905050505030a0a0d030c030a0a0c020a0a0a0a0c050505030a0a0c030c0504060c030a0c060a0a0d050505060c04070c05050505030a0c050502080505050505050505010505030b0a0a0905030a0c05050505050505030a0d05020a0a0a0a0d060809050501050505070a0c05030c060a0a080505060c05070c050505050405070c050504060c050507",
+   "entrance": {
+    "x": 19,
+    "y": 9,
+    "dir": 1
+   },
+   "exit": {
+    "x": 2,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 85,
+   "landmarks": [
+    {
+     "x": 0,
+     "y": 8,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 19,
+     "y": 7,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 9,
+     "y": 2,
+     "dir": 3,
+     "emblem": 2
+    },
+    {
+     "x": 3,
+     "y": 3,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 16,
+     "y": 10,
+     "dir": 3,
+     "emblem": 4
+    },
+    {
+     "x": 3,
+     "y": 10,
+     "dir": 0,
+     "emblem": 5
+    },
+    {
+     "x": 9,
+     "y": 8,
+     "dir": 0,
+     "emblem": 6
+    },
+    {
+     "x": 18,
+     "y": 0,
+     "dir": 0,
+     "emblem": 7
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 202,
+    "decisions": 35
+   }
+  },
+  {
+   "size": "large",
+   "seed": 88109,
+   "acceptedSeed": 2027896561,
+   "attempts": 5,
+   "walls": "09050503090501050505030905050501040505030c05070a0a0b0a0901030a0c0505030a0905030a090505020a0a0a0a0a0e0a0905070a0a0a0b0a0a0a0905060a0a0a0a0c030a0c0505060a0a0c020a020c0309060a0a0a0b0a0a09050105060c030e0a0a0b0a0a09020a0a0a0a0a0a0d060905030c05060a0c060a0a0a0a0a0a0c060c050504070c010503080505060a0a0a0a0c05010505050505030a0b0a0a090105060a0a080505060d05050105060a0a0a0a0a0a09030a0a0a0d05050505030a09030a0a0a0a0e0a0a0e0a0a0c05050505070a0a0e0c04060a0c05060c05060c050505050505060c0505050506",
+   "entrance": {
+    "x": 0,
+    "y": 4,
+    "dir": 3
+   },
+   "exit": {
+    "x": 16,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 89,
+   "landmarks": [
+    {
+     "x": 2,
+     "y": 8,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 14,
+     "y": 6,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 10,
+     "y": 7,
+     "dir": 0,
+     "emblem": 2
+    },
+    {
+     "x": 6,
+     "y": 0,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 18,
+     "y": 3,
+     "dir": 1,
+     "emblem": 4
+    },
+    {
+     "x": 3,
+     "y": 2,
+     "dir": 1,
+     "emblem": 5
+    },
+    {
+     "x": 17,
+     "y": 10,
+     "dir": 2,
+     "emblem": 6
+    },
+    {
+     "x": 5,
+     "y": 5,
+     "dir": 1,
+     "emblem": 7
+    },
+    {
+     "x": 15,
+     "y": 0,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 202,
+    "decisions": 30
+   }
+  },
+  {
+   "size": "large",
+   "seed": 96028,
+   "acceptedSeed": 96028,
+   "attempts": 1,
+   "walls": "09050505010309050503090505050505050505030a0d05030a0a0a09030a0a090505050505030b0a0a0905020a0a0a0a0a0a0a0a0d050501030a0a0a0c060d060a0a0a0a0a0a0a080505030a0a0a0a0a09050505060e0a0e0a0a0a0a09030a0a0e0a0a0a0805050505050405060a0a0a0e0a0a080504060a0c0503090505050505060a0c05060a0a0b09030a09030a0c05050505050504050505060a0a0a0a0a060a0a090505050503090505070d0504060a0a0a09020a0a0d050505060a090501050505030a0a0a0a0e0a0c05050505030a0c070a0905030a0a0a0a0c0504050505050506080505060c070c04060c06",
+   "entrance": {
+    "x": 0,
+    "y": 8,
+    "dir": 3
+   },
+   "exit": {
+    "x": 9,
+    "y": 11,
+    "dir": 2
+   },
+   "solutionLength": 103,
+   "landmarks": [
+    {
+     "x": 6,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 3,
+     "y": 2,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 15,
+     "y": 5,
+     "dir": 3,
+     "emblem": 2
+    },
+    {
+     "x": 12,
+     "y": 9,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 16,
+     "y": 11,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 1,
+     "y": 9,
+     "dir": 1,
+     "emblem": 5
+    },
+    {
+     "x": 11,
+     "y": 3,
+     "dir": 3,
+     "emblem": 6
+    },
+    {
+     "x": 0,
+     "y": 5,
+     "dir": 3,
+     "emblem": 7
+    },
+    {
+     "x": 18,
+     "y": 1,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 178,
+    "decisions": 22
+   }
+  },
+  {
+   "size": "large",
+   "seed": 103947,
+   "acceptedSeed": 4055720851,
+   "attempts": 9,
+   "walls": "0904050105030d050505050505010505070901030c05030a0b0c0505050505050308050505060a0a0905060a08050501050505070a0a0b090505060a0a09070a0a09070a09050505060a0a0a09030b0a0a08030a0a0805060a090505030a0a0a0a0a0a0a0a0a0a0a0a0c05030a0a0d05060a0a0a0a0a0a0a0a0e0a0a0a0d05060a0c05050504060a0a0a0a0a0a09020a080505030c050505050505060a0c060a0a0a0e0a0a0d030c0505050105050309040505060a0a0b0a0c0504050505030a09070a0c0505030b0a0a0a0c0309050505030a0a0c05040505070a0a0c060c05060c0105070c060c0505050505050406",
+   "entrance": {
+    "x": 6,
+    "y": 11,
+    "dir": 2
+   },
+   "exit": {
+    "x": 1,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 95,
+   "landmarks": [
+    {
+     "x": 3,
+     "y": 0,
+     "dir": 0,
+     "emblem": 0
+    },
+    {
+     "x": 13,
+     "y": 6,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 4,
+     "y": 7,
+     "dir": 3,
+     "emblem": 2
+    },
+    {
+     "x": 7,
+     "y": 2,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 18,
+     "y": 0,
+     "dir": 0,
+     "emblem": 4
+    },
+    {
+     "x": 13,
+     "y": 0,
+     "dir": 0,
+     "emblem": 5
+    },
+    {
+     "x": 16,
+     "y": 8,
+     "dir": 2,
+     "emblem": 6
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 3,
+     "emblem": 7
+    },
+    {
+     "x": 18,
+     "y": 11,
+     "dir": 2,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 294,
+    "decisions": 43
+   }
+  },
+  {
+   "size": "large",
+   "seed": 111866,
+   "acceptedSeed": 1014016092,
+   "attempts": 3,
+   "walls": "09050505050503090105050309050107090501030a09010505070a0a0a09070a0c070c0504070a0a0a0a0a090505020a0a0c0504050505050505060a0a0a0a0a0905060a0c05050505030d01050505060a0a0a0a0a09030a09050501030a0b0c050505030a0a0a0a0a0a0e0a0a09030a0a0a0a090505030a0a0a0a0a0a08030a0a0a0a0a0a0a0a0a0d05060a0a0a0a0a0a0e0a0a0a0a0a0a0e0a0a0c050505060a0a0a0a0a09060a0a0e0a0a09020c05050505030a0a0a0a0a0c030a0c05060a0a0c05050505030a020e0a0a0c05060c050505020a0d05050505060a0c05060c05050505050505060c05050501050506",
+   "entrance": {
+    "x": 16,
+    "y": 11,
+    "dir": 2
+   },
+   "exit": {
+    "x": 0,
+    "y": 10,
+    "dir": 3
+   },
+   "solutionLength": 76,
+   "landmarks": [
+    {
+     "x": 6,
+     "y": 2,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 14,
+     "y": 0,
+     "dir": 0,
+     "emblem": 1
+    },
+    {
+     "x": 13,
+     "y": 8,
+     "dir": 1,
+     "emblem": 2
+    },
+    {
+     "x": 2,
+     "y": 1,
+     "dir": 0,
+     "emblem": 3
+    },
+    {
+     "x": 11,
+     "y": 4,
+     "dir": 0,
+     "emblem": 4
+    },
+    {
+     "x": 5,
+     "y": 6,
+     "dir": 3,
+     "emblem": 5
+    },
+    {
+     "x": 16,
+     "y": 6,
+     "dir": 3,
+     "emblem": 6
+    },
+    {
+     "x": 1,
+     "y": 10,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 8,
+     "y": 0,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 185,
+    "decisions": 18
+   }
+  },
+  {
+   "size": "large",
+   "seed": 119785,
+   "acceptedSeed": 2654555546,
+   "attempts": 2,
+   "walls": "0b090505050105050309050405050309050505030a0a0905030a0905060a090309030a0a0905070a0a0a0a0d060a0a0905060a0a0a0a0a0a0805030a0a0a0c05030a0a0c0505060a0a0a0a0a0a0b0a0a0c040505060a0c0505030b0a0a0a0a0a0a0a0a0a0905050505060905070a0c04060e0a0a0a0a0a0a0a09050505050405050405050505060a0a0a0a0a0a0a09050503090505050505050505060a0a0a0a0a0a0a09030a0a0b09050505010505030a0a0a0a0a0c060a0a0a0e0a0a0905030a09030a0a0a0a0a0a0d05060c0405060a0c030a0a0e0c060a0a0a0a0c050505050505050405060e0c05050504060c02",
+   "entrance": {
+    "x": 11,
+    "y": 0,
+    "dir": 0
+   },
+   "exit": {
+    "x": 19,
+    "y": 11,
+    "dir": 2
+   },
+   "solutionLength": 88,
+   "landmarks": [
+    {
+     "x": 11,
+     "y": 5,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 16,
+     "y": 2,
+     "dir": 3,
+     "emblem": 1
+    },
+    {
+     "x": 16,
+     "y": 11,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 6,
+     "y": 6,
+     "dir": 2,
+     "emblem": 3
+    },
+    {
+     "x": 8,
+     "y": 11,
+     "dir": 2,
+     "emblem": 4
+    },
+    {
+     "x": 1,
+     "y": 4,
+     "dir": 2,
+     "emblem": 5
+    },
+    {
+     "x": 5,
+     "y": 0,
+     "dir": 0,
+     "emblem": 6
+    },
+    {
+     "x": 1,
+     "y": 10,
+     "dir": 3,
+     "emblem": 7
+    },
+    {
+     "x": 0,
+     "y": 0,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 249,
+    "decisions": 24
+   }
+  },
+  {
+   "size": "large",
+   "seed": 127704,
+   "acceptedSeed": 1014031930,
+   "attempts": 3,
+   "walls": "050505050505050505050505030905050309030b090505050505050505010505060c030b0a0a0a0a0a0905050505050505060d0505050608060a0c060a0a0d0503090505050505050505030a090405010a0c0505020a09050505050505030a0a0a0d030a0a090505060a0a0905050505070a0a0a0a09020a0a0c0505070c06080505050505060a0a0a0a0a0a0c0505050505030a090505050309020a0a0a0a0a090505050505020a0a0905030a0a0a0a0c060a0a0a09050505070a0a0a0c070a0a0a0a0a0d05060a0a0c05050505060a0c0505060a0a0e0a090505020c0505050505050405050505060c0504060d0506",
+   "entrance": {
+    "x": 19,
+    "y": 3,
+    "dir": 1
+   },
+   "exit": {
+    "x": 0,
+    "y": 0,
+    "dir": 3
+   },
+   "solutionLength": 113,
+   "landmarks": [
+    {
+     "x": 19,
+     "y": 10,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 14,
+     "y": 7,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 7,
+     "y": 11,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 7,
+     "y": 6,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 15,
+     "y": 2,
+     "dir": 3,
+     "emblem": 4
+    },
+    {
+     "x": 18,
+     "y": 5,
+     "dir": 1,
+     "emblem": 5
+    },
+    {
+     "x": 15,
+     "y": 11,
+     "dir": 2,
+     "emblem": 6
+    },
+    {
+     "x": 4,
+     "y": 4,
+     "dir": 1,
+     "emblem": 7
+    },
+    {
+     "x": 9,
+     "y": 1,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 170,
+    "decisions": 12
+   }
+  },
+  {
+   "size": "large",
+   "seed": 135623,
+   "acceptedSeed": 3668475610,
+   "attempts": 4,
+   "walls": "09050505050103090505050505050505050501030a09030d030a0e0a0d0505010505050505030a0a0a0a0805060c0502090505060d030901030a0a0a020a0e0d0505030a0a09050505060a0a0e0a0a0a0a0a090105030a0a0a0805050505060c05060a0a0a0a0a0a0b0a0a0a0a0c05050505050505070a0e0a0a0a0a0a0a0a0a0a09050505050505050308030a0a0a0a0a0a0a0a0a0a090505050505030a0a0a0a08060a0a0a0a0c060a0a0d05050505060a0a0a0a0a0b0a0a0a0a09050608050505050505060a0a0a0c060a0a0a0a0a090506090505030d0505060a0c0505060c060c020c0505060d05040505050506",
+   "entrance": {
+    "x": 0,
+    "y": 3,
+    "dir": 3
+   },
+   "exit": {
+    "x": 7,
+    "y": 11,
+    "dir": 2
+   },
+   "solutionLength": 80,
+   "landmarks": [
+    {
+     "x": 18,
+     "y": 6,
+     "dir": 3,
+     "emblem": 0
+    },
+    {
+     "x": 7,
+     "y": 2,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 2,
+     "y": 2,
+     "dir": 3,
+     "emblem": 2
+    },
+    {
+     "x": 1,
+     "y": 8,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 11,
+     "y": 1,
+     "dir": 0,
+     "emblem": 4
+    },
+    {
+     "x": 14,
+     "y": 11,
+     "dir": 2,
+     "emblem": 5
+    },
+    {
+     "x": 18,
+     "y": 0,
+     "dir": 0,
+     "emblem": 6
+    },
+    {
+     "x": 10,
+     "y": 9,
+     "dir": 3,
+     "emblem": 7
+    },
+    {
+     "x": 15,
+     "y": 2,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 129,
+    "decisions": 16
+   }
+  },
+  {
+   "size": "large",
+   "seed": 143542,
+   "acceptedSeed": 2027951994,
+   "attempts": 5,
+   "walls": "090709050505050309040505030b090505050503080506090709030a080505030c060c0505030b0a0a09050405060a0a0c05030c05050105070a0a0a0a0a0d0505030a0a09030a0905070c050504060a0a0c050505020a0a0e0a0a0a090505050505030a0c030905030a0a0c070a0a0a0a09050501030a0a0b0a0a0b0a0a080505020a0a0a0a0d030a0e0a0a08060a0c060a0a0905060a0a0a0805060c05020a0a09020905060a0c05030a0a0a0a090505030a0a0a0a0e0a0d030c030d060a0a0a0e0a0d030a0a0a020c05040504070c050504060c050405060a0c020c05050505050505050505050505050505060d06",
+   "entrance": {
+    "x": 0,
+    "y": 10,
+    "dir": 3
+   },
+   "exit": {
+    "x": 9,
+    "y": 0,
+    "dir": 0
+   },
+   "solutionLength": 82,
+   "landmarks": [
+    {
+     "x": 3,
+     "y": 10,
+     "dir": 2,
+     "emblem": 0
+    },
+    {
+     "x": 3,
+     "y": 2,
+     "dir": 2,
+     "emblem": 1
+    },
+    {
+     "x": 13,
+     "y": 7,
+     "dir": 3,
+     "emblem": 2
+    },
+    {
+     "x": 0,
+     "y": 7,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 9,
+     "y": 6,
+     "dir": 1,
+     "emblem": 4
+    },
+    {
+     "x": 8,
+     "y": 1,
+     "dir": 3,
+     "emblem": 5
+    },
+    {
+     "x": 18,
+     "y": 7,
+     "dir": 1,
+     "emblem": 6
+    },
+    {
+     "x": 10,
+     "y": 10,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 14,
+     "y": 2,
+     "dir": 0,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 345,
+    "decisions": 56
+   }
+  },
+  {
+   "size": "large",
+   "seed": 151461,
+   "acceptedSeed": 2027959913,
+   "attempts": 5,
+   "walls": "09050309050505050505050505050505010505030209060a090309050501050505050505060d05060a0a09060a0a0a09030a090505050505050505030a0a0a0d060a0a0a0a0a0a09050505030d01030a0a0a0c0505020a0a0a0a0a0a0d05050405060e0a0a0a0905030a0a0a0a0a0a0805050505050505060e0a0a0b0a0a0a0a0a0a0e0a090505050503090309060a0a0a0a0a0a0a0a0b0a0a090505030a0a0a08030a0a0a0a0a0a0a0a0a0a0a0c05070a0a0a0a0e0c04060c060a0a0e0c020a0a090505020a0a0a090505050505060c0505060c060a0d05060a0e0a0c05050105050505050505050504050505040506",
+   "entrance": {
+    "x": 3,
+    "y": 11,
+    "dir": 2
+   },
+   "exit": {
+    "x": 0,
+    "y": 1,
+    "dir": 3
+   },
+   "solutionLength": 84,
+   "landmarks": [
+    {
+     "x": 10,
+     "y": 9,
+     "dir": 1,
+     "emblem": 0
+    },
+    {
+     "x": 5,
+     "y": 4,
+     "dir": 1,
+     "emblem": 1
+    },
+    {
+     "x": 13,
+     "y": 11,
+     "dir": 2,
+     "emblem": 2
+    },
+    {
+     "x": 11,
+     "y": 5,
+     "dir": 3,
+     "emblem": 3
+    },
+    {
+     "x": 16,
+     "y": 0,
+     "dir": 0,
+     "emblem": 4
+    },
+    {
+     "x": 9,
+     "y": 1,
+     "dir": 0,
+     "emblem": 5
+    },
+    {
+     "x": 2,
+     "y": 9,
+     "dir": 2,
+     "emblem": 6
+    },
+    {
+     "x": 15,
+     "y": 4,
+     "dir": 2,
+     "emblem": 7
+    },
+    {
+     "x": 16,
+     "y": 9,
+     "dir": 1,
+     "emblem": 8
+    }
+   ],
+   "follower": {
+    "solved": true,
+    "steps": 119,
+    "decisions": 15
+   }
+  }
+ ]
+}
