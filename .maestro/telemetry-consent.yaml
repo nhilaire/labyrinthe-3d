@@ -1,0 +1,19 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Telemetry - accept consent and play one round (events checked in logcat by verify.mjs)
+tags:
+  - telemetry
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-accept"
+- assertVisible:
+    id: "home-screen"
+- tapOn:
+    id: "home-play"
+- tapOn:
+    id: "game-tap-zone"
+- extendedWaitUntil:
+    visible: "Partie terminée"
+    timeout: 20000
+- takeScreenshot: telemetry-game-over
