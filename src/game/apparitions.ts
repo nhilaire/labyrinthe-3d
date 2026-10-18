@@ -1,6 +1,6 @@
 // Scary-mode apparitions (PRD AC-37 to AC-40): when they happen, where ghosts and spiders appear, where cobwebs hang.
 // Pure TypeScript with an injected random source; it never reads or changes the game session (decor only).
-import { Cell, DIRS, Dir, Maze, Rng, leftOf, makeRng, opposite, rightOf } from './maze';
+import { Cell, DIRS, Dir, Maze, Rng, leftOf, makeRng, rightOf } from './maze';
 
 export type ApparitionKind = 'ghost' | 'spider' | 'candle';
 export const APPARITION_KINDS: readonly ApparitionKind[] = ['ghost', 'spider', 'candle'];
@@ -49,13 +49,11 @@ export function cellsInSight(maze: Maze, from: Cell, dir: Dir, max = 6): Cell[] 
   return out;
 }
 
-// The direction to look for a place: where the player faces, else any open side of their cell.
+// The corridor the player is looking down (side corridors are off screen). Null when facing a wall: the caller then
+// dims the candle instead.
 function sightLine(maze: Maze, pos: Cell, facing: Dir): { dir: Dir; cells: Cell[] } | null {
-  for (const dir of [facing, leftOf(facing), rightOf(facing), opposite(facing)]) {
-    const cells = cellsInSight(maze, pos, dir);
-    if (cells.length) return { dir, cells };
-  }
-  return null;
+  const cells = cellsInSight(maze, pos, facing);
+  return cells.length ? { dir: facing, cells } : null;
 }
 
 export type GhostPath = { from: Point; to: Point; cell: Cell };

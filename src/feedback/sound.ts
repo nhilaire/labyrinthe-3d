@@ -59,12 +59,14 @@ export function createSound(make: (source: number) => AudioPlayer = (s) => creat
     const traced = (name: string, source: number) => {
       const p = make(source);
       let loaded = false;
+      let playing = false;
       p.addListener?.('playbackStatusUpdate', (status) => {
         if (status.isLoaded && !loaded) {
           loaded = true;
           console.log(`SOUND_LOADED ${name} duration=${status.duration}`);
         }
-        if (status.playing) console.log(`SOUND_PLAYING ${name}`);
+        if (status.playing && !playing) console.log(`SOUND_PLAYING ${name}`);
+        playing = status.playing;
       });
       return p;
     };
