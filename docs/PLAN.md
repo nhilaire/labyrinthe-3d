@@ -1,7 +1,7 @@
 # Plan: Labyrinthe 3D v0.1.0
 
 Each task is small (one commit), references the acceptance criteria it serves, and names its proof.
-Format: `- [x] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the box only when the proof passes. (emulator: three on expo-gl 57 at ~55 fps after the WebGL 2 check workaround, landscape, system bars hidden; cold start and no-crash formally in /verify-app)
+Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the box only when the proof passes.
 
 ## Tasks
 
