@@ -11,6 +11,7 @@ import { CELL, WALL_H, WALL_T } from './dimensions';
 const GHOST_MS = 2500;
 const SPIDER_MS = 3000;
 const CANDLE_MS = 1200;
+const MAX_WAIT_MS = 8000;
 const COBWEB_SIZE = 1.25;
 
 const toWorld = (p: Point) => new THREE.Vector3(p.x * CELL, 0, p.y * CELL);
@@ -32,6 +33,7 @@ export class ApparitionsView {
   private readonly scheduler: ApparitionScheduler;
   private readonly rng: () => number;
   private active: Active | null = null;
+  private pending: { kind: ApparitionKind; waited: number } | null = null;
   private scary = false;
 
   constructor(private readonly maze: Maze, seed: number) {
@@ -87,34 +89,42 @@ export class ApparitionsView {
 
   private stop() {
     this.active = null;
+    this.pending = null;
     this.ghost.visible = false;
     this.spider.visible = false;
     this.thread.visible = false;
   }
 
-  private start(kind: ApparitionKind, pose: { cell: Cell; dir: Dir }) {
-    if (kind === 'ghost') {
+  // Ghosts and spiders need a corridor in view: they wait for one (the player turning or walking on) for up to
+  // MAX_WAIT_MS, then the candle dims instead.
+  private tryStart(pose: { cell: Cell; dir: Dir }): void {
+    const p = this.pending;
+    if (!p) return;
+    if (p.kind === 'ghost') {
       const path = placeGhost(this.maze, pose.cell, pose.dir, this.rng);
-      if (path) {
-        this.active = { kind, t: 0, path };
-        return;
-      }
-    } else if (kind === 'spider') {
+      if (path) this.active = { kind: 'ghost', t: 0, path };
+    } else if (p.kind === 'spider') {
       const at = placeSpider(this.maze, pose.cell, pose.dir, this.rng);
-      if (at) {
-        this.active = { kind, t: 0, at };
-        return;
-      }
+      if (at) this.active = { kind: 'spider', t: 0, at };
     }
-    this.active = { kind: 'candle', t: 0 };
+    if (!this.active && (p.kind === 'candle' || p.waited >= MAX_WAIT_MS)) this.active = { kind: 'candle', t: 0 };
+    if (this.active) {
+      this.pending = null;
+      // Device proof of AC-41: which apparitions the player got (read in logcat).
+      console.log(`APPARITION ${this.active.kind} cell=${pose.cell.x},${pose.cell.y} dir=${pose.dir}`);
+    }
   }
 
   // Advances the apparitions; returns the torch factor (1 = normal, lower while a candle dims).
   update(dtMs: number, frozen: boolean, pose: { cell: Cell; dir: Dir }, camera: THREE.Camera): number {
     if (!this.scary) return 1;
-    if (!this.active) {
+    if (!this.active && !this.pending) {
       const kind = this.scheduler.update(dtMs, { scary: this.scary, frozen });
-      if (kind) this.start(kind, pose);
+      if (kind) this.pending = { kind, waited: 0 };
+    }
+    if (this.pending && !frozen) {
+      this.pending.waited += dtMs;
+      this.tryStart(pose);
     }
     const a = this.active;
     if (!a) return 1;

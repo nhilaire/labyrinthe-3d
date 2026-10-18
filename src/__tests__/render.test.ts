@@ -1,6 +1,7 @@
 // Rendering parts that run without WebGL: frame statistics, merged geometry, procedural textures, emblems.
 import * as THREE from 'three';
 
+import { cellsInSight } from '../game/apparitions';
 import { newMaze } from '../game/config';
 import { EMBLEM_COUNT } from '../game/landmarks';
 import { ApparitionsView } from '../render/apparitionsView';
@@ -83,13 +84,23 @@ describe('scary-mode apparitions view (AC-41 wiring)', () => {
     for (let i = 0; i < 3000; i++) expect(view.update(16, false, pose, camera)).toBe(1);
     view.setScary(true);
     expect(cobwebs.visible).toBe(true);
+    // Facing down a long corridor: over 3 minutes all three apparitions show up.
+    let corridor = pose;
+    for (let y = 0; y < maze.height; y++)
+      for (let x = 0; x < maze.width; x++)
+        for (let d = 0; d < 4; d++) if (cellsInSight(maze, { x, y }, d as 0).length >= 3) corridor = { cell: { x, y }, dir: d as 0 };
     let minTorch = 1;
-    let shown = 0;
-    for (let i = 0; i < 60 * 120; i++) {
-      minTorch = Math.min(minTorch, view.update(16, false, pose, camera));
-      if (view.group.children.some((c, k) => k > 0 && c.visible)) shown++;
+    const [, ghost, spider] = view.group.children;
+    let ghostFrames = 0;
+    let spiderFrames = 0;
+    for (let i = 0; i < 60 * 180; i++) {
+      minTorch = Math.min(minTorch, view.update(16, false, corridor, camera));
+      if (ghost.visible) ghostFrames++;
+      if (spider.visible) spiderFrames++;
     }
-    expect(shown + (minTorch < 0.6 ? 1 : 0)).toBeGreaterThan(0);
+    expect(ghostFrames).toBeGreaterThan(0);
+    expect(spiderFrames).toBeGreaterThan(0);
+    expect(minTorch).toBeLessThan(0.6);
     view.setScary(false);
     expect(view.group.children.slice(1).every((c) => !c.visible)).toBe(true);
     view.dispose();
