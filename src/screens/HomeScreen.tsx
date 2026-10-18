@@ -1,31 +1,86 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { APP_NAME } from '../config/app';
+import { MazeSize, SIZE_ORDER } from '../game/config';
 import { fr } from '../i18n/fr';
 import { Button } from '../ui/Button';
 import { Screen } from '../ui/Screen';
 import { colors, font, spacing } from '../ui/theme';
 
-type Props = { bestScore: number; onPlay: () => void; onSettings: () => void; onAbout: () => void };
+type Props = {
+  size: MazeSize;
+  onSize: (size: MazeSize) => void;
+  onPlay: () => void;
+  onScores: () => void;
+  onSettings: () => void;
+  onAbout: () => void;
+};
 
-export function HomeScreen({ bestScore, onPlay, onSettings, onAbout }: Props) {
+export function HomeScreen({ size, onSize, onPlay, onScores, onSettings, onAbout }: Props) {
   return (
     <Screen testID="home-screen">
-      <View style={styles.hero}>
-        <Text style={styles.title} accessibilityRole="header">
-          {APP_NAME}
-        </Text>
-        {bestScore > 0 && <Text style={styles.best}>{fr.home.bestScore(bestScore)}</Text>}
+      <View style={styles.layout}>
+        <View style={styles.hero}>
+          <Text style={styles.title} accessibilityRole="header">
+            {APP_NAME}
+          </Text>
+          <Text style={styles.pitch}>{fr.home.pitch}</Text>
+        </View>
+        <View style={styles.menu}>
+          <View style={styles.sizes} accessibilityRole="radiogroup">
+            {SIZE_ORDER.map((s) => (
+              <Pressable
+                key={s}
+                testID={`home-size-${s}`}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: s === size }}
+                accessibilityLabel={fr.home.size[s]}
+                onPress={() => onSize(s)}
+                style={({ pressed }) => [styles.size, s === size && styles.sizeOn, pressed && styles.pressed]}
+              >
+                <Text style={[styles.sizeText, s === size && styles.sizeTextOn]}>{fr.home.size[s]}</Text>
+              </Pressable>
+            ))}
+          </View>
+          <Button label={fr.home.play} onPress={onPlay} testID="home-play" />
+          <View style={styles.row}>
+            <View style={styles.cell}>
+              <Button label={fr.home.scores} onPress={onScores} variant="secondary" testID="home-scores" />
+            </View>
+            <View style={styles.cell}>
+              <Button label={fr.home.settings} onPress={onSettings} variant="secondary" testID="home-settings" />
+            </View>
+            <View style={styles.cell}>
+              <Button label={fr.home.about} onPress={onAbout} variant="secondary" testID="home-about" />
+            </View>
+          </View>
+        </View>
       </View>
-      <Button label={fr.home.play} onPress={onPlay} testID="home-play" />
-      <Button label={fr.home.settings} onPress={onSettings} variant="secondary" testID="home-settings" />
-      <Button label={fr.home.about} onPress={onAbout} variant="secondary" testID="home-about" />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  hero: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: spacing.sm },
-  title: { color: colors.text, fontSize: font.title, fontWeight: '800', textAlign: 'center' },
-  best: { color: colors.accent, fontSize: font.body },
+  layout: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: spacing.xl },
+  hero: { flex: 1, gap: spacing.sm },
+  title: { color: colors.accent, fontSize: 44, fontWeight: '800', letterSpacing: 1 },
+  pitch: { color: colors.muted, fontSize: font.body },
+  menu: { flex: 1.2, gap: spacing.md },
+  sizes: { flexDirection: 'row', gap: spacing.sm },
+  size: {
+    flex: 1,
+    minHeight: 48,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surface,
+  },
+  sizeOn: { borderColor: colors.accent, backgroundColor: 'rgba(255,217,168,0.16)' },
+  sizeText: { color: colors.muted, fontSize: font.small, fontWeight: '600' },
+  sizeTextOn: { color: colors.accent },
+  pressed: { opacity: 0.8 },
+  row: { flexDirection: 'row', gap: spacing.sm },
+  cell: { flex: 1 },
 });

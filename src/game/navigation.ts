@@ -78,6 +78,12 @@ export function planRoute(maze: Maze, start: Cell, chosenDir: Dir): Route {
   return { cells, endDir: dir, exited, deadEnd };
 }
 
+// Direction of the first step of a route.
+export function startDirOf(route: Route): Dir {
+  const [a, b] = route.cells;
+  return DIRS.findIndex((d) => a.x + d.dx === b.x && a.y + d.dy === b.y) as Dir;
+}
+
 // Walk history: visits per cell and per segment.
 export class Journey {
   readonly cellVisits = new Map<string, number>();

@@ -39,3 +39,7 @@ export function newMaze(size: MazeSize, seed: number): Generated {
 export function replayMaze(width: number, height: number, acceptedSeed: number): Generated {
   return rebuildMaze(width, height, acceptedSeed, STRAIGHTNESS, BRAID_RATIO);
 }
+
+// The guided first game always uses this small maze: its shortest path stops at 4 decision points, so every guide
+// bubble appears (checked in session.test.ts).
+export const GUIDED_SEED = 5;

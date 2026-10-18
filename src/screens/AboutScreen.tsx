@@ -7,8 +7,8 @@ import { Button } from '../ui/Button';
 import { Screen } from '../ui/Screen';
 import { colors, font, spacing } from '../ui/theme';
 
-// « À propos »: why this game exists (story from the discovery brief), a word from the author (a passionate
-// developer, free time, bugs are possible), the player's data, the version.
+// « À propos »: why this game exists (story from the discovery brief), this game (a passionate independent
+// developer, inspired by The 7th Guest and not affiliated with it), the player's data, built with, the version.
 function Section({ title, paragraphs }: { title: string; paragraphs: readonly string[] }) {
   return (
     <View style={styles.section}>
@@ -39,12 +39,13 @@ export function AboutScreen({ onBack }: { onBack: () => void }) {
       </Text>
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.name}>{APP_NAME}</Text>
-        <Section title={fr.about.storyTitle} paragraphs={fr.about.story} />
-        <Section title={fr.about.authorTitle} paragraphs={fr.about.author} />
+        <Section title={fr.about.whyTitle} paragraphs={fr.about.story} />
+        <Section title={fr.about.gameTitle} paragraphs={fr.about.game} />
         <Section title={fr.about.dataTitle} paragraphs={fr.about.data} />
+        <Text style={styles.version}>{fr.about.builtWith}</Text>
         <Text style={styles.version}>{fr.about.version(APP_VERSION)}</Text>
       </ScrollView>
-      <Button label={fr.about.back} onPress={onBack} variant="secondary" testID="about-back" />
+      <Button label={fr.about.back} onPress={onBack} variant="secondary" compact testID="about-back" />
     </Screen>
   );
 }

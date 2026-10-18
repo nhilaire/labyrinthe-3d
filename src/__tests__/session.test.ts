@@ -1,4 +1,5 @@
 // AC-13, AC-36, AC-25 (engine part): one game from the intro plan to the exit, helps, pause, guided bubbles.
+import { GUIDED_SEED } from '../game/config';
 import { INTRO_LOCK_MS, GameSession } from '../game/session';
 import { shortestMove } from '../game/solver';
 
@@ -131,8 +132,8 @@ describe('pause and active duration', () => {
 });
 
 describe('guided game bubbles (AC-25)', () => {
-  it('shows plan, arrows, helps and score bubbles in order', () => {
-    const s = new GameSession({ seed: 5, now: T0, size: 'small', guided: true });
+  it('shows plan, arrows, helps and score bubbles in order on the guided maze', () => {
+    const s = new GameSession({ seed: GUIDED_SEED, now: T0, size: 'small', guided: true });
     const seen: string[] = [];
     expect(s.bubble).toBe('plan');
     seen.push(s.bubble!);
@@ -156,10 +157,7 @@ describe('guided game bubbles (AC-25)', () => {
     }
     expect(s.phase).toBe('won');
     if (s.bubble && !seen.includes(s.bubble)) seen.push(s.bubble);
-    // A maze with a single decision point never reaches the third bubble: the guided seed is chosen to avoid it.
-    expect(seen[0]).toBe('plan');
-    expect(seen[1]).toBe('arrows');
-    expect(seen[seen.length - 1]).toBe('score');
+    expect(seen).toEqual(['plan', 'arrows', 'helps', 'score']);
   });
 
   it('never shows bubbles outside the guided game', () => {
