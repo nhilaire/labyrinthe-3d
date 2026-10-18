@@ -25,7 +25,7 @@ jest.mock('expo-gl', () => {
 
 // Native media modules: in-memory fakes (tests inject their own spies where the calls matter).
 jest.mock('expo-audio', () => ({
-  createAudioPlayer: jest.fn(() => ({ play: jest.fn(), pause: jest.fn(), seekTo: jest.fn(), remove: jest.fn(), volume: 1, loop: false })),
+  createAudioPlayer: jest.fn(() => ({ play: jest.fn(), pause: jest.fn(), seekTo: jest.fn(() => Promise.resolve()), remove: jest.fn(), volume: 1, loop: false })),
   setAudioModeAsync: jest.fn(() => Promise.resolve()),
 }));
 jest.mock('expo-haptics', () => ({

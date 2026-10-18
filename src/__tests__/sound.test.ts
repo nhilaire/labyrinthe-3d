@@ -4,7 +4,7 @@ import { createSound } from '../feedback/sound';
 function fakePlayers() {
   const made: { play: jest.Mock; pause: jest.Mock; seekTo: jest.Mock; remove: jest.Mock; volume: number; loop: boolean }[] = [];
   const make = () => {
-    const p = { play: jest.fn(), pause: jest.fn(), seekTo: jest.fn(), remove: jest.fn(), volume: 1, loop: false };
+    const p = { play: jest.fn(), pause: jest.fn(), seekTo: jest.fn(() => Promise.resolve()), remove: jest.fn(), volume: 1, loop: false };
     made.push(p);
     return p as never;
   };

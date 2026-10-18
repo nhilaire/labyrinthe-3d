@@ -55,16 +55,29 @@ export function createSound(make: (source: number) => AudioPlayer = (s) => creat
     if (players) return players;
     // Plays even when the phone is on vibrate (the source game's ambience is part of the experience).
     setAudioModeAsync({ playsInSilentMode: true, shouldPlayInBackground: false }).catch(() => {});
+    // Each player logs its first load and any error: the device proof of AC-28 reads them in logcat.
+    const traced = (name: string, source: number) => {
+      const p = make(source);
+      let loaded = false;
+      p.addListener?.('playbackStatusUpdate', (status) => {
+        if (status.isLoaded && !loaded) {
+          loaded = true;
+          console.log(`SOUND_LOADED ${name} duration=${status.duration}`);
+        }
+        if (status.playing) console.log(`SOUND_PLAYING ${name}`);
+      });
+      return p;
+    };
     players = {
-      ambience: make(FILES.ambience),
-      ambienceScary: make(FILES.ambienceScary),
-      steps: FILES.steps.map(make),
-      turn1: make(FILES.turn1),
-      turn2: make(FILES.turn2),
-      click: make(FILES.click),
-      chimes: FILES.chimes.map(make),
-      victory: make(FILES.victory),
-      creak: make(FILES.creak),
+      ambience: traced('ambience', FILES.ambience),
+      ambienceScary: traced('ambience-scary', FILES.ambienceScary),
+      steps: FILES.steps.map((src: number, i: number) => traced(`step-${i}`, src)),
+      turn1: traced('turn-1', FILES.turn1),
+      turn2: traced('turn-2', FILES.turn2),
+      click: traced('click', FILES.click),
+      chimes: FILES.chimes.map((src: number, i: number) => traced(`chime-${i}`, src)),
+      victory: traced('victory', FILES.victory),
+      creak: traced('creak', FILES.creak),
     };
     players.ambience.loop = true;
     players.ambienceScary.loop = true;
@@ -75,10 +88,11 @@ export function createSound(make: (source: number) => AudioPlayer = (s) => creat
     if (!enabled) return;
     try {
       p.volume = volume;
-      p.seekTo(0);
+      p.seekTo(0).catch(() => {});
       p.play();
-    } catch {
+    } catch (error) {
       // A sound must never break the game.
+      console.log(`SOUND_ERROR ${String(error)}`);
     }
   }
 
@@ -102,8 +116,8 @@ export function createSound(make: (source: number) => AudioPlayer = (s) => creat
         active.volume = AMBIENCE_VOLUME;
         active.play();
       } else active.pause();
-    } catch {
-      // ignore
+    } catch (error) {
+      console.log(`SOUND_ERROR ${String(error)}`);
     }
     scheduleCreak();
   }

@@ -113,6 +113,7 @@ function writeWav(name, samples) {
   header.writeUInt32LE(RATE * 2, 28);
   header.writeUInt16LE(2, 32);
   header.writeUInt16LE(16, 34);
+  header.write('data', 36);
   header.writeUInt32LE(data.length, 40);
   fs.writeFileSync(path.join(OUT, `${name}.wav`), Buffer.concat([header, data]));
 }
