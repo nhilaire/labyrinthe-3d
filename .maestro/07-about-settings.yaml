@@ -1,0 +1,38 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: About story, settings and the scary mode (AC-33, AC-29)
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-skip"
+- tapOn:
+    id: "home-about"
+- assertVisible: "Pourquoi ce jeu"
+- assertVisible: ".*GFA Basic.*Atari ST.*The 7th Guest.*partager en famille.*"
+- assertVisible: ".*développeur indépendant passionné.*sans lien avec ses auteurs.*"
+- assertVisible: "Version 0.1.0"
+- takeScreenshot: 12-about
+- tapOn:
+    id: "about-back"
+- tapOn:
+    id: "home-settings"
+- assertVisible: "Mode frisson"
+- tapOn:
+    id: "settings-scary"
+- takeScreenshot: 13-settings
+- tapOn:
+    id: "settings-back"
+- openLink: "labyrinthe3d://play?size=medium&seed=11"
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 20000
+- tapOn:
+    id: "intro-plan"
+- extendedWaitUntil:
+    visible:
+      id: "hud-pause"
+    timeout: 10000
+- takeScreenshot: 14-scary-mode

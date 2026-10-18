@@ -34,8 +34,8 @@ export function stoneTexture({
   size = 256,
   cols = 3,
   rows = 6,
-  mortar = [34, 28, 25],
-  base = [128, 110, 92],
+  mortar = [52, 42, 36],
+  base = [184, 160, 132],
   spread = 30,
   seed = 1234,
 }: BlockOptions = {}): THREE.DataTexture {
@@ -73,7 +73,7 @@ export function planksTexture({ size = 256, planks = 5, seed = 99 } = {}): THREE
       [cut - size, size],
       [cut, size],
     ]) {
-      const shade = 70 + rng() * 34;
+      const shade = 92 + rng() * 38;
       fillRect(data, size, size, x0 + gap / 2, y + gap / 2, w - gap, ph - gap, [clamp(shade * 1.15), clamp(shade * 0.78), clamp(shade * 0.5), 255]);
     }
     // Grain lines.

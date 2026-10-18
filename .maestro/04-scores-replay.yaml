@@ -1,0 +1,112 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Score history survives a restart, replays the same maze, can be cleared (AC-20, AC-21)
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-skip"
+- openLink: "labyrinthe3d://play?size=small&seed=9"
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 20000
+- tapOn:
+    id: "intro-plan"
+# moves small 9 begin
+- extendedWaitUntil:
+    visible:
+      id: "arrow-left"
+    timeout: 30000
+- tapOn:
+    id: "arrow-left"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+# moves end
+- extendedWaitUntil:
+    visible:
+      id: "victory-overlay"
+    timeout: 30000
+- tapOn:
+    id: "victory-home"
+# AC-20: after a restart the game is listed; its row replays the same maze (same moves, same perfect score).
+- stopApp
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "home-screen"
+    timeout: 20000
+- tapOn:
+    id: "home-scores"
+- assertVisible:
+    id: "scores-row-0"
+- assertVisible: "8×6"
+- takeScreenshot: 06-scores
+- tapOn:
+    id: "scores-row-0"
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 20000
+- assertVisible: "Petit 8 × 6"
+- tapOn:
+    id: "intro-plan"
+# moves small 9 begin
+- extendedWaitUntil:
+    visible:
+      id: "arrow-left"
+    timeout: 30000
+- tapOn:
+    id: "arrow-left"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+# moves end
+- extendedWaitUntil:
+    visible:
+      id: "victory-overlay"
+    timeout: 30000
+- assertVisible: "1 000 points · Sans faute"
+- tapOn:
+    id: "victory-scores"
+# AC-21: clear with confirmation.
+- tapOn:
+    id: "scores-clear"
+- assertVisible: "Confirmer ?"
+- tapOn:
+    id: "scores-clear"
+- assertVisible:
+    id: "scores-empty"
+- assertVisible: "Aucune partie enregistrée pour le moment."

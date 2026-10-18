@@ -28,7 +28,15 @@
       "@react-native-firebase/app",
       "@react-native-firebase/analytics",
       "@react-native-firebase/crashlytics",
-      "./plugins/with-fullscreen"
+      "./plugins/with-fullscreen",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0b0809",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160
+        }
+      ]
     ],
     "backgroundColor": "#05040a",
     "scheme": "labyrinthe3d"

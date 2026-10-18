@@ -23,8 +23,8 @@ const PLATE_Y = 2.55; // a bit above eye height
 // Manor mood by default; « Mode frisson » darkens and cools it (PRD: fog x1.8, torch x0.65, stronger flicker).
 export type Mood = { fog: number; torch: number; flicker: number; wallTint: number; ambient: number };
 export const MOODS: Record<'manor' | 'scary', Mood> = {
-  manor: { fog: 0.042, torch: 3.2, flicker: 1, wallTint: 0xffffff, ambient: 0.75 },
-  scary: { fog: 0.042 * 1.8, torch: 3.2 * 0.65, flicker: 2.6, wallTint: 0xa9bccb, ambient: 0.45 },
+  manor: { fog: 0.042, torch: 4.2, flicker: 1, wallTint: 0xffffff, ambient: 1.1 },
+  scary: { fog: 0.042 * 1.8, torch: 4.2 * 0.65, flicker: 2.6, wallTint: 0xa9bccb, ambient: 0.55 },
 };
 
 export type SceneEvents = {
@@ -78,9 +78,9 @@ export class MazeScene {
     this.camera = new THREE.PerspectiveCamera(fov, aspect, 0.1, 400);
     this.camera.rotation.order = 'YXZ';
     this.camera.position.set(0, EYE_H, 0);
-    this.ambient = new THREE.AmbientLight(0x4a4040, this.mood.ambient);
+    this.ambient = new THREE.AmbientLight(0x6a5a58, this.mood.ambient);
     this.scene.add(this.ambient);
-    this.scene.add(new THREE.HemisphereLight(0x7a6a70, 0x2a1f18, 0.5));
+    this.scene.add(new THREE.HemisphereLight(0x9a8a90, 0x3a2a20, 0.7));
     this.torch = new THREE.PointLight(0xffd9a8, this.mood.torch, CELL * 7, 1.7);
     this.torch.position.set(0, 0.35, 0.2);
     this.camera.add(this.torch);

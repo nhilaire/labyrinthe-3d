@@ -269,6 +269,9 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
           }}
         >
           <Text style={styles.title}>{session.plan === 'intro' ? fr.plan.introTitle : fr.plan.peekTitle}</Text>
+          <Text style={styles.subtitle} testID="plan-size">
+            {fr.home.size[session.size]}
+          </Text>
           <Plan
             maze={session.maze}
             landmarks={session.landmarks}
@@ -276,7 +279,10 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
             width={planSize.width}
             height={planSize.height}
           />
-          <Text style={[styles.subtitle, session.plan === 'intro' && !session.introUnlocked(now) && styles.dim]}>
+          <Text
+            style={[styles.subtitle, session.plan === 'intro' && !session.introUnlocked(now) && styles.dim]}
+            testID={session.plan === 'intro' && !session.introUnlocked(now) ? 'plan-hint-locked' : 'plan-hint'}
+          >
             {session.plan === 'intro' ? fr.plan.introHint : fr.plan.peekHint}
           </Text>
         </Pressable>

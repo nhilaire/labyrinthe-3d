@@ -1,0 +1,40 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: First launch - consent in French, guided game offer, then home (AC-01, AC-02)
+tags:
+  - smoke
+---
+- launchApp:
+    clearState: true
+# AC-01: consent screen in French, both buttons side by side.
+- extendedWaitUntil:
+    visible:
+      id: "consent-screen"
+    timeout: 20000
+- assertVisible: "Statistiques anonymes"
+- assertVisible:
+    id: "consent-accept"
+- assertVisible:
+    id: "consent-refuse"
+- takeScreenshot: 01-consent
+- tapOn:
+    id: "consent-refuse"
+# AC-02: the guided game offer, then home.
+- assertVisible:
+    id: "guide-offer-screen"
+- takeScreenshot: 02-guide-offer
+- tapOn:
+    id: "guide-offer-skip"
+- assertVisible:
+    id: "home-screen"
+- takeScreenshot: readme-1-home
+# Next launch: neither consent nor the offer.
+- stopApp
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "home-screen"
+    timeout: 20000
+- assertNotVisible:
+    id: "consent-screen"
+- assertNotVisible:
+    id: "guide-offer-screen"

@@ -1,0 +1,100 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Guided first game - bubbles in order, home only, not recorded, skip and replay (AC-25, AC-26)
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-go"
+# AC-25: plan bubble on the intro plan.
+- extendedWaitUntil:
+    visible:
+      id: "guide-plan"
+    timeout: 20000
+- takeScreenshot: 09-guide-plan
+- tapOn:
+    id: "guide-bubble"
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 10000
+- tapOn:
+    id: "intro-plan"
+- extendedWaitUntil:
+    visible:
+      id: "guide-arrows"
+    timeout: 30000
+- takeScreenshot: 10-guide-arrows
+# moves small 5 guided begin
+- extendedWaitUntil:
+    visible:
+      id: "guide-bubble"
+    timeout: 30000
+- tapOn:
+    id: "guide-bubble"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-left"
+    timeout: 30000
+- tapOn:
+    id: "arrow-left"
+- extendedWaitUntil:
+    visible:
+      id: "guide-bubble"
+    timeout: 30000
+- tapOn:
+    id: "guide-bubble"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-left"
+    timeout: 30000
+- tapOn:
+    id: "arrow-left"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-left"
+    timeout: 30000
+- tapOn:
+    id: "arrow-left"
+# moves end
+- extendedWaitUntil:
+    visible:
+      id: "guide-score"
+    timeout: 30000
+- assertVisible:
+    id: "victory-home"
+- assertNotVisible:
+    id: "victory-again"
+- assertNotVisible:
+    id: "victory-scores"
+- takeScreenshot: 11-guide-score
+- tapOn:
+    id: "guide-bubble"
+- tapOn:
+    id: "victory-home"
+- tapOn:
+    id: "home-scores"
+- assertVisible:
+    id: "scores-empty"
+- tapOn:
+    id: "scores-close"
+# AC-26: replay from the settings, then skip.
+- tapOn:
+    id: "home-settings"
+- tapOn:
+    id: "settings-replay-guide"
+- extendedWaitUntil:
+    visible:
+      id: "guide-skip"
+    timeout: 20000
+- tapOn:
+    id: "guide-skip"
+- assertVisible:
+    id: "home-screen"

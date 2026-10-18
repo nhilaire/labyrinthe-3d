@@ -20,7 +20,7 @@ export function Button({ label, onPress, variant = 'primary', testID, compact = 
       onPress={onPress}
       style={({ pressed }) => [styles.base, compact && styles.compact, primary ? styles.primary : styles.secondary, variant === 'danger' && styles.danger, pressed && styles.pressed]}
     >
-      <Text style={[styles.label, primary ? styles.primaryLabel : styles.secondaryLabel, variant === 'danger' && styles.dangerLabel]}>{label}</Text>
+      <Text numberOfLines={1} adjustsFontSizeToFit style={[styles.label, primary ? styles.primaryLabel : styles.secondaryLabel, variant === 'danger' && styles.dangerLabel]}>{label}</Text>
     </Pressable>
   );
 }

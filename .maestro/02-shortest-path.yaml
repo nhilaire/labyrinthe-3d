@@ -1,0 +1,95 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Play a known maze along the shortest path - 1000 points, victory review (AC-11, AC-12, AC-18, AC-36)
+tags:
+  - smoke
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-skip"
+- assertVisible:
+    id: "home-screen"
+- openLink: "labyrinthe3d://play?size=small&seed=7"
+- extendedWaitUntil:
+    visible:
+      id: "intro-plan"
+    timeout: 20000
+# AC-36: during the first 3 s a tap does not enter the maze.
+- assertVisible:
+    id: "plan-hint-locked"
+- tapOn:
+    id: "intro-plan"
+- assertVisible:
+    id: "intro-plan"
+- takeScreenshot: 03-intro-plan
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 10000
+- tapOn:
+    id: "intro-plan"
+# AC-12: no arrow while the camera walks into the maze.
+- assertNotVisible:
+    id: "arrow-forward"
+- assertNotVisible:
+    id: "arrow-left"
+- assertNotVisible:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "hud-pause"
+    timeout: 10000
+- takeScreenshot: readme-2-gameplay
+# moves small 7 begin
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-forward"
+    timeout: 30000
+- tapOn:
+    id: "arrow-forward"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-left"
+    timeout: 30000
+- tapOn:
+    id: "arrow-left"
+# moves end
+# AC-11, AC-18: the victory review.
+- extendedWaitUntil:
+    visible:
+      id: "victory-overlay"
+    timeout: 30000
+- assertVisible: "1 000 points · Sans faute"
+- assertVisible:
+    id: "victory-line"
+- assertVisible: ".*sans aide.*Suiveur de murs.*"
+- assertVisible: ".*Meilleur score.*"
+- assertVisible:
+    id: "victory-new"
+- assertVisible:
+    id: "victory-again"
+- assertVisible:
+    id: "victory-scores"
+- assertVisible:
+    id: "victory-home"
+- takeScreenshot: readme-3-victory

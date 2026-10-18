@@ -1,0 +1,34 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Helps - plan peek freezes the walk, footprints toggle (AC-14, AC-15)
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-skip"
+- assertVisible:
+    id: "home-screen"
+- openLink: "labyrinthe3d://play?size=large&seed=31"
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 20000
+- tapOn:
+    id: "intro-plan"
+# AC-14: peek while walking in, with the player shown; a tap closes it.
+- tapOn:
+    id: "hud-plan"
+- assertVisible:
+    id: "peek-plan"
+- takeScreenshot: 04-peek-plan
+- tapOn:
+    id: "peek-plan"
+- assertNotVisible:
+    id: "peek-plan"
+- assertVisible: "Plan (1) −8 %"
+# AC-15: footprints on, highlighted, counter (1).
+- tapOn:
+    id: "hud-traces"
+- assertVisible: "Traces (1) −12 %"
+- takeScreenshot: 05-traces-on

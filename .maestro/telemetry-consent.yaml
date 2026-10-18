@@ -1,5 +1,5 @@
 appId: io.github.nhilaire.labyrinthe3d
-name: Telemetry - accept consent and play one round (events checked in logcat by verify.mjs)
+name: Telemetry - accept consent and finish a game (events checked in logcat by verify.mjs)
 tags:
   - telemetry
 ---
@@ -7,13 +7,49 @@ tags:
     clearState: true
 - tapOn:
     id: "consent-accept"
-- assertVisible:
-    id: "home-screen"
 - tapOn:
-    id: "home-play"
-- tapOn:
-    id: "game-tap-zone"
+    id: "guide-offer-skip"
+- openLink: "labyrinthe3d://play?size=small&seed=7"
 - extendedWaitUntil:
-    visible: "Partie terminée"
+    visible:
+      id: "plan-hint"
     timeout: 20000
-- takeScreenshot: telemetry-game-over
+- tapOn:
+    id: "intro-plan"
+# moves small 7 begin
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-forward"
+    timeout: 30000
+- tapOn:
+    id: "arrow-forward"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-right"
+    timeout: 30000
+- tapOn:
+    id: "arrow-right"
+- extendedWaitUntil:
+    visible:
+      id: "arrow-left"
+    timeout: 30000
+- tapOn:
+    id: "arrow-left"
+# moves end
+- extendedWaitUntil:
+    visible:
+      id: "victory-overlay"
+    timeout: 30000
+- takeScreenshot: telemetry-victory

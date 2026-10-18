@@ -1,0 +1,49 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Size remembered, large maze, pause and abandon (AC-22, AC-23)
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-skip"
+- tapOn:
+    id: "home-size-large"
+# AC-22: the choice survives a restart and « Jouer » starts a 20 x 12 maze.
+- stopApp
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "home-screen"
+    timeout: 20000
+- assertVisible:
+    id: "home-size-large"
+    selected: true
+- tapOn:
+    id: "home-play"
+- extendedWaitUntil:
+    visible:
+      id: "intro-plan"
+    timeout: 20000
+- assertVisible: "Grand 20 × 12"
+- takeScreenshot: 07-large-plan
+- extendedWaitUntil:
+    visible:
+      id: "plan-hint"
+    timeout: 10000
+- tapOn:
+    id: "intro-plan"
+# AC-23: pause, abandon: home, and nothing recorded.
+- tapOn:
+    id: "hud-pause"
+- assertVisible:
+    id: "pause-overlay"
+- takeScreenshot: 08-pause
+- tapOn:
+    id: "pause-quit"
+- assertVisible:
+    id: "home-screen"
+- tapOn:
+    id: "home-scores"
+- assertVisible:
+    id: "scores-empty"
