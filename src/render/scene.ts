@@ -1,5 +1,7 @@
 // The 3D maze on an expo-gl context: scene, camera, lights, maze meshes, emblem plaques, footprints, walker and the
 // render loop step. No React here: the game screen drives it frame by frame and never re-renders per frame.
+// Lambert materials (not PBR): the maze is matte stone and wood, and per-pixel PBR lighting with several point lights
+// at full screen resolution was the main GPU cost on phones.
 import type { ExpoWebGLRenderingContext } from 'expo-gl';
 import * as THREE from 'three';
 
@@ -59,7 +61,7 @@ export class MazeScene {
   private footTexture = footprintTexture();
   private mood: Mood = MOODS.manor;
   private mounted: Mounted | null = null;
-  private wallMaterials: THREE.MeshStandardMaterial[] = [];
+  private wallMaterials: THREE.MeshLambertMaterial[] = [];
 
   constructor(gl: ExpoWebGLRenderingContext) {
     this.gl = gl;
@@ -117,10 +119,10 @@ export class MazeScene {
     const pillarTex = pillarTexture({ seed: seed + 4 });
     floorTex.repeat.set((spanX + pad * 2) / 4, (spanZ + pad * 2) / 4);
     ceilTex.repeat.set(spanX / 4, spanZ / 4);
-    const wall = new THREE.MeshStandardMaterial({ map: wallTex, roughness: 0.92, color: this.mood.wallTint });
-    const pillar = new THREE.MeshStandardMaterial({ map: pillarTex, roughness: 0.8, color: this.mood.wallTint });
-    const floor = new THREE.MeshStandardMaterial({ map: floorTex, roughness: 0.95 });
-    const ceiling = new THREE.MeshStandardMaterial({ map: ceilTex, roughness: 1 });
+    const wall = new THREE.MeshLambertMaterial({ map: wallTex, color: this.mood.wallTint });
+    const pillar = new THREE.MeshLambertMaterial({ map: pillarTex, color: this.mood.wallTint });
+    const floor = new THREE.MeshLambertMaterial({ map: floorTex });
+    const ceiling = new THREE.MeshLambertMaterial({ map: ceilTex });
     this.wallMaterials = [wall, pillar];
 
     const floorGeo = new THREE.PlaneGeometry(spanX + pad * 2, spanZ + pad * 2);
@@ -136,19 +138,18 @@ export class MazeScene {
 
     // Emblem plaques: centre of the cell, moved to the wall, slightly in front of it, facing the cell.
     const plateGeo = new THREE.PlaneGeometry(PLATE_W, PLATE_H);
-    const plateMaterials = new Map<number, THREE.MeshStandardMaterial>();
+    const plateMaterials = new Map<number, THREE.MeshLambertMaterial>();
     for (const mark of landmarks) {
       let mat = plateMaterials.get(mark.emblem);
       if (!mat) {
         const map = this.plateFor(mark.emblem);
-        mat = new THREE.MeshStandardMaterial({
+        mat = new THREE.MeshLambertMaterial({
           map,
           emissiveMap: map,
           emissive: 0xffffff,
           emissiveIntensity: 0.55,
           transparent: true,
           alphaTest: 0.35,
-          roughness: 0.7,
         });
         plateMaterials.set(mark.emblem, mat);
       }
