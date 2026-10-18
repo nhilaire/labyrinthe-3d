@@ -50,7 +50,8 @@ Booleans are sent as 0/1 (Analytics has no boolean type). `size` ∈ `small`, `m
 
 ## Custom definitions to register in Analytics
 
-Analytics > Admin > Custom definitions (free, up to 50 dimensions / 50 metrics):
+Analytics > Admin > Custom definitions (free, up to 50 dimensions / 50 metrics). All 15 registered by the user on
+2026-10-18:
 
 | Name | Scope | Param | Type |
 |---|---|---|---|
