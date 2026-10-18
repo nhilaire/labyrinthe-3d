@@ -5,7 +5,7 @@ Project slug: labyrinthe-3d
 Final app name: Labyrinthe 3D
 Android package: io.github.nhilaire.labyrinthe3d
 Version target: 0.1.0
-Last updated: 2026-10-18 (approved by the user after the prd-reviewer pass; D5 chosen by the user; D4 amended with the user during the build)
+Last updated: 2026-10-18 (approved by the user after the prd-reviewer pass; D5 chosen by the user; D4 amended with the user during the build; scary-mode apparitions AC-37 to AC-41 requested by the user after phone test 1)
 
 > Written in English. Player-facing French copy is quoted in the "French copy" section.
 > Status becomes `approved` only after the user explicitly approves this document.
@@ -220,6 +220,17 @@ unit-tested with fixed seeds. Coordinates: x to the right, y down; directions 0 
 - **Mode frisson (setting, off by default):** fog density × 1.8, torch intensity × 0.65 with a stronger flicker,
   colder wall tint, ambience drone one octave lower with an occasional distant creak (every 20-40 s, random). Same
   rules and score.
+- **Apparitions in « Mode frisson »** (amendment requested by the user after phone test 1; decor only, never in the
+  manor mood): procedural, no image asset, no sudden jump scare.
+  - Every 10 to 20 s of active play (uniform random; the clock stops while a plan, the pause or a bubble is shown),
+    one apparition among: a **ghostly shadow** (a pale translucent hooded silhouette that glides across the corridor
+    ahead or at its far end, fades in and out, about 2.5 s), a **spider** (a small black spider that comes down on its
+    thread from the ceiling a little ahead, hangs, then climbs back, about 3 s), a **candle that dims** (the torch
+    drops to about a third with a strong flicker for about 1.2 s, then recovers).
+  - Ghosts and spiders appear only in open cells in sight of the player (no wall between), never inside a wall.
+  - **Cobwebs**: static webs in the upper corners of about 15 % of the corner and dead-end cells, chosen from the maze
+    seed (same maze, same webs).
+  - Apparitions change nothing in the rules, the score, the moves or the telemetry.
 - **Sound** (ported from the web WebAudio design, rendered offline to small audio files bundled with the app):
   looping ambience drone; footsteps triggered by the real walk cadence (slower in curves); a whoosh on turns; a click
   on arrows and buttons; a chime when passing an emblem; a chord at the exit. « Son » off mutes everything.
@@ -372,6 +383,20 @@ About
   player taps after 3 s, then the walk into the maze starts (D5).
 - AC-35 [unit] Given `src/i18n/fr.ts`, then no plain space precedes `:`, `;`, `!`, `?` or `%`, nor follows `«` or
   precedes `»` (French typography with no-break spaces).
+
+Scary-mode apparitions (amendment after phone test 1)
+- AC-37 [unit] Given « Mode frisson » on and a game running, when active time passes, then an apparition (ghost,
+  spider or candle) starts every 10 to 20 s of active time, all three kinds occur, none starts while the game is
+  frozen (plan, pause, bubble), and none ever starts with « Mode frisson » off.
+- AC-38 [unit] Given 200 seeds and every decision point of their shortest path, when a ghost or a spider is placed,
+  then its cell is open, inside the maze, in the corridor in front of the player with no wall between, and its path
+  never crosses a wall.
+- AC-39 [unit] Given a maze and its seed, cobwebs are on about 15 % (10 to 20 %) of the corner and dead-end cells,
+  the same for the same seed, each in an upper corner touching two walls; none is built in the manor mood.
+- AC-40 [unit] Given a game played with apparitions running, then steps, moves, score and telemetry events are the
+  same as without them.
+- AC-41 [manual] Given « Mode frisson » on the phone, the ghosts, spiders, cobwebs and dimming candle are visible and
+  eerie but fine for a family (no jump scare), and the walk stays smooth (fps_avg >= 55, slow frames <= 5 %).
 
 ## French copy
 
