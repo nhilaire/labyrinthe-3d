@@ -1,0 +1,37 @@
+# Labyrinthe 3D (labyrinthe-3d)
+
+Small Android game built with React Native by the Android game factory. Package: `io.github.nhilaire.labyrinthe3d`.
+
+## Non-negotiable rules
+
+- **Languages**: code, comments, commits, README and docs in English. Everything the player sees is in **French**
+  (strings live in `src/i18n/fr.ts`, never inline in components). Use French typography: non-breaking space before `: ; ! ?`.
+- **No secrets, no personal data in git.** `firebase/google-services.json`, keystores, `.env`, APKs stay local.
+  Never write a real name, email, phone number or local user path in code, docs, screenshots or logs.
+  The pre-commit and pre-push hooks run `scripts/secret-scan.mjs`; never bypass them (`--no-verify` is forbidden).
+- **Telemetry is opt-in** (GDPR/CNIL). Nothing is sent before the player accepts on the consent screen.
+  Only events from `src/telemetry/events.ts`, with numeric/boolean/short enum params. No identifiers, no free text.
+- **Prove it works.** A change is done when its proof exists: unit test, Maestro flow, or evidence report.
+  "It should work" is not a proof.
+- **Final app name** = `displayName` in `factory-app.json` (single source). Project slug `labyrinthe-3d` is only the repo/folder name.
+
+## Layout
+
+| Path | Content |
+|---|---|
+| `src/game/` | Pure TypeScript game logic (no React): state, rules, scoring. 100% unit-tested. |
+| `src/screens/`, `src/ui/` | React components. No game rules here. |
+| `src/telemetry/` | Consent, typed event catalog, Firebase wrapper (no-op if Firebase is absent). |
+| `src/i18n/fr.ts` | All player-facing French text. |
+| `.maestro/` | E2E flows run on the emulator; screenshots become evidence. |
+| `docs/` | BRIEF, PRD, ADRs, PLAN, KPIS, evidence per version. |
+
+## Commands
+
+```bash
+npm test               # Jest unit + component tests
+npm run typecheck      # TypeScript, no emit
+node scripts/secret-scan.mjs --worktree   # secrets / PII scan of the working tree
+```
+
+Build, install and verification are driven from the factory (`verify-app`, `release-apk` skills).

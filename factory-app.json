@@ -1,0 +1,9 @@
+{
+  "slug": "labyrinthe-3d",
+  "displayName": "Labyrinthe 3D",
+  "package": "io.github.nhilaire.labyrinthe3d",
+  "stack": null,
+  "description": "First-person 3D maze for Android: memorise the map, then find the exit with as little help as possible.",
+  "language": "fr-FR",
+  "factoryVersion": "1.0.0"
+}
