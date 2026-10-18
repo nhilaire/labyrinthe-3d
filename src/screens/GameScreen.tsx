@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { durationSeconds, initialState, reduce, remainingSeconds } from '../game/engine';
 import { fr } from '../i18n/fr';
+import { SpikeView } from '../render/SpikeView';
 import { track } from '../telemetry/telemetry';
 import { Button } from '../ui/Button';
 import { Screen } from '../ui/Screen';
@@ -79,6 +80,7 @@ export function GameScreen({ onExit, onGameOver }: Props) {
         onPress={() => dispatch({ type: 'tap', now: Date.now() })}
         style={({ pressed }) => [styles.tapZone, pressed && styles.tapZonePressed]}
       >
+        <SpikeView />
         <Text style={styles.tapText}>{fr.game.tap}</Text>
       </Pressable>
     </Screen>
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
   score: { color: colors.accent, fontSize: font.heading, fontWeight: '700' },
   hud: { flexDirection: 'row', justifyContent: 'space-between' },
   hudText: { color: colors.text, fontSize: font.body, fontWeight: '600' },
-  tapZone: { flex: 1, borderRadius: 24, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
+  tapZone: { flex: 1, overflow: 'hidden', borderRadius: 24, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
   tapZonePressed: { backgroundColor: colors.accent },
   tapText: { color: colors.text, fontSize: font.title, fontWeight: '800' },
 });

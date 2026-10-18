@@ -16,3 +16,9 @@ jest.mock('@react-native-firebase/crashlytics', () => ({
   recordError: jest.fn(),
   setCrashlyticsCollectionEnabled: jest.fn(() => Promise.resolve()),
 }));
+
+// expo-gl has no WebGL in Node: the GL view renders as a plain View and never creates a context.
+jest.mock('expo-gl', () => {
+  const { View } = require('react-native');
+  return { GLView: View };
+});
