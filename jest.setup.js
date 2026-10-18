@@ -22,3 +22,16 @@ jest.mock('expo-gl', () => {
   const { View } = require('react-native');
   return { GLView: View };
 });
+
+// Native media modules: in-memory fakes (tests inject their own spies where the calls matter).
+jest.mock('expo-audio', () => ({
+  createAudioPlayer: jest.fn(() => ({ play: jest.fn(), pause: jest.fn(), seekTo: jest.fn(), remove: jest.fn(), volume: 1, loop: false })),
+  setAudioModeAsync: jest.fn(() => Promise.resolve()),
+}));
+jest.mock('expo-haptics', () => ({
+  impactAsync: jest.fn(() => Promise.resolve()),
+  notificationAsync: jest.fn(() => Promise.resolve()),
+  ImpactFeedbackStyle: { Light: 'light' },
+  NotificationFeedbackType: { Success: 'success' },
+}));
+jest.mock('expo-keep-awake', () => ({ useKeepAwake: jest.fn(), activateKeepAwakeAsync: jest.fn(), deactivateKeepAwake: jest.fn() }));

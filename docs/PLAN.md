@@ -19,7 +19,7 @@ Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the bo
 - [ ] T-12 Lifecycle: pause on background, abandon, keep awake (AC-23, AC-24) - proof: e2e
 - [ ] T-13 Telemetry calls: game_start/complete/abandon, perf_sample, tutorial_end, settings_change, consent gating (AC-03) - proof: unit
 - [ ] T-14 Sound: offline render of the web ambience to WAV files, expo-audio player, mute, scary drone and creak (AC-28) - proof: device
-- [ ] T-15 Haptics adapter with settings toggle (AC-34) - proof: unit
+- [x] T-15 Haptics adapter with settings toggle (AC-34) - proof: unit
 - [ ] T-16 French typography check of fr.ts (AC-35) - proof: unit
 - [ ] T-17 Debug deep link (D4), timing logs, Maestro flows for every e2e AC with readme captures (AC-11, AC-20, AC-31) - proof: e2e
 - [ ] T-18 App icon and splash in the manor style (AC-29) - proof: device
