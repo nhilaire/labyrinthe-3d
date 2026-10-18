@@ -13,6 +13,10 @@ describe('sanitizeParams', () => {
       sanitizeParams({ email: 'x', user_name: 'x', device_id: 'x', city: 'Paris (free text)', note: 'Hello World', ok: true }),
     ).toEqual({ ok: 1 });
   });
+
+  it('drops short identifying keys only as whole words', () => {
+    expect(sanitizeParams({ ip: 1, client_ip: 1, lat: 1, id: 1, game_id: 1, skipped: true, ship_lon: 2 })).toEqual({ skipped: 1 });
+  });
 });
 
 describe('telemetry consent', () => {

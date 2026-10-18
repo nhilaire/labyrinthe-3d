@@ -26,7 +26,8 @@ export type EventName = keyof TelemetryEvents;
 export type SafeParams = Record<string, number | string>;
 
 const KEY_FORMAT = /^[a-z][a-z0-9_]{0,39}$/;
-const FORBIDDEN_KEY = /(mail|name|phone|address|user|device|ip|location|lat|lng|lon|token|uuid|_id$|^id$)/i;
+// Whole-word checks for short tokens ("ip", "lat"...): a substring test dropped legitimate keys like "skipped".
+const FORBIDDEN_KEY = /(mail|name|phone|address|user|device|location|token|uuid|(^|_)(ip|lat|lng|lon|id)(_|$))/i;
 const ENUM_VALUE = /^[a-z0-9_]{1,36}$/;
 
 // Drops anything that could carry personal data. Booleans become 0/1 (Analytics has no boolean type).
