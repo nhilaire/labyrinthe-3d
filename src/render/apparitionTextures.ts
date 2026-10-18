@@ -64,7 +64,8 @@ export function spiderTexture({ size = 64 } = {}): THREE.DataTexture {
   const s = 2;
   const n = size * s;
   const data = createBuffer(n, n, [0, 0, 0, 0]);
-  const black: RGBA = [14, 10, 12, 255];
+  // Dark grey with a lighter rim: pure black disappears against the dark corridors.
+  const black: RGBA = [52, 44, 46, 255];
   const c = n / 2;
   for (const side of [-1, 1]) {
     for (let i = 0; i < 4; i++) {
@@ -79,8 +80,9 @@ export function spiderTexture({ size = 64 } = {}): THREE.DataTexture {
   }
   fillEllipse(data, n, n, c, c + n * 0.06, n * 0.13, n * 0.16, black); // abdomen
   fillEllipse(data, n, n, c, c - n * 0.1, n * 0.08, n * 0.07, black); // head
-  fillEllipse(data, n, n, c - n * 0.03, c - n * 0.11, n * 0.012, n * 0.012, [200, 40, 30, 255]); // eyes
-  fillEllipse(data, n, n, c + n * 0.03, c - n * 0.11, n * 0.012, n * 0.012, [200, 40, 30, 255]);
+  fillEllipse(data, n, n, c, c + n * 0.03, n * 0.07, n * 0.09, [96, 84, 86, 255], 0.6); // sheen on the abdomen
+  fillEllipse(data, n, n, c - n * 0.03, c - n * 0.11, n * 0.018, n * 0.018, [255, 60, 40, 255]); // eyes
+  fillEllipse(data, n, n, c + n * 0.03, c - n * 0.11, n * 0.018, n * 0.018, [255, 60, 40, 255]);
   const small = downsample(data, n, n, s);
   return texture(small.data, small.width, small.height);
 }

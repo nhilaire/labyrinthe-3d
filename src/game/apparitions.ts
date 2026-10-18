@@ -63,8 +63,9 @@ export function placeGhost(maze: Maze, pos: Cell, facing: Dir, rng: Rng): GhostP
   if (!maze.inside(pos.x, pos.y)) return null;
   const line = sightLine(maze, pos, facing);
   if (!line) return null;
-  const far = line.cells.slice(1); // not right in the player's face when possible
-  const pool = far.length ? far : line.cells;
+  // One to three cells ahead: close enough to be seen through the scary fog, not right in the player's face.
+  const near = line.cells.slice(1, 3);
+  const pool = near.length ? near : line.cells.slice(0, 1);
   const cell = pool[Math.floor(rng() * pool.length)];
   const side = rng() < 0.5 ? leftOf(line.dir) : rightOf(line.dir);
   const c = { x: cell.x + 0.5, y: cell.y + 0.5 };
@@ -79,12 +80,12 @@ export function placeGhost(maze: Maze, pos: Cell, facing: Dir, rng: Rng): GhostP
   };
 }
 
-// A spider comes down in the middle of a corridor cell in sight, one to three cells ahead.
+// A spider comes down in the middle of a corridor cell in sight, one or two cells ahead.
 export function placeSpider(maze: Maze, pos: Cell, facing: Dir, rng: Rng): Point | null {
   if (!maze.inside(pos.x, pos.y)) return null;
   const line = sightLine(maze, pos, facing);
   if (!line) return null;
-  const pool = line.cells.slice(0, 3);
+  const pool = line.cells.slice(0, 2);
   const cell = pool[Math.floor(rng() * pool.length)];
   return { x: cell.x + 0.5, y: cell.y + 0.5 };
 }

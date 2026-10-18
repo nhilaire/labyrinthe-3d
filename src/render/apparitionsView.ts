@@ -45,23 +45,32 @@ export class ApparitionsView {
     this.textures = [ghostTex, spiderTex, webTex];
 
     const ghostGeo = new THREE.PlaneGeometry(1.5, 2.75);
-    const ghostMat = new THREE.MeshBasicMaterial({ map: ghostTex, color: 0xd6e2ff, transparent: true, opacity: 0, depthWrite: false });
+    // Not fogged and additive: in the black scary fog a pale shape would otherwise fade to the background colour.
+    const ghostMat = new THREE.MeshBasicMaterial({
+      map: ghostTex,
+      color: 0xcfe0ff,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+      fog: false,
+      blending: THREE.AdditiveBlending,
+    });
     this.ghost = new THREE.Mesh(ghostGeo, ghostMat);
     this.ghost.visible = false;
     this.ghost.renderOrder = 2;
 
     const spiderGeo = new THREE.PlaneGeometry(0.55, 0.55);
-    const spiderMat = new THREE.MeshBasicMaterial({ map: spiderTex, transparent: true, alphaTest: 0.3, depthWrite: false });
+    const spiderMat = new THREE.MeshBasicMaterial({ map: spiderTex, transparent: true, alphaTest: 0.3, depthWrite: false, fog: false });
     this.spider = new THREE.Mesh(spiderGeo, spiderMat);
     this.spider.visible = false;
     const threadGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3(0, -1, 0)]);
-    const threadMat = new THREE.LineBasicMaterial({ color: 0xbfc4cc, transparent: true, opacity: 0.6 });
+    const threadMat = new THREE.LineBasicMaterial({ color: 0xd8dce4, transparent: true, opacity: 0.8, fog: false });
     this.thread = new THREE.Line(threadGeo, threadMat);
     this.thread.visible = false;
 
     // Cobwebs: a vertical quad across the upper corner, facing the centre of the cell.
     const webGeo = new THREE.PlaneGeometry(COBWEB_SIZE * Math.SQRT2, COBWEB_SIZE);
-    const webMat = new THREE.MeshBasicMaterial({ map: webTex, color: 0xcfd2da, transparent: true, depthWrite: false, side: THREE.DoubleSide });
+    const webMat = new THREE.MeshBasicMaterial({ map: webTex, color: 0xf0f2f8, transparent: true, depthWrite: false, side: THREE.DoubleSide });
     const inner = CELL / 2 - WALL_T / 2 - 0.02;
     for (const web of pickCobwebs(maze, seed)) {
       const [a, b] = web.walls;
@@ -135,7 +144,7 @@ export class ApparitionsView {
       const p = toWorld(a.path.from).lerp(toWorld(a.path.to), ease(k));
       this.ghost.position.set(p.x, 1.55, p.z);
       this.ghost.rotation.set(0, Math.atan2(camera.position.x - p.x, camera.position.z - p.z), 0);
-      (this.ghost.material as THREE.MeshBasicMaterial).opacity = 0.5 * Math.pow(Math.sin(Math.PI * k), 0.7);
+      (this.ghost.material as THREE.MeshBasicMaterial).opacity = 0.75 * Math.pow(Math.sin(Math.PI * k), 0.7);
       this.ghost.visible = true;
       if (k >= 1) this.stop();
     } else if (a.kind === 'spider') {
