@@ -3,16 +3,15 @@
 import * as THREE from 'three';
 
 import { makeRng } from '../game/maze';
-import { RGBA, createBuffer, downsample, fillEllipse, fillPolygon } from './raster';
+import { RGBA, createBuffer, downsample, fillEllipse, fillPolygon, flipRows } from './raster';
 
 function texture(data: Uint8Array, w: number, h: number): THREE.DataTexture {
-  const tex = new THREE.DataTexture(data, w, h, THREE.RGBAFormat);
+  const tex = new THREE.DataTexture(flipRows(data, w, h), w, h, THREE.RGBAFormat);
   tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.magFilter = THREE.LinearFilter;
   tex.minFilter = THREE.LinearMipmapLinearFilter;
   tex.generateMipmaps = true;
-  tex.flipY = true;
   tex.needsUpdate = true;
   return tex;
 }

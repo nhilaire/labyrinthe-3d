@@ -4,10 +4,10 @@ import * as THREE from 'three';
 
 import { makeRng } from '../game/maze';
 import { emblemColor, emblemShapes } from './emblems';
-import { RGBA, addNoise, createBuffer, downsample, fillEllipse, fillPolygon, fillRect, fillRing, hexToRgb } from './raster';
+import { RGBA, addNoise, createBuffer, downsample, fillEllipse, fillPolygon, fillRect, fillRing, flipRows, hexToRgb } from './raster';
 
 function dataTexture(data: Uint8Array, w: number, h: number, { repeat = true } = {}): THREE.DataTexture {
-  const tex = new THREE.DataTexture(data, w, h, THREE.RGBAFormat);
+  const tex = new THREE.DataTexture(flipRows(data, w, h), w, h, THREE.RGBAFormat);
   tex.wrapS = tex.wrapT = repeat ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping;
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.magFilter = THREE.LinearFilter;

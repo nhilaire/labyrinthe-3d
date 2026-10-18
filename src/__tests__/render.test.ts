@@ -106,3 +106,18 @@ describe('scary-mode apparitions view (AC-41 wiring)', () => {
     view.dispose();
   });
 });
+
+describe('texture orientation', () => {
+  it('uploads painted buffers bottom row first (three DataTexture convention)', () => {
+    // The plaque frame is painted at the top of the buffer: after upload it must be in the last rows.
+    const plate = plateTexture(2, { width: 32 });
+    const img = plate.image as { width: number; height: number; data: Uint8Array };
+    const alphaRow = (y: number) => {
+      let a = 0;
+      for (let x = 0; x < img.width; x++) a += img.data[(y * img.width + x) * 4 + 3];
+      return a;
+    };
+    // The plaque's pointed bottom (narrow) is now in the first rows, its wide body and top frame in the last ones.
+    expect(alphaRow(2)).toBeLessThan(alphaRow(img.height - 4));
+  });
+});

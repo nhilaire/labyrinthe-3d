@@ -63,8 +63,8 @@ export function placeGhost(maze: Maze, pos: Cell, facing: Dir, rng: Rng): GhostP
   if (!maze.inside(pos.x, pos.y)) return null;
   const line = sightLine(maze, pos, facing);
   if (!line) return null;
-  // One to three cells ahead: close enough to be seen through the scary fog, not right in the player's face.
-  const near = line.cells.slice(1, 3);
+  // Two to four cells ahead when the corridor allows it: seen through the scary fog, not right in the player's face.
+  const near = line.cells.slice(1, 4);
   const pool = near.length ? near : line.cells.slice(0, 1);
   const cell = pool[Math.floor(rng() * pool.length)];
   const side = rng() < 0.5 ? leftOf(line.dir) : rightOf(line.dir);

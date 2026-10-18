@@ -160,3 +160,12 @@ export function hexToRgb(hex: string): [number, number, number] {
   const v = hex.replace('#', '');
   return [parseInt(v.slice(0, 2), 16), parseInt(v.slice(2, 4), 16), parseInt(v.slice(4, 6), 16)];
 }
+
+// Buffers are painted top row first, but a three DataTexture puts its first row at the bottom (v = 0) and ignores
+// flipY: textures that have an up and a down (plaques, emblems, apparitions) are flipped before upload.
+export function flipRows(data: Uint8Array, w: number, h: number): Uint8Array {
+  const out = new Uint8Array(data.length);
+  const row = w * 4;
+  for (let y = 0; y < h; y++) out.set(data.subarray(y * row, (y + 1) * row), (h - 1 - y) * row);
+  return out;
+}

@@ -144,7 +144,10 @@ export class ApparitionsView {
       const p = toWorld(a.path.from).lerp(toWorld(a.path.to), ease(k));
       this.ghost.position.set(p.x, 1.55, p.z);
       this.ghost.rotation.set(0, Math.atan2(camera.position.x - p.x, camera.position.z - p.z), 0);
-      (this.ghost.material as THREE.MeshBasicMaterial).opacity = 0.75 * Math.pow(Math.sin(Math.PI * k), 0.7);
+      // It fades away fast when the player walks up to it: never a shape filling the screen.
+      const dist = Math.hypot(camera.position.x - p.x, camera.position.z - p.z);
+      const near = Math.min(1, Math.max(0, (dist - CELL * 0.6) / (CELL * 0.8)));
+      (this.ghost.material as THREE.MeshBasicMaterial).opacity = 0.75 * Math.pow(Math.sin(Math.PI * k), 0.7) * near;
       this.ghost.visible = true;
       if (k >= 1) this.stop();
     } else if (a.kind === 'spider') {
