@@ -20,7 +20,7 @@ export function GameScreen({ onExit, onGameOver }: Props) {
     const t = Date.now();
     dispatch({ type: 'start', now: t });
     setNow(t);
-    track('game_start', { level: 1 });
+    track('game_start', { size: 'medium', replay: false, guided: false, scary: false });
   };
 
   useEffect(start, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -38,7 +38,16 @@ export function GameScreen({ onExit, onGameOver }: Props) {
   useEffect(() => {
     if (state.status !== 'over' || reported.current) return;
     reported.current = true;
-    track('game_over', { level: state.level, score: state.score, duration_s: durationSeconds(state) });
+    track('game_complete', {
+      size: 'medium',
+      guided: false,
+      points: state.score,
+      steps_ratio: 1,
+      peeks: 0,
+      traces: 0,
+      beat_follower: false,
+      duration_s: durationSeconds(state),
+    });
     onGameOver(state.score);
   }, [state, onGameOver]);
 

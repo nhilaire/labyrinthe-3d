@@ -1,9 +1,24 @@
 // Typed catalog of the only telemetry events this app may send (must match docs/PRD.md "Telemetry events").
 // Params are numbers or short lowercase enums. Never identifiers, names, free text or locations.
 
+export type MazeSize = 'small' | 'medium' | 'large';
+
 export type TelemetryEvents = {
-  game_start: { level: number };
-  game_over: { level: number; score: number; duration_s: number };
+  game_start: { size: MazeSize; replay: boolean; guided: boolean; scary: boolean };
+  game_complete: {
+    size: MazeSize;
+    guided: boolean;
+    points: number;
+    steps_ratio: number;
+    peeks: number;
+    traces: number;
+    beat_follower: boolean;
+    duration_s: number;
+  };
+  game_abandon: { size: MazeSize; guided: boolean; duration_s: number };
+  perf_sample: { size: MazeSize; fps_avg: number; slow_frames_pct: number; scary: boolean };
+  tutorial_end: { skipped: boolean };
+  settings_change: { setting: 'scary'; value: 'on' | 'off' };
 };
 
 export type EventName = keyof TelemetryEvents;
