@@ -13,7 +13,7 @@ Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the bo
 - [x] T-06 Camera walker port (turn in place, rounded corners, speed profile) with wall-crossing tests (AC-10) - proof: unit
 - [ ] T-07 Renderer: stage, procedural textures, merged walls, emblem plaques, footprints, manor mood and scary mode, frame stats (AC-29, AC-30) - proof: device
 - [ ] T-08 Game screen: GLView, HUD, arrows, plan overlay (SVG), pause, victory with paths and rank (AC-12, AC-14, AC-15, AC-18) - proof: e2e
-- [ ] T-09 Local stores: score history (100, rank, not-kept case), settings, last size, guide flag (AC-19, AC-22, AC-27) - proof: unit
+- [x] T-09 Local stores: score history (100, rank, not-kept case), settings, last size, guide flag (AC-19, AC-22, AC-27) - proof: unit
 - [ ] T-10 Screens: consent (tu), guided offer, home with size selector, scores, settings, about with the story (AC-01, AC-02, AC-20, AC-21, AC-33) - proof: e2e
 - [ ] T-11 Guided first game: fixed seed, bubbles, skip, replay from settings, unrecorded (AC-25, AC-26) - proof: e2e
 - [ ] T-12 Lifecycle: pause on background, abandon, keep awake (AC-23, AC-24) - proof: e2e
