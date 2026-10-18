@@ -2,6 +2,8 @@
 const integerFormat = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
 
 export const NBSP = ' ';
+// Narrow no-break space, before "!", "?" and ";".
+export const NNBSP = ' ';
 
 export function formatInteger(value: number): string {
   return integerFormat.format(value);
