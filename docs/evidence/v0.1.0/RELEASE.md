@@ -18,3 +18,9 @@ Phone test 1 (2026-10-18, commit b84e630):
 - Smoothness measured in logcat while the user played (small and medium mazes): fps_avg 59.9, slow frames 0.4-0.8 %.
 - Request: in scary mode, ghostly shadows, spiders, cobwebs and candles that dim, frequent (every 10-20 s), decor
   only. PRD amendment (new acceptance criteria) before the next phone test.
+
+Phone test 2 (2026-10-19, demo build of commit c107ae2 with apparitions every 2-3 s lasting 8 s, not committed):
+- The user found the scary-mode apparitions good ("ça a l'air bien cette fois-ci").
+- Logcat during the play: sounds playing (steps, turn, click, victory), APPARITION lines, FRAME_STATS medium maze in
+  scary mode fps_avg 59.8, slow frames 2.6 %.
+- Also fixed since test 1: painted textures were upside down (emblem plaques inverted compared with the plan).
