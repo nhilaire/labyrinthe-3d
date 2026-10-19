@@ -8,7 +8,7 @@ Decision: expo
 
 ## Context
 
-Labyrinthe 3D is a port of the user's existing Expo SDK 53 app (`C:/dev/Maze/mobile`), which already renders a
+Labyrinthe 3D is a port of the user's existing Expo SDK 53 app (the original Maze project's `mobile/` app (local, not published)), which already renders a
 first-person 3D maze with **Three.js on an `expo-gl` WebGL context** (the "fake canvas" set-up of expo-three, without
 the expo-three package). The PRD needs:
 

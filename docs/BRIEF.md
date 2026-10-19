@@ -6,10 +6,10 @@ Final app name: Labyrinthe 3D
 
 ## Original brief
 
-> je veux passer dans l'usine mon jeu de labyrinthe et le dédier uniquement à android (voi C:\dev\Maze)
+> je veux passer dans l'usine mon jeu de labyrinthe et le dédier uniquement à android (voi <the original Maze project>)
 > familial, inspiration du labyrinthe de the 7th guest. Optimisé android et fluide
 
-Source project (local, not a git repository): `C:/dev/Maze` - "Labyrinthe 3D", a first-person 3D maze with one
+Source project (local, not a git repository): the original Maze project (local, not published) - "Labyrinthe 3D", a first-person 3D maze with one
 shared core and two apps:
 
 - `shared/core` (pure JS, no dependency): maze generation (backtracker, `straightness`, optional `braid`), BFS
@@ -41,7 +41,7 @@ Mark assumptions the user accepted as `(default accepted)`.
 - **Q:** What goes into v0.1 from the existing game?
   **A:** Everything, rules unchanged: plan to memorise at start, automatic walk with overlay arrows, wall emblems,
   plan recall ("H", with position), footprints mode, score compared with the wall-follower, local score history with
-  replay of the same maze. The source code and READMEs in `C:/dev/Maze` are the rules reference. (default accepted)
+  replay of the same maze. The source code and READMEs in the original Maze project (local, not published) are the rules reference. (default accepted)
 - **Q:** Who is it for?
   **A:** Family (stated in the brief): children and adults, playing on the same phone. Android only, no web version.
 
@@ -111,7 +111,7 @@ Mark assumptions the user accepted as `(default accepted)`.
 
 ## Decisions taken during discovery
 
-- Port of `C:/dev/Maze`, Android only: the shared core rules are kept unchanged and become the pure, tested
+- Port of the original Maze project (local, not published), Android only: the shared core rules are kept unchanged and become the pure, tested
   TypeScript engine; the source code and READMEs are the rules reference. The web app is not ported.
 - New Android package `io.github.nhilaire.labyrinthe3d`: it installs next to the old `com.nhilaire.maze3d` APK.
 - Additions over the source: size choice (8 x 6 / 14 x 9 / 20 x 12), sound ported from the web version as audio

@@ -13,7 +13,7 @@ Last updated: 2026-10-18 (approved by the user after the prd-reviewer pass; D5 c
 ## Summary
 
 Labyrinthe 3D is a first-person 3D maze for Android, ported into the factory from the user's existing project
-`C:/dev/Maze` (shared JS core + Expo/expo-gl app). It is meant for the whole family and inspired by the manor maze
+the original Maze project (local, not published) (shared JS core + Expo/expo-gl app). It is meant for the whole family and inspired by the manor maze
 of The 7th Guest. The player studies the plan of a random maze, then enters it: the camera walks smoothly by itself
 from one decision point to the next, and at each junction overlay arrows offer exactly the possible moves. Coloured
 emblems on the walls, also drawn on the plan, are the only way to know where you are. Looking at the plan again or
@@ -21,8 +21,8 @@ turning on your footprints helps, but costs points. At the exit the plan shows y
 score out of 1000, compared with a "wall-follower" that always gets out, but badly. The fun is memory and
 orientation: beat the wall-follower without getting lost. Pitch: « Mémorise le plan, puis trouve la sortie. »
 
-**Reference rule:** this is a port, not a redesign. Every rule and number below comes from `C:/dev/Maze/shared/core`
-and `C:/dev/Maze/mobile` (the Android behaviour wins over the web one where they differ). The port adds what the
+**Reference rule:** this is a port, not a redesign. Every rule and number below comes from the original project's `shared/core`
+and the original Maze project's `mobile/` app (local, not published) (the Android behaviour wins over the web one where they differ). The port adds what the
 brief asked for: size choice, ported sound, manor mood with an optional scary mode, guided first game, haptics,
 home/settings/about screens, opt-in telemetry and a 60 fps target. The only rule changes are listed in
 "Deliberate deviations from the source".
