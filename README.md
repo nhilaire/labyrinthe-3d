@@ -5,6 +5,11 @@ A small Android game made with React Native. The game is in French.
 ## Screenshots
 
 <!-- factory:screenshots:start -->
+<p>
+  <img src="docs/screenshots/readme-1-home.png" width="480" alt="home">
+  <img src="docs/screenshots/readme-2-gameplay.png" width="480" alt="gameplay">
+  <img src="docs/screenshots/readme-3-victory.png" width="480" alt="victory">
+</p>
 <!-- factory:screenshots:end -->
 
 ## Play
