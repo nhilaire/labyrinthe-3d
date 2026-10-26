@@ -5,5 +5,13 @@
   "stack": "expo",
   "description": "First-person 3D maze for Android: memorise the map, then find the exit with as little help as possible.",
   "language": "fr-FR",
-  "factoryVersion": "1.0.0"
+  "factoryVersion": "1.0.0",
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "fallbackLanguage": "en",
+  "displayNames": {
+    "en": "3D Maze"
+  }
 }

@@ -4,10 +4,10 @@ Status: approved
 Project slug: labyrinthe-3d
 Final app name: Labyrinthe 3D
 Android package: io.github.nhilaire.labyrinthe3d
-Version target: 0.1.0
-Last updated: 2026-10-18 (approved by the user after the prd-reviewer pass; D5 chosen by the user; D4 amended with the user during the build; scary-mode apparitions AC-37 to AC-41 requested by the user after phone test 1)
+Version target: 0.2.0
+Last updated: 2026-10-26 (v0.2.0: French and English; before: approved by the user after the prd-reviewer pass; D5 chosen by the user; D4 amended with the user during the build; scary-mode apparitions AC-37 to AC-41 requested by the user after phone test 1)
 
-> Written in English. Player-facing French copy is quoted in the "French copy" section.
+> Written in English. Player-facing copy (French reference, English) is quoted in the "Player copy" section.
 > Status becomes `approved` only after the user explicitly approves this document.
 
 ## Summary
@@ -87,7 +87,7 @@ flowchart LR
 All screens are landscape, immersive fullscreen (system bars hidden; an edge swipe brings them back temporarily),
 dark manor palette.
 
-- **Consent** (first launch only; reachable again from Settings): explains the anonymous statistics in French, two
+- **Consent** (first launch only; reachable again from Settings): explains the anonymous statistics in the game's language, two
   buttons of equal size and prominence (« Accepter » / « Refuser »). The game is fully playable either way.
 - **Guided game offer** (first launch, after consent): « Première partie guidée ? » with « C'est parti » and
   « Passer ». Either choice marks the offer as done; it is never shown again automatically.
@@ -107,7 +107,7 @@ dark manor palette.
   penalty or « — », size « W×H », replay glyph ↻. Tap a row to replay that maze. « Fermer », « Effacer
   l'historique » (needs a second tap « Confirmer ? »). Empty state text.
 - **Settings:** toggles « Son », « Vibrations », « Mode frisson », « Statistiques anonymes »; button « Rejouer la
-  partie guidée »; « Retour ».
+  partie guidée »; « Langue »: « Automatique (langue du téléphone) », « Français », « English » (v0.2.0); « Retour ».
 - **About:** « Pourquoi ce jeu » (the story, `about.story`), « Ce jeu » (made by a passionate independent developer,
   inspired by The 7th Guest and not affiliated with its authors), « Fait avec » (React Native, Expo, Three.js), the
   app version, « Retour ».
@@ -173,6 +173,21 @@ unit-tested with fixed seeds. Coordinates: x to the right, y down; directions 0 
 - Aid penalty shown = `min(100, round((0.08 × peeks + 0.12 × traces) × 100))` %.
 - Wall-follower baseline: left-hand rule played with the same move constraints (priority left, forward, right,
   U-turn), from the same start; its score uses the same formula with no aid. Shown on the victory screen.
+
+### Languages (v0.2.0)
+
+- Languages: French (reference) and English; fallback English. Resolution: explicit choice in the settings, else the
+  first supported language of the phone's language list, else English. The phone's language is read again when the
+  app comes back to the foreground.
+- The language switch is immediate (no restart) and saved locally; « Automatique » goes back to following the phone.
+  A game in progress is not touched (same maze, position and score).
+- Every player-facing text follows the game's language, including the plan labels (ENTRÉE / SORTIE, ENTRANCE / EXIT)
+  and the guided-game bubbles. No text is drawn in the 3D scene (emblems are symbols), and the sound effects have no
+  words, so no other asset is per language.
+- Launcher name: « Labyrinthe 3D » in French, « 3D Maze » in English and in any other language (decided by the user).
+- English: US spelling, « you » tone; numbers and percentages with the English formatter (« 8% », « 1,234 »);
+  plural « 1 step », « {n} steps »; ranks « 1st », « 2nd », « 3rd », « 4th », « 11th »… The scores history stores
+  numbers only, so it shows in the current language.
 
 ### Persistence (local only)
 
@@ -395,92 +410,122 @@ Scary-mode apparitions (amendment after phone test 1)
   the same for the same seed, each in an upper corner touching two walls; none is built in the manor mood.
 - AC-40 [unit] Given a game played with apparitions running, then steps, moves, score and telemetry events are the
   same as without them.
+- AC-42 [unit] Given the dictionaries, then French and English have exactly the same keys and shapes, English is
+  really translated, no text is empty, the languages match `factory-app.json`; given the setting « auto » and phone
+  languages [fr-FR] / [en-US] / [it-IT, fr-FR] / [it-IT], then the game is in French / English / French / English; an
+  explicit choice wins over the phone; English formatting gives « 1 step », « 2 steps », « 1,234 », « −8% », « 1st »,
+  « 2nd », « 3rd », « 4th », « 11th », « 12th », « 13th », « 21st », « 22nd ».
+- AC-43 [e2e] Given Settings, when « English » is tapped, then the whole UI switches at once (« Settings », « Sound »),
+  Home shows « Play » and « 3D Maze », a game shows the intro plan with « Memorize the map »; after a restart it is still
+  English; when « Automatique » then « Français » are tapped, then Home shows « Jouer ». Screenshots
+  `language-fr-settings`, `language-en-settings`, `language-en-game`.
+- AC-44 [device] Given the release APK, when `aapt dump badging` is read, then the application label is « 3D Maze » by
+  default and for en, and « Labyrinthe 3D » for fr.
+- AC-45 [manual] Given the release APK on the user's phone in English, when a game is played, then the user confirms the
+  English texts (HUD, plan, victory, scores, guided game).
 - AC-41 [manual] Given « Mode frisson » on the phone, the ghosts, spiders, cobwebs and dimming candle are visible and
   eerie but fine for a family (no jump scare), and the walk stays smooth (fps_avg >= 55, slow frames <= 5 %).
 
-## French copy
+## Player copy
 
-Tone: « tu ». In `fr.ts`, the spaces before `:` and `%` and inside « » are U+00A0, and before `!`, `?`, `;` are
-U+202F (shown as plain spaces below).
+French tone: « tu ». In `fr.ts`, the spaces before `:` and `%` and inside « » are U+00A0, and before `!`, `?`, `;` are
+U+202F (shown as plain spaces below). English tone: neutral « you », US spelling; no space before `: ! ? %`, “quotes”.
+Language names in the settings are written in their own language (« Français », « English »). Final app name
+(launcher): « Labyrinthe 3D » (fr), « 3D Maze » (en).
 
-| Key | French text |
-|---|---|
-| consent.title | Statistiques anonymes |
-| consent.body | Pour améliorer le jeu, tu peux partager des statistiques anonymes (parties jouées, scores, plantages). Aucune donnée personnelle, aucune publicité. Tu pourras changer d'avis dans les Paramètres. |
-| consent.accept | Accepter |
-| consent.refuse | Refuser |
-| guideOffer.title | Première partie guidée ? |
-| guideOffer.body | Un petit labyrinthe pour apprendre à jouer, en quelques bulles. |
-| guideOffer.go | C'est parti |
-| guideOffer.skip | Passer |
-| home.title | Labyrinthe 3D |
-| home.pitch | Mémorise le plan, puis trouve la sortie. |
-| home.size.small | Petit 8 × 6 |
-| home.size.medium | Moyen 14 × 9 |
-| home.size.large | Grand 20 × 12 |
-| home.play | Jouer |
-| home.scores | Scores |
-| home.settings | Paramètres |
-| home.about | À propos |
-| hud.steps | {n} pas |
-| hud.plan | Plan{ (n)} −8 % |
-| hud.traces | Traces{ (n)} −12 % |
-| hud.pause | Pause |
-| move.forward | Tout droit |
-| move.left | À gauche |
-| move.right | À droite |
-| move.back | Demi-tour |
-| plan.introTitle | Mémorise le plan |
-| plan.introHint | Touche l'écran pour entrer dans le labyrinthe |
-| plan.peekTitle | Plan |
-| plan.peekHint | Touche l'écran pour reprendre (ce coup d'œil coûte 8 % du score) |
-| plan.entrance | ENTRÉE |
-| plan.exit | SORTIE |
-| pause.title | Pause |
-| pause.resume | Reprendre |
-| pause.quit | Abandonner |
-| victory.title | {points} points · {rating} |
-| victory.line | {steps} pas pour {optimal} au mieux · {decisions} choix · {aid} · Suiveur de murs : {baseline} pts |
-| victory.noAid | sans aide |
-| victory.aid | aides −{p} % |
-| victory.best | Meilleur score ! |
-| victory.rank | {rank}e sur {total} |
-| victory.new | Nouveau labyrinthe |
-| victory.again | Refaire celui-ci |
-| victory.scores | Scores |
-| victory.home | Accueil |
-| rating.900 | Sans faute |
-| rating.750 | Excellent |
-| rating.600 | Très bon |
-| rating.450 | Correct |
-| rating.300 | Laborieux |
-| rating.0 | Sorti par hasard |
-| scores.title | Meilleurs scores |
-| scores.empty | Aucune partie enregistrée pour le moment. |
-| scores.hint | Touche une ligne pour rejouer ce labyrinthe. |
-| scores.close | Fermer |
-| scores.clear | Effacer l'historique |
-| scores.confirm | Confirmer ? |
-| settings.title | Paramètres |
-| settings.sound | Son |
-| settings.haptics | Vibrations |
-| settings.scary | Mode frisson |
-| settings.scaryHint | Plus sombre, plus inquiétant. Déconseillé aux plus jeunes. |
-| settings.telemetry | Statistiques anonymes |
-| settings.replayGuide | Rejouer la partie guidée |
-| common.back | Retour |
-| guide.skip | Passer |
-| guide.plan | Mémorise bien ce plan : tu entres par ENTRÉE et tu dois trouver la SORTIE. Les symboles de couleur sont gravés sur les murs : ils t'aideront à savoir où tu es. |
-| guide.arrows | À chaque croisement, touche une flèche. Tu avances tout seul jusqu'au croisement suivant. |
-| guide.helps | Perdu ? « Plan » remontre le plan avec ta position (−8 %). « Traces » montre où tu es déjà passé (−12 %). |
-| guide.score | Moins de pas et moins d'aide, c'est plus de points. Essaie de battre le suiveur de murs ! |
-| about.title | À propos |
-| about.whyTitle | Pourquoi ce jeu |
-| about.story | Enfant, j'ai recopié ligne à ligne en GFA Basic un petit jeu de labyrinthe sur mon Atari ST : un de mes premiers programmes. Quelques années plus tard, le labyrinthe du manoir de The 7th Guest m'a fait frissonner. J'ai créé ce jeu pour réunir ces deux souvenirs et les partager en famille. |
-| about.gameTitle | Ce jeu |
-| about.game | Créé par un développeur indépendant passionné. Inspiré de The 7th Guest, sans lien avec ses auteurs. |
-| about.builtWith | Fait avec React Native, Expo et Three.js |
-| about.version | Version {version} |
+| Key | fr | en |
+|---|---|---|
+| consent.title | Statistiques anonymes | Anonymous statistics |
+| consent.body | Pour améliorer le jeu, tu peux partager des statistiques anonymes (parties jouées, scores, plantages). Aucune donnée personnelle, aucune publicité. | To improve the game, you can share anonymous statistics (games played, scores, crashes). No personal data, no ads. |
+| consent.footnote | Tu pourras changer d'avis dans les Paramètres. | You can change your mind later in Settings. |
+| consent.accept | Accepter | Accept |
+| consent.refuse | Refuser | Decline |
+| guideOffer.title | Première partie guidée ? | Guided first game? |
+| guideOffer.body | Un petit labyrinthe pour apprendre à jouer, en quelques bulles. | A small maze to learn how to play, with a few tips. |
+| guideOffer.go | C'est parti | Let's go |
+| guideOffer.skip | Passer | Skip |
+| home.title | Labyrinthe 3D | 3D Maze |
+| home.pitch | Mémorise le plan, puis trouve la sortie. | Memorize the map, then find the exit. |
+| home.size.small | Petit 8 × 6 | Small 8 × 6 |
+| home.size.medium | Moyen 14 × 9 | Medium 14 × 9 |
+| home.size.large | Grand 20 × 12 | Large 20 × 12 |
+| home.play | Jouer | Play |
+| home.scores | Scores | Scores |
+| home.settings | Paramètres | Settings |
+| home.about | À propos | About |
+| hud.steps | {n} pas | {n} steps (1 step) |
+| hud.plan | Plan{ (n)} −8 % | Map{ (n)} −8% |
+| hud.traces | Traces{ (n)} −12 % | Tracks{ (n)} −12% |
+| hud.pause | Pause | Pause |
+| move.forward | Tout droit | Straight ahead |
+| move.left | À gauche | Left |
+| move.right | À droite | Right |
+| move.back | Demi-tour | Turn back |
+| plan.introTitle | Mémorise le plan | Memorize the map |
+| plan.introHint | Touche l'écran pour entrer dans le labyrinthe | Tap the screen to enter the maze |
+| plan.peekTitle | Plan | Map |
+| plan.peekHint | Touche l'écran pour reprendre (ce coup d'œil coûte 8 % du score) | Tap the screen to continue (this peek costs 8% of the score) |
+| plan.entrance | ENTRÉE | ENTRANCE |
+| plan.exit | SORTIE | EXIT |
+| pause.title | Pause | Pause |
+| pause.resume | Reprendre | Resume |
+| pause.quit | Abandonner | Give up |
+| victory.title | {points} points · {rating} | {points} points · {rating} |
+| victory.line | {steps} pas pour {optimal} au mieux · {decisions} choix · {aid} · Suiveur de murs : {baseline} pts | {steps} steps for {optimal} at best · {decisions} choices · {aid} · Wall follower: {baseline} pts |
+| victory.noAid | sans aide | no help |
+| victory.aid | aides −{p} % | help −{p}% |
+| victory.best | Meilleur score ! | Best score! |
+| victory.rank | {rank}e sur {total} | {rank}st/nd/rd/th of {total} |
+| victory.new | Nouveau labyrinthe | New maze |
+| victory.again | Refaire celui-ci | Play this one again |
+| victory.scores | Scores | Scores |
+| victory.home | Accueil | Home |
+| rating.900 | Sans faute | Flawless |
+| rating.750 | Excellent | Excellent |
+| rating.600 | Très bon | Very good |
+| rating.450 | Correct | Fair |
+| rating.300 | Laborieux | Hard going |
+| rating.0 | Sorti par hasard | Out by luck |
+| scores.title | Meilleurs scores | Best scores |
+| scores.empty | Aucune partie enregistrée pour le moment. | No game saved yet. |
+| scores.hint | Touche une ligne pour rejouer ce labyrinthe. | Tap a row to replay that maze. |
+| scores.close | Fermer | Close |
+| scores.clear | Effacer l'historique | Clear history |
+| scores.confirm | Confirmer ? | Confirm? |
+| scores.steps | {steps} pas (×{ratio}) | {steps} steps (×{ratio}) |
+| settings.title | Paramètres | Settings |
+| settings.sound | Son | Sound |
+| settings.haptics | Vibrations | Vibrations |
+| settings.scary | Mode frisson | Spooky mode |
+| settings.scaryHint | Plus sombre, plus inquiétant. Déconseillé aux plus jeunes. | Darker and creepier. Not for the youngest. |
+| settings.telemetry | Statistiques anonymes | Anonymous statistics |
+| settings.telemetryHelp | Aide à corriger les bugs et à améliorer le jeu. Aucune donnée personnelle n'est envoyée. | Helps fix bugs and improve the game. No personal data is sent. |
+| settings.replayGuide | Rejouer la partie guidée | Replay the guided game |
+| settings.language | Langue | Language |
+| settings.languageAuto | Automatique (langue du téléphone) | Automatic (phone language) |
+| common.back | Retour | Back |
+| guide.skip | Passer | Skip |
+| guide.plan | Mémorise bien ce plan : tu entres par ENTRÉE et tu dois trouver la SORTIE. Les symboles de couleur sont gravés sur les murs : ils t'aideront à savoir où tu es. | Memorize this map: you come in at the ENTRANCE and must find the EXIT. The colored symbols carved on the walls will help you know where you are. |
+| guide.arrows | À chaque croisement, touche une flèche. Tu avances tout seul jusqu'au croisement suivant. | At each junction, tap an arrow. You walk on your own to the next junction. |
+| guide.helps | Perdu ? « Plan » remontre le plan avec ta position (−8 %). « Traces » montre où tu es déjà passé (−12 %). | Lost? “Map” shows the map again with your position (−8%). “Tracks” shows where you have already been (−12%). |
+| guide.score | Moins de pas et moins d'aide, c'est plus de points. Essaie de battre le suiveur de murs ! | Fewer steps and less help mean more points. Try to beat the wall follower! |
+| guide.next | Touche pour continuer | Tap to continue |
+| about.title | À propos | About |
+| about.whyTitle | Pourquoi ce jeu | Why this game |
+| about.story | Enfant, j'ai recopié ligne à ligne en GFA Basic un petit jeu de labyrinthe sur mon Atari ST : un de mes premiers programmes. Quelques années plus tard, le labyrinthe du manoir de The 7th Guest m'a fait frissonner. J'ai créé ce jeu pour réunir ces deux souvenirs et les partager en famille. | As a child, I copied a little maze game line by line in GFA Basic on my Atari ST: one of my first programs. A few years later, the manor maze of The 7th Guest gave me chills. I made this game to bring those two memories together and share them with my family. |
+| about.gameTitle | Ce jeu | This game |
+| about.game | Créé par un développeur indépendant passionné. Inspiré de The 7th Guest, sans lien avec ses auteurs. Il a été imaginé et programmé sur mon temps libre, sans prétention : il n'est sans doute pas exempt de bugs. Merci d'avance pour ton indulgence. | Made by a passionate independent developer. Inspired by The 7th Guest, not affiliated with its authors. It was imagined and programmed in my free time, without pretension: it is probably not free of bugs. Thank you in advance for your patience. |
+| about.dataTitle | Tes données | Your data |
+| about.data | Aucun compte, aucune publicité. Des statistiques anonymes ne sont envoyées que si tu l'as accepté, et tu peux changer d'avis dans les Paramètres. | No account, no ads. Anonymous statistics are only sent if you agreed, and you can change your mind in Settings. |
+| about.builtWith | Fait avec React Native, Expo et Three.js | Made with React Native, Expo and Three.js |
+| about.version | Version {version} | Version {version} |
+| errors.title | Oups | Oops |
+| errors.body | Un problème est survenu. Relance le jeu. | Something went wrong. Restart the game. |
+| errors.retry | Réessayer | Try again |
+
+Amendment 2026-10-26, version 0.2.0 (requested by the user): the game becomes multilingual, French and English
+(fallback English), following the factory's localisation standard. Decided by the user: launcher name « 3D Maze » in
+English. New AC-42 to AC-45.
 
 ## Out of scope
 
@@ -490,6 +535,7 @@ U+202F (shown as plain spaces below).
 - Inner-exit mode that defeats the wall-follower.
 - Braided mazes (loops), custom sizes or walk-speed settings (source URL parameters).
 - Keyboard controls (web only).
+- Languages other than French and English (v0.2.0).
 
 ## Open questions
 
