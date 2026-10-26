@@ -15,6 +15,8 @@ import { SIZE_ORDER, newMaze } from '../game/config';
 import { DIRS, makeRng, rightOf } from '../game/maze';
 import { GameSession, INTRO_LOCK_MS } from '../game/session';
 import { shortestMove } from '../game/solver';
+import { FrameStats } from '../render/frameStats';
+import { trackGameComplete, trackGameStart } from '../telemetry/gameEvents';
 
 describe('apparition timing (AC-37)', () => {
   it('fires every 10 to 20 s of active time, all kinds, scary mode only, never while frozen', () => {
@@ -125,13 +127,19 @@ describe('cobwebs (AC-39)', () => {
 });
 
 describe('decor only (AC-40)', () => {
-  it('leaves steps, moves and score unchanged when apparitions run during the game', () => {
+  it('leaves steps, moves, score and telemetry events unchanged when apparitions run during the game', () => {
     const play = (withApparitions: boolean) => {
       const s = new GameSession({ seed: 77, now: 0, size: 'large' });
       const sched = new ApparitionScheduler(makeRng(5));
       const rng = makeRng(6);
       const moves: string[] = [];
+      // The telemetry the screen would send for this game (same scary setting and frame stats in both runs).
+      const events: unknown[] = [];
+      const track = (name: string, params: unknown) => events.push([name, params]);
+      const frames = new FrameStats();
+      for (let i = 0; i < 400; i++) frames.record(16.7);
       s.tapIntro(INTRO_LOCK_MS);
+      trackGameStart(track, s, true);
       s.arrive(INTRO_LOCK_MS);
       let guard = 0;
       while (s.phase !== 'won' && guard++ < 500) {
@@ -147,8 +155,11 @@ describe('decor only (AC-40)', () => {
         s.choose(shortestMove(s)!);
         s.arrive(INTRO_LOCK_MS);
       }
-      return { steps: s.journey.steps, moves, score: s.score };
+      trackGameComplete(track, s, 60_000, frames, true);
+      return { steps: s.journey.steps, moves, score: s.score, events };
     };
-    expect(play(true)).toEqual(play(false));
+    const withApparitions = play(true);
+    expect(withApparitions.events.map((e) => (e as [string])[0])).toEqual(['game_start', 'game_complete', 'perf_sample']);
+    expect(withApparitions).toEqual(play(false));
   });
 });

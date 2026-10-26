@@ -407,7 +407,7 @@ Scary-mode apparitions (amendment after phone test 1)
   then its cell is open, inside the maze, in the corridor in front of the player with no wall between, and its path
   never crosses a wall.
 - AC-39 [unit] Given a maze and its seed, cobwebs are on about 15 % (10 to 20 %) of the corner and dead-end cells,
-  the same for the same seed, each in an upper corner touching two walls; none is built in the manor mood.
+  the same for the same seed, each in an upper corner touching two walls; none is shown in the manor mood (amendment 2026-10-26, decided by the user: they are built hidden, as since v0.1.0).
 - AC-40 [unit] Given a game played with apparitions running, then steps, moves, score and telemetry events are the
   same as without them.
 - AC-42 [unit] Given the dictionaries, then French and English have exactly the same keys and shapes, English is
