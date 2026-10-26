@@ -38,7 +38,8 @@ tags:
       id: "intro-plan"
     timeout: 20000
 - assertVisible: "Memorize the map"
-- assertVisible: "ENTRANCE"
+# The plan labels (ENTRANCE / EXIT) are SVG text, not visible to Maestro: they show on the language-en-game capture.
+- assertVisible: "Tap the screen to enter the maze"
 - takeScreenshot: language-en-game
 - stopApp
 - launchApp:
