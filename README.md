@@ -21,10 +21,10 @@ Android phone (allow installation from unknown sources).
 
 - No account, no ads, no personal data.
 - Anonymous usage statistics and crash reports (Firebase) are sent **only if you accept** on first launch.
-  You can change your choice at any time in *Paramètres*.
+  You can change your choice at any time in *Settings* (*Paramètres* in French).
 - What is sent after consent (numbers and short labels only, see [docs/PRD.md](docs/PRD.md#telemetry-events)):
   game start, end or abandon with the maze size, score, steps ratio, helps used and duration; tutorial completion;
-  the « Mode frisson » toggle; average frame rate and share of slow frames; crash reports.
+  the "Spooky mode" (« Mode frisson ») toggle; average frame rate and share of slow frames; crash reports.
 - No user ID, no advertising ID, no location.
 - Inspired by The 7th Guest; not affiliated with its authors.
 
