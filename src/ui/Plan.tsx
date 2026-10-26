@@ -7,7 +7,7 @@ import type { Landmark } from '../game/landmarks';
 import { Cell, DIRS, Dir, Maze, Opening as MazeOpening } from '../game/maze';
 import type { Journey } from '../game/navigation';
 import { Segment, corridorLines, wallLines } from '../game/planLines';
-import { fr } from '../i18n/fr';
+import { useI18n } from '../i18n/I18nProvider';
 import { emblemInk, emblemShapes } from '../render/emblems';
 
 const PAPER = '#e9dcbe';
@@ -47,6 +47,7 @@ function OpeningMark(props: {
   isEntrance: boolean;
 }) {
   const { opening, color, cell, cx, cy, isEntrance } = props;
+  const { t } = useI18n();
   const d = DIRS[opening.dir];
   const ax = isEntrance ? -d.dx : d.dx;
   const ay = isEntrance ? -d.dy : d.dy;
@@ -68,7 +69,7 @@ function OpeningMark(props: {
     <G>
       <Polygon points={pts.map((p) => p.join(',')).join(' ')} fill={color} />
       <SvgText x={tx} y={ty} fill={color} fontSize={Math.max(8, cell * 0.32)} fontWeight="bold" textAnchor={anchor}>
-        {isEntrance ? fr.plan.entrance : fr.plan.exit}
+        {isEntrance ? t.plan.entrance : t.plan.exit}
       </SvgText>
     </G>
   );

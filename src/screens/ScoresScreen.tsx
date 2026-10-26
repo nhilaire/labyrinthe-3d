@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BackHandler, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { aidPenalty } from '../game/score';
-import { fr } from '../i18n/fr';
+import { useI18n } from '../i18n/I18nProvider';
 import { ScoreRecord, clearScores, loadScores } from '../storage/scores';
 import { Button } from '../ui/Button';
 import { Screen } from '../ui/Screen';
@@ -13,6 +13,7 @@ const SHOWN = 20;
 type Props = { onBack: () => void; onReplay: (record: ScoreRecord) => void };
 
 export function ScoresScreen({ onBack, onReplay }: Props) {
+  const { t } = useI18n();
   const [scores, setScores] = useState<ScoreRecord[] | null>(null);
   const [armed, setArmed] = useState(false);
 
@@ -45,12 +46,12 @@ export function ScoresScreen({ onBack, onReplay }: Props) {
   return (
     <Screen testID="scores-screen">
       <Text style={styles.title} accessibilityRole="header">
-        {fr.scores.title}
+        {t.scores.title}
       </Text>
       <ScrollView style={styles.list} contentContainerStyle={styles.listContent}>
         {scores?.length === 0 && (
           <Text style={styles.empty} testID="scores-empty">
-            {fr.scores.empty}
+            {t.scores.empty}
           </Text>
         )}
         {scores?.slice(0, SHOWN).map((e, i) => (
@@ -63,19 +64,19 @@ export function ScoresScreen({ onBack, onReplay }: Props) {
           >
             <Text style={[styles.cell, styles.rank]}>{i + 1}</Text>
             <Text style={[styles.cell, styles.points]}>{e.points}</Text>
-            <Text style={[styles.cell, styles.wide]}>{fr.rating[e.rating]}</Text>
-            <Text style={[styles.cell, styles.wide]}>{fr.scores.steps(e.steps, (e.steps / e.optimalSteps).toFixed(2))}</Text>
-            <Text style={styles.cell}>{e.peeks || e.traces ? fr.scores.aid(aidPenalty(e)) : fr.scores.noAid}</Text>
-            <Text style={styles.cell}>{fr.scores.size(e.width, e.height)}</Text>
+            <Text style={[styles.cell, styles.wide]}>{t.rating[e.rating]}</Text>
+            <Text style={[styles.cell, styles.wide]}>{t.scores.steps(e.steps, (e.steps / e.optimalSteps).toFixed(2))}</Text>
+            <Text style={styles.cell}>{e.peeks || e.traces ? t.scores.aid(aidPenalty(e)) : t.scores.noAid}</Text>
+            <Text style={styles.cell}>{t.scores.size(e.width, e.height)}</Text>
             <Text style={[styles.cell, styles.replay]}>↻</Text>
           </Pressable>
         ))}
       </ScrollView>
-      {scores && scores.length > 0 && <Text style={styles.hint}>{fr.scores.hint}</Text>}
+      {scores && scores.length > 0 && <Text style={styles.hint}>{t.scores.hint}</Text>}
       <View style={styles.buttons}>
-        <Button label={fr.scores.close} variant="secondary" compact onPress={onBack} testID="scores-close" />
+        <Button label={t.scores.close} variant="secondary" compact onPress={onBack} testID="scores-close" />
         {scores && scores.length > 0 && (
-          <Button label={armed ? fr.scores.confirm : fr.scores.clear} variant="danger" compact onPress={clear} testID="scores-clear" />
+          <Button label={armed ? t.scores.confirm : t.scores.clear} variant="danger" compact onPress={clear} testID="scores-clear" />
         )}
       </View>
     </Screen>

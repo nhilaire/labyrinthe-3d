@@ -6,6 +6,8 @@ import { haptics } from './feedback/haptics';
 import { sound } from './feedback/sound';
 import { GUIDED_SEED, MazeSize } from './game/config';
 import type { GameSession } from './game/session';
+import { LanguageSetting } from './i18n';
+import { I18nProvider } from './i18n/I18nProvider';
 import { AboutScreen } from './screens/AboutScreen';
 import { ConsentScreen } from './screens/ConsentScreen';
 import { GameLaunch, GameScreen } from './screens/GameScreen';
@@ -13,6 +15,7 @@ import { GuideOfferScreen } from './screens/GuideOfferScreen';
 import { HomeScreen } from './screens/HomeScreen';
 import { ScoresScreen } from './screens/ScoresScreen';
 import { SettingsScreen, Toggle } from './screens/SettingsScreen';
+import { loadLanguageSetting, saveLanguageSetting } from './storage/languageSetting';
 import { ScoreRecord, saveScore } from './storage/scores';
 import { DEFAULT_SETTINGS, Settings, loadSettings, saveSettings } from './storage/settings';
 import { Consent, loadConsent, saveConsent } from './telemetry/consentStore';
@@ -27,6 +30,7 @@ const randomSeed = () => (Math.random() * 0xffffffff) >>> 0;
 export default function App() {
   const [consent, setConsentState] = useState<Consent | 'loading'>('loading');
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
+  const [languageSetting, setLanguageSetting] = useState<LanguageSetting>('auto');
   const [route, setRoute] = useState<Route>('home');
   const [launch, setLaunch] = useState<GameLaunch | null>(null);
   // A new key remounts the game screen for every new game (a new maze, a replay).
@@ -35,6 +39,12 @@ export default function App() {
   settingsRef.current = settings;
   const consentRef = useRef(consent);
   consentRef.current = consent;
+
+  // The switch is immediate (context), then saved; a game in progress is not touched.
+  const changeLanguage = useCallback((value: LanguageSetting) => {
+    setLanguageSetting(value);
+    void saveLanguageSetting(value);
+  }, []);
 
   const play = useCallback((next: GameLaunch) => {
     setLaunch(next);
@@ -45,13 +55,14 @@ export default function App() {
   useEffect(() => {
     let alive = true;
     (async () => {
-      const [storedConsent, storedSettings] = await Promise.all([loadConsent(), loadSettings()]);
+      const [storedConsent, storedSettings, storedLanguage] = await Promise.all([loadConsent(), loadSettings(), loadLanguageSetting()]);
       if (storedConsent !== 'unknown') await applyConsent(storedConsent === 'granted');
       sound.setEnabled(storedSettings.sound);
       sound.setScary(storedSettings.scary);
       haptics.setEnabled(storedSettings.haptics);
       if (alive) {
         setSettings(storedSettings);
+        setLanguageSetting(storedLanguage);
         setRoute(storedSettings.guideOfferDone ? 'home' : 'guideOffer');
         setConsentState(storedConsent);
       }
@@ -190,7 +201,11 @@ export default function App() {
     );
   }
 
-  return <ErrorBoundary>{content}</ErrorBoundary>;
+  return (
+    <I18nProvider setting={languageSetting} onChange={changeLanguage}>
+      <ErrorBoundary>{content}</ErrorBoundary>
+    </I18nProvider>
+  );
 }
 
 const styles = StyleSheet.create({

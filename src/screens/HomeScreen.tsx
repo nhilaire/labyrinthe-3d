@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { APP_NAME } from '../config/app';
+import { appName } from '../config/app';
 import { MazeSize, SIZE_ORDER } from '../game/config';
-import { fr } from '../i18n/fr';
+import { useI18n } from '../i18n/I18nProvider';
 import { Button } from '../ui/Button';
 import { Screen } from '../ui/Screen';
 import { colors, font, spacing } from '../ui/theme';
@@ -17,14 +17,15 @@ type Props = {
 };
 
 export function HomeScreen({ size, onSize, onPlay, onScores, onSettings, onAbout }: Props) {
+  const { t, language } = useI18n();
   return (
     <Screen testID="home-screen">
       <View style={styles.layout}>
         <View style={styles.hero}>
           <Text style={styles.title} accessibilityRole="header">
-            {APP_NAME}
+            {appName(language)}
           </Text>
-          <Text style={styles.pitch}>{fr.home.pitch}</Text>
+          <Text style={styles.pitch}>{t.home.pitch}</Text>
         </View>
         <View style={styles.menu}>
           <View style={styles.sizes} accessibilityRole="radiogroup">
@@ -34,24 +35,24 @@ export function HomeScreen({ size, onSize, onPlay, onScores, onSettings, onAbout
                 testID={`home-size-${s}`}
                 accessibilityRole="radio"
                 accessibilityState={{ selected: s === size }}
-                accessibilityLabel={fr.home.size[s]}
+                accessibilityLabel={t.home.size[s]}
                 onPress={() => onSize(s)}
                 style={({ pressed }) => [styles.size, s === size && styles.sizeOn, pressed && styles.pressed]}
               >
-                <Text style={[styles.sizeText, s === size && styles.sizeTextOn]}>{fr.home.size[s]}</Text>
+                <Text style={[styles.sizeText, s === size && styles.sizeTextOn]}>{t.home.size[s]}</Text>
               </Pressable>
             ))}
           </View>
-          <Button label={fr.home.play} onPress={onPlay} testID="home-play" />
+          <Button label={t.home.play} onPress={onPlay} testID="home-play" />
           <View style={styles.row}>
             <View style={styles.cell}>
-              <Button label={fr.home.scores} onPress={onScores} variant="secondary" testID="home-scores" />
+              <Button label={t.home.scores} onPress={onScores} variant="secondary" testID="home-scores" />
             </View>
             <View style={styles.cell}>
-              <Button label={fr.home.settings} onPress={onSettings} variant="secondary" testID="home-settings" />
+              <Button label={t.home.settings} onPress={onSettings} variant="secondary" testID="home-settings" />
             </View>
             <View style={styles.cell}>
-              <Button label={fr.home.about} onPress={onAbout} variant="secondary" testID="home-about" />
+              <Button label={t.home.about} onPress={onAbout} variant="secondary" testID="home-about" />
             </View>
           </View>
         </View>

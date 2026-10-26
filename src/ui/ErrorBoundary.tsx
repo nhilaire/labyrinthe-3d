@@ -1,7 +1,7 @@
-import { Component, ReactNode } from 'react';
+import { Component, ContextType, ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { fr } from '../i18n/fr';
+import { I18nContext } from '../i18n/I18nProvider';
 import { reportError } from '../telemetry/telemetry';
 import { Button } from './Button';
 import { colors, font, spacing } from './theme';
@@ -10,6 +10,7 @@ type State = { failed: boolean };
 
 // Catches render errors, reports them (if consented) and shows a French fallback instead of a blank screen.
 export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
+  static contextType = I18nContext;
   state: State = { failed: false };
 
   static getDerivedStateFromError(): State {
@@ -22,11 +23,12 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
 
   render() {
     if (!this.state.failed) return this.props.children;
+    const { t } = this.context as ContextType<typeof I18nContext>;
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{fr.errors.title}</Text>
-        <Text style={styles.body}>{fr.errors.body}</Text>
-        <Button label={fr.errors.retry} onPress={() => this.setState({ failed: false })} />
+        <Text style={styles.title}>{t.errors.title}</Text>
+        <Text style={styles.body}>{t.errors.body}</Text>
+        <Button label={t.errors.retry} onPress={() => this.setState({ failed: false })} />
       </View>
     );
   }

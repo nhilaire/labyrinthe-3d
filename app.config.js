@@ -18,9 +18,21 @@ function versionCode(v) {
 const FIREBASE_PLUGINS = ['@react-native-firebase/app', '@react-native-firebase/analytics', '@react-native-firebase/crashlytics'];
 const pluginName = (p) => (Array.isArray(p) ? p[0] : p);
 
+// Launcher name per language: displayName for the reference language (languages[0]), displayNames.<lang> for the
+// others. Each language gets its own Android resource; the default one carries the fallback language's name, so a
+// phone in an unsupported language shows the same language under the icon as in the game.
+const languages = meta.languages || [];
+const names = { ...(meta.displayNames || {}), ...(languages.length ? { [languages[0]]: meta.displayName } : {}) };
+const multilingual = languages.length > 1;
+const defaultName = multilingual ? names[meta.fallbackLanguage] || meta.displayName : meta.displayName;
+const locales = multilingual
+  ? Object.fromEntries(languages.map((lang) => [lang, { android: { app_name: names[lang] || meta.displayName } }]))
+  : undefined;
+
 module.exports = ({ config }) => ({
   ...config,
-  name: meta.displayName,
+  name: defaultName,
+  ...(locales ? { locales: { ...config.locales, ...locales } } : {}),
   slug: meta.slug,
   version,
   orientation: config.orientation || 'portrait',

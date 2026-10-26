@@ -1,4 +1,5 @@
-// Every player-facing string lives here, in French ("tu"). Components never inline text.
+// Every player-facing string lives in a dictionary, French first (the reference, "tu"). Components never inline
+// text: they read `t` from useI18n(). Other languages (en.ts) must have the same keys (src/i18n/types.ts).
 // Typography (AC-35): U+00A0 before ":" and "%" and inside « », U+202F before "!", "?" and ";".
 import { NBSP, NNBSP, formatInteger, label } from './format';
 
@@ -6,6 +7,8 @@ const q = (text: string) => `«${NBSP}${text}${NBSP}»`;
 const pct = (n: number) => `${n}${NBSP}%`;
 
 export const fr = {
+  // BCP 47 locale of this language.
+  locale: 'fr-FR',
   consent: {
     title: 'Statistiques anonymes',
     body:
@@ -96,6 +99,8 @@ export const fr = {
     telemetry: 'Statistiques anonymes',
     telemetryHelp: "Aide à corriger les bugs et à améliorer le jeu. Aucune donnée personnelle n'est envoyée.",
     replayGuide: 'Rejouer la partie guidée',
+    language: 'Langue',
+    languageAuto: 'Automatique (langue du téléphone)',
     back: 'Retour',
   },
   guide: {

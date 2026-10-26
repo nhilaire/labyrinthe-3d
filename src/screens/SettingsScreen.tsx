@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { BackHandler, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { BackHandler, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 
-import { fr } from '../i18n/fr';
+import { LANGUAGE_NAMES, LANGUAGES, LanguageSetting } from '../i18n';
+import { useI18n } from '../i18n/I18nProvider';
 import type { Settings } from '../storage/settings';
 import { Button } from '../ui/Button';
 import { Screen } from '../ui/Screen';
@@ -32,6 +33,12 @@ function Row(props: { label: string; help?: string; value: boolean; onChange: (v
 }
 
 export function SettingsScreen({ settings, telemetryEnabled, onToggle, onToggleTelemetry, onReplayGuide, onBack }: Props) {
+  const { t, setting, setSetting } = useI18n();
+  // Each language is named in itself; « Automatique » follows the phone.
+  const choices: { value: LanguageSetting; label: string }[] = [
+    { value: 'auto', label: t.settings.languageAuto },
+    ...LANGUAGES.map((language) => ({ value: language, label: LANGUAGE_NAMES[language] })),
+  ];
   useEffect(() => {
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
       onBack();
@@ -43,19 +50,40 @@ export function SettingsScreen({ settings, telemetryEnabled, onToggle, onToggleT
   return (
     <Screen testID="settings-screen">
       <Text style={styles.title} accessibilityRole="header">
-        {fr.settings.title}
+        {t.settings.title}
       </Text>
       <ScrollView contentContainerStyle={styles.body}>
         <View style={styles.grid}>
-          <Row label={fr.settings.sound} value={settings.sound} onChange={(v) => onToggle('sound', v)} testID="settings-sound" />
-          <Row label={fr.settings.haptics} value={settings.haptics} onChange={(v) => onToggle('haptics', v)} testID="settings-haptics" />
+          <Row label={t.settings.sound} value={settings.sound} onChange={(v) => onToggle('sound', v)} testID="settings-sound" />
+          <Row label={t.settings.haptics} value={settings.haptics} onChange={(v) => onToggle('haptics', v)} testID="settings-haptics" />
         </View>
-        <Row label={fr.settings.scary} help={fr.settings.scaryHint} value={settings.scary} onChange={(v) => onToggle('scary', v)} testID="settings-scary" />
-        <Row label={fr.settings.telemetry} help={fr.settings.telemetryHelp} value={telemetryEnabled} onChange={onToggleTelemetry} testID="settings-telemetry" />
+        <Row label={t.settings.scary} help={t.settings.scaryHint} value={settings.scary} onChange={(v) => onToggle('scary', v)} testID="settings-scary" />
+        <Row label={t.settings.telemetry} help={t.settings.telemetryHelp} value={telemetryEnabled} onChange={onToggleTelemetry} testID="settings-telemetry" />
+        <View style={styles.group} accessibilityRole="radiogroup" accessibilityLabel={t.settings.language}>
+          <Text style={styles.label}>{t.settings.language}</Text>
+          <View style={styles.choices}>
+            {choices.map(({ value, label }) => {
+              const selected = value === setting;
+              return (
+                <Pressable
+                  key={value}
+                  testID={`settings-language-${value}`}
+                  accessibilityRole="radio"
+                  accessibilityState={{ checked: selected }}
+                  accessibilityLabel={label}
+                  onPress={() => setSetting(value)}
+                  style={[styles.choice, selected && styles.choiceSelected]}
+                >
+                  <Text style={[styles.choiceText, selected && styles.choiceTextSelected]}>{label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        </View>
       </ScrollView>
       <View style={styles.buttons}>
-        <Button label={fr.settings.back} variant="secondary" compact onPress={onBack} testID="settings-back" />
-        <Button label={fr.settings.replayGuide} variant="secondary" compact onPress={onReplayGuide} testID="settings-replay-guide" />
+        <Button label={t.settings.back} variant="secondary" compact onPress={onBack} testID="settings-back" />
+        <Button label={t.settings.replayGuide} variant="secondary" compact onPress={onReplayGuide} testID="settings-replay-guide" />
       </View>
     </Screen>
   );
@@ -70,4 +98,10 @@ const styles = StyleSheet.create({
   label: { color: colors.text, fontSize: font.body, fontWeight: '600' },
   help: { color: colors.muted, fontSize: font.small },
   buttons: { flexDirection: 'row', gap: spacing.sm },
+  group: { gap: spacing.sm, backgroundColor: colors.surface, borderRadius: 14, padding: spacing.md },
+  choices: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  choice: { minHeight: 44, justifyContent: 'center', borderRadius: 14, borderWidth: 2, borderColor: colors.muted, paddingHorizontal: spacing.md },
+  choiceSelected: { borderColor: colors.accent },
+  choiceText: { color: colors.text, fontSize: font.body },
+  choiceTextSelected: { fontWeight: '800' },
 });

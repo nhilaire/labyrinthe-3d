@@ -4,8 +4,9 @@ Small Android game built with React Native by the Android game factory. Package:
 
 ## Non-negotiable rules
 
-- **Languages**: code, comments, commits, README and docs in English. Everything the player sees is in **French**
-  (strings live in `src/i18n/fr.ts`, never inline in components). Use French typography: non-breaking space before `: ; ! ?`.
+- **Languages**: code, comments, commits, README and docs in English. Everything the player sees exists in **French
+  and English** (`src/i18n/fr.ts` is the reference, `en.ts` the translation, never inline in components; read them with
+  `useI18n()`). French typography: non-breaking space before `: ; ! ?`; English: none.
 - **No secrets, no personal data in git.** `firebase/google-services.json`, keystores, `.env`, APKs stay local.
   Never write a real name, email, phone number or local user path in code, docs, screenshots or logs.
   The pre-commit and pre-push hooks run `scripts/secret-scan.mjs`; never bypass them (`--no-verify` is forbidden).
@@ -22,7 +23,7 @@ Small Android game built with React Native by the Android game factory. Package:
 | `src/game/` | Pure TypeScript game logic (no React): state, rules, scoring. 100% unit-tested. |
 | `src/screens/`, `src/ui/` | React components. No game rules here. |
 | `src/telemetry/` | Consent, typed event catalog, Firebase wrapper (no-op if Firebase is absent). |
-| `src/i18n/fr.ts` | All player-facing French text. |
+| `src/i18n/` | Player-facing text per language (`fr.ts` reference, `en.ts`), language resolution and provider. |
 | `.maestro/` | E2E flows run on the emulator; screenshots become evidence. |
 | `docs/` | BRIEF, PRD, ADRs, PLAN, KPIS, evidence per version. |
 

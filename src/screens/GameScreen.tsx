@@ -12,7 +12,7 @@ import { aidPenalty } from '../game/score';
 import { GameSession, INTRO_LOCK_MS } from '../game/session';
 import { haptics } from '../feedback/haptics';
 import { sound } from '../feedback/sound';
-import { fr } from '../i18n/fr';
+import { useI18n } from '../i18n/I18nProvider';
 import { FrameStats } from '../render/frameStats';
 import { MazeScene } from '../render/scene';
 import type { SaveResult } from '../storage/scores';
@@ -49,6 +49,7 @@ function logFrames(stats: FrameStats, size: MazeSize, scary: boolean) {
 }
 
 export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }: Props) {
+  const { t } = useI18n();
   useKeepAwake();
   const { width, height } = useWindowDimensions();
   const [, bump] = useReducer((n: number) => n + 1, 0);
@@ -233,11 +234,11 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
       {!won && (
         <View style={styles.hud} pointerEvents="box-none">
           <View style={styles.chip} testID="hud-steps">
-            <Text style={styles.chipText}>{fr.hud.steps(session.journey.steps)}</Text>
+            <Text style={styles.chipText}>{t.hud.steps(session.journey.steps)}</Text>
           </View>
-          <Chip label={fr.hud.plan(session.peeks)} onPress={peek} testID="hud-plan" />
-          <Chip label={fr.hud.traces(session.traces)} onPress={toggleTraces} active={session.tracesVisible} testID="hud-traces" />
-          <Chip label={fr.hud.pause} onPress={pause} testID="hud-pause" />
+          <Chip label={t.hud.plan(session.peeks)} onPress={peek} testID="hud-plan" />
+          <Chip label={t.hud.traces(session.traces)} onPress={toggleTraces} active={session.tracesVisible} testID="hud-traces" />
+          <Chip label={t.hud.pause} onPress={pause} testID="hud-pause" />
         </View>
       )}
 
@@ -247,12 +248,12 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
             key={m.kind}
             testID={`arrow-${m.kind}`}
             accessibilityRole="button"
-            accessibilityLabel={fr.move[m.kind]}
+            accessibilityLabel={t.move[m.kind]}
             onPress={() => choose(m.kind)}
             style={({ pressed }) => [styles.arrow, arrowPlace[m.kind], pressed && styles.pressed]}
           >
             <Text style={styles.arrowGlyph}>{GLYPHS[m.kind]}</Text>
-            <Text style={styles.arrowLabel}>{fr.move[m.kind]}</Text>
+            <Text style={styles.arrowLabel}>{t.move[m.kind]}</Text>
           </Pressable>
         ))}
 
@@ -268,9 +269,9 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
             }
           }}
         >
-          <Text style={styles.title}>{session.plan === 'intro' ? fr.plan.introTitle : fr.plan.peekTitle}</Text>
+          <Text style={styles.title}>{session.plan === 'intro' ? t.plan.introTitle : t.plan.peekTitle}</Text>
           <Text style={styles.subtitle} testID="plan-size">
-            {fr.home.size[session.size]}
+            {t.home.size[session.size]}
           </Text>
           <Plan
             maze={session.maze}
@@ -283,17 +284,17 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
             style={[styles.subtitle, session.plan === 'intro' && !session.introUnlocked(now) && styles.dim]}
             testID={session.plan === 'intro' && !session.introUnlocked(now) ? 'plan-hint-locked' : 'plan-hint'}
           >
-            {session.plan === 'intro' ? fr.plan.introHint : fr.plan.peekHint}
+            {session.plan === 'intro' ? t.plan.introHint : t.plan.peekHint}
           </Text>
         </Pressable>
       )}
 
       {session.paused && (
         <View style={styles.overlay} testID="pause-overlay">
-          <Text style={styles.bigTitle}>{fr.pause.title}</Text>
+          <Text style={styles.bigTitle}>{t.pause.title}</Text>
           <View style={styles.row}>
-            <Button label={fr.pause.resume} compact onPress={resume} testID="pause-resume" />
-            <Button label={fr.pause.quit} variant="secondary" compact onPress={quit} testID="pause-quit" />
+            <Button label={t.pause.resume} compact onPress={resume} testID="pause-resume" />
+            <Button label={t.pause.quit} variant="secondary" compact onPress={quit} testID="pause-quit" />
           </View>
         </View>
       )}
@@ -301,7 +302,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
       {won && session.score && (
         <View style={styles.overlay} testID="victory-overlay">
           <Text style={styles.title} testID="victory-title">
-            {fr.victory.title(session.score.points, fr.rating[session.score.rating])}
+            {t.victory.title(session.score.points, t.rating[session.score.rating])}
           </Text>
           <Plan
             maze={session.maze}
@@ -313,26 +314,26 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
             height={planSize.height - 70}
           />
           <Text style={styles.subtitle} testID="victory-line">
-            {fr.victory.line(
+            {t.victory.line(
               session.journey.steps,
               session.optimalSteps,
               session.decisions,
-              session.peeks || session.traces ? fr.victory.aid(aidPenalty(session)) : fr.victory.noAid,
+              session.peeks || session.traces ? t.victory.aid(aidPenalty(session)) : t.victory.noAid,
               session.baseline.points,
             )}
-            {saved && saved.rank !== null ? `   ${saved.rank === 1 ? fr.victory.best : fr.victory.rank(saved.rank, saved.total)}` : ''}
+            {saved && saved.rank !== null ? `   ${saved.rank === 1 ? t.victory.best : t.victory.rank(saved.rank, saved.total)}` : ''}
           </Text>
           <View style={styles.row}>
             {!session.guided && (
               <>
                 <Button
-                  label={fr.victory.new}
+                  label={t.victory.new}
                   compact
                   onPress={() => onPlay({ size: session.size, seed: (Math.random() * 0xffffffff) >>> 0, requestedAt: Date.now() })}
                   testID="victory-new"
                 />
                 <Button
-                  label={fr.victory.again}
+                  label={t.victory.again}
                   variant="secondary"
                   compact
                   onPress={() =>
@@ -345,10 +346,10 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
                   }
                   testID="victory-again"
                 />
-                <Button label={fr.victory.scores} variant="secondary" compact onPress={onScores} testID="victory-scores" />
+                <Button label={t.victory.scores} variant="secondary" compact onPress={onScores} testID="victory-scores" />
               </>
             )}
-            <Button label={fr.victory.home} variant="secondary" compact onPress={onHome} testID="victory-home" />
+            <Button label={t.victory.home} variant="secondary" compact onPress={onHome} testID="victory-home" />
           </View>
         </View>
       )}
@@ -367,16 +368,16 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
         >
           <View style={styles.bubble}>
             <Text style={styles.bubbleText} testID={`guide-${session.bubble}`}>
-              {fr.guide[session.bubble]}
+              {t.guide[session.bubble]}
             </Text>
-            <Text style={styles.bubbleHint}>{fr.guide.next}</Text>
+            <Text style={styles.bubbleHint}>{t.guide.next}</Text>
           </View>
         </Pressable>
       )}
 
       {session.guided && !won && (
         <View style={styles.skip}>
-          <Button label={fr.guide.skip} variant="secondary" compact onPress={quit} testID="guide-skip" />
+          <Button label={t.guide.skip} variant="secondary" compact onPress={quit} testID="guide-skip" />
         </View>
       )}
     </Screen>

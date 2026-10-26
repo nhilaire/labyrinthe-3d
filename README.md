@@ -1,6 +1,6 @@
 # Labyrinthe 3D
 
-A small Android game made with React Native. The game is in French.
+A small Android game made with React Native. The game is in French and English: it follows the phone's language, and the language can be changed in the settings.
 
 ## Screenshots
 
