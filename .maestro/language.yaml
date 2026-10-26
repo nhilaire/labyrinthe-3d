@@ -1,0 +1,63 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Language - switch from the settings, the whole UI follows at once and the choice survives a restart (AC-43)
+tags:
+  - language
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: "consent-screen"
+    timeout: 20000
+- tapOn:
+    id: "consent-refuse"
+- tapOn:
+    id: "guide-offer-skip"
+- tapOn:
+    id: "home-settings"
+- scrollUntilVisible:
+    element:
+      id: "settings-language-fr"
+- tapOn:
+    id: "settings-language-fr"
+- assertVisible: "Paramètres"
+- assertVisible: "Mode frisson"
+- takeScreenshot: language-fr-settings
+- tapOn:
+    id: "settings-language-en"
+- assertVisible: "Settings"
+- assertVisible: "Spooky mode"
+- takeScreenshot: language-en-settings
+- tapOn:
+    id: "settings-back"
+- assertVisible: "Play"
+- assertVisible: "3D Maze"
+- openLink: "labyrinthe3d://play?size=small&seed=7"
+- extendedWaitUntil:
+    visible:
+      id: "intro-plan"
+    timeout: 20000
+- assertVisible: "Memorize the map"
+- assertVisible: "ENTRANCE"
+- takeScreenshot: language-en-game
+- stopApp
+- launchApp:
+    stopApp: false
+- extendedWaitUntil:
+    visible:
+      id: "home-screen"
+    timeout: 20000
+- assertVisible: "Play"
+- tapOn:
+    id: "home-settings"
+- scrollUntilVisible:
+    element:
+      id: "settings-language-auto"
+- tapOn:
+    id: "settings-language-auto"
+- tapOn:
+    id: "settings-language-fr"
+- tapOn:
+    id: "settings-back"
+- assertVisible: "Jouer"
+- assertVisible: "Labyrinthe 3D"

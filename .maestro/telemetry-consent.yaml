@@ -9,6 +9,7 @@ tags:
     id: "consent-accept"
 - tapOn:
     id: "guide-offer-skip"
+- runFlow: helpers/french.yaml
 - openLink: "labyrinthe3d://play?size=small&seed=7"
 - extendedWaitUntil:
     visible:

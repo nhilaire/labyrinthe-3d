@@ -7,6 +7,7 @@ name: Size remembered, large maze, pause and abandon (AC-22, AC-23)
     id: "consent-refuse"
 - tapOn:
     id: "guide-offer-skip"
+- runFlow: helpers/french.yaml
 - tapOn:
     id: "home-size-large"
 # AC-22: the choice survives a restart and « Jouer » starts a 20 x 12 maze.

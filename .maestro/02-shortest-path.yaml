@@ -9,6 +9,7 @@ tags:
     id: "consent-refuse"
 - tapOn:
     id: "guide-offer-skip"
+- runFlow: helpers/french.yaml
 - assertVisible:
     id: "home-screen"
 - openLink: "labyrinthe3d://play?size=small&seed=7"

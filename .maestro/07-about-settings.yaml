@@ -7,13 +7,14 @@ name: About story, settings and the scary mode (AC-33, AC-29)
     id: "consent-refuse"
 - tapOn:
     id: "guide-offer-skip"
+- runFlow: helpers/french.yaml
 - tapOn:
     id: "home-about"
 - assertVisible: "Pourquoi ce jeu"
 - assertVisible: ".*GFA Basic.*Atari ST.*The 7th Guest.*partager en famille.*"
 - assertVisible: ".*développeur indépendant passionné.*sans lien avec ses auteurs.*"
 - scrollUntilVisible:
-    element: "Version 0.1.0"
+    element: "Version [0-9]+[.][0-9]+[.][0-9]+"
     direction: DOWN
 - takeScreenshot: 12-about
 - tapOn:

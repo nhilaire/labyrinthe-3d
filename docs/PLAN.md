@@ -27,7 +27,7 @@ Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the bo
 - [x] T-20 Apparition rendering: procedural ghost, spider and cobweb textures, glide/descend/fade animations, candle dip on the torch, mounted only in scary mode (AC-41) - proof: device (phone test 2 with a demo build; render.test.ts covers the wiring)
 - [x] T-21 Phone check of the apparitions and smoothness in scary mode (AC-41) - proof: device (phone test 2: user OK, scary mode fps_avg 59.8, slow frames 2.6 %; final confirmation at acceptance)
 - [x] T-22 Language core and English: i18n index, Strings type, I18nProvider, expo-localization, language setting store, per-language formatter (plurals, percentages, ordinals), English dictionary, settings language choice, app wiring, launcher name per language (AC-42, AC-44, AC-45) - proof: unit
-- [ ] T-23 Maestro: flows pin French through the settings, language flow with screenshots, README captures (AC-43) - proof: e2e
+- [x] T-23 Maestro: flows pin French through the settings, language flow with screenshots, README captures (AC-43) - proof: e2e
 
 ## Notes
 

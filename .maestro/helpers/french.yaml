@@ -1,0 +1,14 @@
+appId: io.github.nhilaire.labyrinthe3d
+name: Helper - pin the game in French from Home (flows assert French texts whatever the emulator's language)
+---
+- tapOn:
+    id: "home-settings"
+- scrollUntilVisible:
+    element:
+      id: "settings-language-fr"
+- tapOn:
+    id: "settings-language-fr"
+- tapOn:
+    id: "settings-back"
+- assertVisible:
+    id: "home-screen"

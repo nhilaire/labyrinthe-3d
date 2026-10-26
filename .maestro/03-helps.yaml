@@ -7,6 +7,7 @@ name: Helps - plan peek freezes the walk, footprints toggle (AC-14, AC-15)
     id: "consent-refuse"
 - tapOn:
     id: "guide-offer-skip"
+- runFlow: helpers/french.yaml
 - assertVisible:
     id: "home-screen"
 - openLink: "labyrinthe3d://play?size=large&seed=31"

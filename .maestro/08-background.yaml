@@ -7,6 +7,7 @@ name: Leaving the app during a game shows the pause overlay on return (AC-24)
     id: "consent-refuse"
 - tapOn:
     id: "guide-offer-skip"
+- runFlow: helpers/french.yaml
 - openLink: "labyrinthe3d://play?size=large&seed=31"
 - extendedWaitUntil:
     visible:
