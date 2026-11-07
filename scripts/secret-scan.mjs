@@ -21,6 +21,7 @@ export const FORBIDDEN_PATHS = [
   { re: /\.(apk|aab)$/i, why: 'build artifact' },
   { re: /service[-_]?account[^/]*\.json$/i, why: 'service account credentials' },
   { re: /(^|\/)factory\.local\.json$/i, why: 'machine-local factory config' },
+  { re: /(^|\/)[^/]+\.local\.(ts|tsx|js|mjs|cjs|json)$/i, why: 'machine-local override (privateConfig): it holds real endpoints' },
   { re: /pii-denylist/i, why: 'personal denylist' },
 ];
 
@@ -71,7 +72,8 @@ export const PII_PATTERNS = [
     re: /(?:^|[\s"'(=:])\/(?:Users|home)\/([A-Za-z0-9._-]+)/g,
     keep: (m) => !/^(runner|user|username|me|shared|node)$/i.test(m[1]),
   },
-  { id: 'french-mobile-number', re: /(?<![\d.])(?:\+33\s?|0)[67](?:[\s.-]?\d{2}){4}(?![\d])/g, keep: () => true },
+  // Not inside a word or a hex hash (SHA-256 of an APK in evidence reports): no letter or digit right before or after.
+  { id: 'french-mobile-number', re: /(?<![\w.])(?:\+33\s?|0)[67](?:[\s.-]?\d{2}){4}(?!\w)/g, keep: () => true },
 ];
 
 const SKIP_CONTENT = /(^|\/)(package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb)$/i;
@@ -98,6 +100,43 @@ export function defaultDenylistFile() {
   return process.env.FACTORY_PII_DENYLIST || path.join(os.homedir(), '.android-game-factory', 'pii-denylist.txt');
 }
 
+// URL hosts of the app's private config files (factory-app.json "privateConfig", git-ignored, real endpoints). They are
+// private terms like the personal denylist: a commit that would publish one of them is blocked.
+const NOT_PRIVATE_HOST = /^(localhost|127\.0\.0\.1|0\.0\.0\.0|10\.0\.2\.2)$|(^|\.)(invalid|test|example|localhost)$|(^|\.)example\.(com|org|net)$/i;
+
+export function privateConfigHosts(dir) {
+  const hosts = new Set();
+  let meta = {};
+  try {
+    meta = JSON.parse(fs.readFileSync(path.join(dir, 'factory-app.json'), 'utf8'));
+  } catch {
+    return [];
+  }
+  for (const rel of Array.isArray(meta.privateConfig) ? meta.privateConfig : []) {
+    let text = '';
+    try {
+      text = fs.readFileSync(path.join(dir, rel), 'utf8');
+    } catch {
+      continue; // not created on this machine
+    }
+    for (const m of text.matchAll(/\bhttps?:\/\/([a-z0-9][a-z0-9.-]*[a-z0-9])/gi)) {
+      if (!NOT_PRIVATE_HOST.test(m[1])) hosts.add(m[1].toLowerCase());
+    }
+  }
+  return [...hosts];
+}
+
+// The repository's GitHub login: git user.name (the factory sets it to the login) and the login part of the
+// noreply email. Only login-shaped values count: a real name with spaces is never tolerated.
+export function publicLogins(dir) {
+  const read = (key) => {
+    const r = spawnSync('git', ['-C', dir, 'config', key], { encoding: 'utf8' });
+    return r.status === 0 ? r.stdout.trim() : '';
+  };
+  const email = read('user.email').match(/^(?:\d+\+)?([^@]+)@users\.noreply\.github\.com$/i);
+  return [...new Set([read('user.name'), email ? email[1] : ''].map((v) => v.toLowerCase()).filter((v) => /^[a-z0-9](?:[a-z0-9-]{0,38})$/.test(v)))];
+}
+
 export function checkPath(relPath) {
   const p = relPath.replace(/\\/g, '/');
   for (const rule of FORBIDDEN_PATHS) {
@@ -108,7 +147,10 @@ export function checkPath(relPath) {
   return null;
 }
 
-export function scanText(relPath, text, denylist = []) {
+// identities: the repository's public GitHub login(s). A personal term found only inside one of them (a surname
+// inside the login "jdupont", already public in the package name and the repository URL) is not a finding; the
+// same term anywhere else still is.
+export function scanText(relPath, text, denylist = [], { identities = [] } = {}) {
   const file = relPath.replace(/\\/g, '/');
   if (SKIP_CONTENT.test(file)) return [];
   const findings = [];
@@ -126,7 +168,8 @@ export function scanText(relPath, text, denylist = []) {
         if (p.keep(m)) findings.push({ file, line: lineNo, rule: p.id, detail: mask(m[0].trim()) });
       }
     }
-    const lower = line.toLowerCase();
+    let lower = line.toLowerCase();
+    for (const id of identities) lower = lower.split(id).join(' ');
     lowerTerms.forEach((term, idx) => {
       if (lower.includes(term)) findings.push({ file, line: lineNo, rule: 'denylisted-personal-term', detail: `term #${idx + 1} ${mask(denylist[idx])}` });
     });
@@ -155,12 +198,14 @@ function isBinary(buf) {
   return buf.subarray(0, 8000).includes(0);
 }
 
-function scanBlob(file, buf, denylist, findings) {
+function scanBlob(file, buf, denylist, findings, opts) {
   if (!buf || buf.length > 2 * 1024 * 1024 || isBinary(buf)) return;
-  findings.push(...scanText(file, buf.toString('utf8'), denylist));
+  findings.push(...scanText(file, buf.toString('utf8'), denylist, opts));
 }
 
 export function scanRepo(dir, mode = 'worktree', { identity = true, denylist = loadDenylist() } = {}) {
+  denylist = [...denylist, ...privateConfigHosts(dir)];
+  const opts = { identities: publicLogins(dir) };
   const findings = [];
   const notes = [];
   if (mode === 'staged') {
@@ -168,7 +213,7 @@ export function scanRepo(dir, mode = 'worktree', { identity = true, denylist = l
     for (const f of files) {
       const forbidden = checkPath(f);
       if (forbidden) findings.push(forbidden);
-      scanBlob(f, git(dir, ['show', `:${f}`], { buffer: true }), denylist, findings);
+      scanBlob(f, git(dir, ['show', `:${f}`], { buffer: true }), denylist, findings, opts);
     }
   } else if (mode === 'worktree') {
     const files = git(dir, ['ls-files', '-z', '--cached', '--others', '--exclude-standard']).split('\0').filter(Boolean);
@@ -176,7 +221,7 @@ export function scanRepo(dir, mode = 'worktree', { identity = true, denylist = l
       const forbidden = checkPath(f);
       if (forbidden) findings.push(forbidden);
       const abs = path.join(dir, f);
-      if (fs.existsSync(abs) && fs.statSync(abs).isFile()) scanBlob(f, fs.readFileSync(abs), denylist, findings);
+      if (fs.existsSync(abs) && fs.statSync(abs).isFile()) scanBlob(f, fs.readFileSync(abs), denylist, findings, opts);
     }
   } else if (mode === 'history') {
     const hasCommits = spawnSync('git', ['-C', dir, 'rev-parse', '--verify', 'HEAD'], { stdio: 'ignore' }).status === 0;
@@ -199,7 +244,7 @@ export function scanRepo(dir, mode = 'worktree', { identity = true, denylist = l
         }
       }
       for (const [f, lines] of added) {
-        for (const finding of scanText(f, lines.join('\n'), denylist)) findings.push({ ...finding, line: 0, detail: `${finding.detail} (in history)` });
+        for (const finding of scanText(f, lines.join('\n'), denylist, opts)) findings.push({ ...finding, line: 0, detail: `${finding.detail} (in history)` });
       }
       const authors = new Set(git(dir, ['log', '--all', '--format=%ae%n%ce']).split(/\r?\n/).filter(Boolean));
       for (const email of authors) {
