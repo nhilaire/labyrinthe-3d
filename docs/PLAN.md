@@ -32,7 +32,7 @@ Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the bo
 - [x] T-25 Footprints recycle the oldest prints when full, so the latest trail is always recorded (AC-15) - proof: unit
 - [x] T-26 Malformed testing deep link (bad percent-encoding) is ignored instead of crashing (AC-11) - proof: unit
 - [x] T-27 Consent write failure is caught and reported; the consent screen always moves on (AC-02) - proof: unit
-- [ ] T-28 GL context recreated: previous frame loop cancelled and scene disposed, an interrupted walk completed (AC-24) - proof: unit
+- [x] T-28 GL context recreated: previous frame loop cancelled and scene disposed, an interrupted walk completed (AC-24) - proof: unit
 
 ## Notes
 

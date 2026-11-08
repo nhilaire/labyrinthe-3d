@@ -15,6 +15,7 @@ import { sound } from '../feedback/sound';
 import { useI18n } from '../i18n/I18nProvider';
 import { FrameStats } from '../render/frameStats';
 import { MazeScene } from '../render/scene';
+import { SceneHost } from '../render/sceneHost';
 import type { SaveResult } from '../storage/scores';
 import { trackGameAbandon, trackGameComplete, trackGameStart } from '../telemetry/gameEvents';
 import { reportError, track } from '../telemetry/telemetry';
@@ -56,8 +57,10 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
   const [session] = useState(
     () => new GameSession({ seed: launch.seed, now: Date.now(), size: launch.size, replay: launch.replay, guided: launch.guided }),
   );
-  const sceneRef = useRef<MazeScene | null>(null);
-  const frameRef = useRef<number | null>(null);
+  // The 3D scene and its frame loop; replaced cleanly if expo-gl creates a new GL context.
+  const [host] = useState(
+    () => new SceneHost<MazeScene>({ request: (cb) => requestAnimationFrame(cb), cancel: (h) => cancelAnimationFrame(h) }),
+  );
   const finishedRef = useRef(false);
   const scaryRef = useRef(scary);
   const [saved, setSaved] = useState<SaveResult | null>(null);
@@ -71,15 +74,13 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
     return () => {
       clearTimeout(unlock);
       sound.setAmbience(false);
-      if (frameRef.current != null) cancelAnimationFrame(frameRef.current);
-      sceneRef.current?.dispose();
-      sceneRef.current = null;
+      host.detach();
     };
-  }, [launch.requestedAt, session]);
+  }, [host, launch.requestedAt, session]);
 
   useEffect(() => {
     scaryRef.current = scary;
-    sceneRef.current?.setMood(scary);
+    host.scene?.setMood(scary);
     sound.setScary(scary);
   }, [scary]);
 
@@ -89,7 +90,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
     const now = Date.now();
     sound.victory();
     haptics.exit();
-    const stats = sceneRef.current?.stats ?? new FrameStats();
+    const stats = host.scene?.stats ?? new FrameStats();
     logFrames(stats, session.size, scaryRef.current);
     trackGameComplete(track, session, now, stats, scaryRef.current);
     if (!session.guided) {
@@ -102,6 +103,8 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
 
   const onContextCreate = useCallback(
     (gl: ExpoWebGLRenderingContext) => {
+      // A second call means a new GL context: the previous loop and scene go first (they belong to the old one).
+      host.detach();
       let scene: MazeScene;
       try {
         scene = new MazeScene(gl);
@@ -109,18 +112,15 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
         reportError(error, 'create_scene');
         return;
       }
-      sceneRef.current = scene;
       scene.setMood(scaryRef.current);
       scene.events = {
         onStep: (cadence) => sound.step(cadence),
         onTurn: (quarters) => sound.turn(quarters),
         onEmblem: (emblem) => sound.chime(emblem),
       };
-      scene.mount(session.maze, session.landmarks, session.seed, { cell: session.pos, dir: session.facing });
       let last = Date.now();
       let logged = 0;
-      const loop = () => {
-        frameRef.current = requestAnimationFrame(loop);
+      const frame = () => {
         const now = Date.now();
         const dt = now - last;
         last = now;
@@ -136,16 +136,20 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
           else bump();
         }
       };
-      loop();
+      // Mounts at the session's pose; a walk cut by a lost context is completed (the walker stands at its end).
+      if (host.attach(scene, session, last, frame)) {
+        if (session.phase === 'won') finish();
+        else bump();
+      }
     },
-    [finish, session],
+    [finish, host, session],
   );
 
   const enterMaze = useCallback(() => {
     const route = session.tapIntro(Date.now());
     if (route) {
       trackGameStart(track, session, scaryRef.current);
-      sceneRef.current?.startRoute(route.cells, startDirOf(route));
+      host.scene?.startRoute(route.cells, startDirOf(route));
     }
     bump();
   }, [session]);
@@ -158,7 +162,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
       if (!route) return;
       haptics.arrow();
       sound.click();
-      sceneRef.current?.startRoute(route.cells, startDirOf(route));
+      host.scene?.startRoute(route.cells, startDirOf(route));
       bump();
     },
     [session],
@@ -172,7 +176,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
 
   const toggleTraces = useCallback(() => {
     session.toggleTraces();
-    sceneRef.current?.setTracesVisible(session.tracesVisible);
+    host.scene?.setTracesVisible(session.tracesVisible);
     sound.click();
     bump();
   }, [session]);
@@ -188,7 +192,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
   }, [session]);
 
   const quit = useCallback(() => {
-    trackGameAbandon(track, session, Date.now(), sceneRef.current?.stats ?? new FrameStats(), scaryRef.current);
+    trackGameAbandon(track, session, Date.now(), host.scene?.stats ?? new FrameStats(), scaryRef.current);
     onHome();
   }, [onHome, session]);
 
@@ -223,7 +227,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
   const planSize = useMemo(() => ({ width: Math.min(width - 24, 900), height: height - 120 }), [width, height]);
   const showArrows = session.phase === 'choosing' && !session.frozen;
   const won = session.phase === 'won';
-  const pose = session.phase === 'walking' && sceneRef.current ? sceneRef.current.pose() : { cell: session.pos, dir: session.facing };
+  const pose = session.phase === 'walking' && host.scene ? host.scene.pose() : { cell: session.pos, dir: session.facing };
 
   return (
     <Screen testID="game-screen">
