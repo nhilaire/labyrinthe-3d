@@ -6,12 +6,17 @@ export function parseTestLink(url: string | null | undefined): { size: MazeSize;
   if (!url) return null;
   const m = /^labyrinthe3d:\/\/play\?(.*)$/.exec(url.trim());
   if (!m) return null;
-  const params = new Map(
-    m[1].split('&').map((pair) => {
-      const [k, v = ''] = pair.split('=');
-      return [decodeURIComponent(k), decodeURIComponent(v)] as const;
-    }),
-  );
+  let params: Map<string, string>;
+  try {
+    params = new Map(
+      m[1].split('&').map((pair) => {
+        const [k, v = ''] = pair.split('=');
+        return [decodeURIComponent(k), decodeURIComponent(v)] as const;
+      }),
+    );
+  } catch {
+    return null; // malformed percent-encoding (URIError): not a testing link, never a crash
+  }
   const size = params.get('size') as MazeSize;
   const seedText = params.get('seed') ?? '';
   if (!SIZE_ORDER.includes(size) || !/^\d{1,10}$/.test(seedText)) return null;

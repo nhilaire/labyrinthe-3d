@@ -20,4 +20,16 @@ describe('testing deep link (D4)', () => {
       expect(parseTestLink(url)).toBeNull();
     }
   });
+
+  it('returns null on a malformed percent-encoding instead of throwing', () => {
+    for (const url of [
+      'labyrinthe3d://play?size=small&seed=%E0',
+      'labyrinthe3d://play?size=%E0&seed=1',
+      'labyrinthe3d://play?%E0=small&seed=1',
+      'labyrinthe3d://play?size=small&seed=1&x=%',
+    ]) {
+      expect(() => parseTestLink(url)).not.toThrow();
+      expect(parseTestLink(url)).toBeNull();
+    }
+  });
 });
