@@ -1,4 +1,4 @@
-# Plan: Labyrinthe 3D v0.2.0
+# Plan: Labyrinthe 3D v0.2.1
 
 Each task is small (one commit), references the acceptance criteria it serves, and names its proof.
 Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the box only when the proof passes.
@@ -28,6 +28,11 @@ Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the bo
 - [x] T-21 Phone check of the apparitions and smoothness in scary mode (AC-41) - proof: device (phone test 2: user OK, scary mode fps_avg 59.8, slow frames 2.6 %; final confirmation at acceptance)
 - [x] T-22 Language core and English: i18n index, Strings type, I18nProvider, expo-localization, language setting store, per-language formatter (plurals, percentages, ordinals), English dictionary, settings language choice, app wiring, launcher name per language (AC-42, AC-44, AC-45) - proof: unit
 - [x] T-23 Maestro: flows pin French through the settings, language flow with screenshots, README captures (AC-43) - proof: e2e
+- [ ] T-24 Plan shows the player marker on the virtual cell outside the entrance (AC-14) - proof: unit
+- [ ] T-25 Footprints recycle the oldest prints when full, so the latest trail is always recorded (AC-15) - proof: unit
+- [ ] T-26 Malformed testing deep link (bad percent-encoding) is ignored instead of crashing (AC-11) - proof: unit
+- [ ] T-27 Consent write failure is caught and reported; the consent screen always moves on (AC-02) - proof: unit
+- [ ] T-28 GL context recreated: previous frame loop cancelled and scene disposed, an interrupted walk completed (AC-24) - proof: unit
 
 ## Notes
 
