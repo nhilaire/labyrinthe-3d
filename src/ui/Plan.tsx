@@ -5,7 +5,7 @@ import Svg, { Circle, Ellipse, G, Line, Path, Polygon, Rect, Text as SvgText } f
 
 import type { Landmark } from '../game/landmarks';
 import { Cell, DIRS, Dir, Maze, Opening as MazeOpening } from '../game/maze';
-import type { Journey } from '../game/navigation';
+import { Journey, outsideOf, sameCell } from '../game/navigation';
 import { Segment, corridorLines, wallLines } from '../game/planLines';
 import { useI18n } from '../i18n/I18nProvider';
 import { emblemInk, emblemShapes } from '../render/emblems';
@@ -101,6 +101,11 @@ function PlanView({ maze, width, height, landmarks = [], journey = null, solutio
   const cy = (gy: number) => py(gy + 0.5);
   const pad = cell * 1.4;
   const maxVisits = journey ? Math.max(2, journey.maxEdgeVisits) : 2;
+  // A route back out through the entrance ends on the virtual cell outside it: the marker is drawn there too (its
+  // centre is half a cell beyond the border, well within the 1.4-cell paper margin).
+  const showPlayer =
+    player !== null &&
+    (maze.inside(player.cell.x, player.cell.y) || sameCell(player.cell, outsideOf(maze.entrance)) || sameCell(player.cell, outsideOf(maze.exit)));
 
   return (
     <Svg width={width} height={height} testID={testID}>
@@ -142,9 +147,9 @@ function PlanView({ maze, width, height, landmarks = [], journey = null, solutio
       ))}
       <OpeningMark opening={maze.entrance} color={ENTRANCE} cell={cell} cx={cx} cy={cy} isEntrance />
       <OpeningMark opening={maze.exit} color={EXIT} cell={cell} cx={cx} cy={cy} isEntrance={false} />
-      {player && maze.inside(player.cell.x, player.cell.y) && (
+      {player && showPlayer && (
         <G>
-          <Circle cx={cx(player.cell.x)} cy={cy(player.cell.y)} r={cell * 0.26} fill={PLAYER} />
+          <Circle testID="plan-player" cx={cx(player.cell.x)} cy={cy(player.cell.y)} r={cell * 0.26} fill={PLAYER} />
           <Line
             x1={cx(player.cell.x)}
             y1={cy(player.cell.y)}
