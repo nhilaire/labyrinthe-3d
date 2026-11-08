@@ -19,7 +19,7 @@ import { loadLanguageSetting, saveLanguageSetting } from './storage/languageSett
 import { ScoreRecord, saveScore } from './storage/scores';
 import { DEFAULT_SETTINGS, Settings, loadSettings, saveSettings } from './storage/settings';
 import { Consent, loadConsent, saveConsent } from './telemetry/consentStore';
-import { applyConsent, track } from './telemetry/telemetry';
+import { applyConsent, reportError, track } from './telemetry/telemetry';
 import { ErrorBoundary } from './ui/ErrorBoundary';
 import { colors } from './ui/theme';
 
@@ -93,9 +93,15 @@ export default function App() {
 
   const decide = useCallback(async (granted: boolean) => {
     const value = granted ? 'granted' : 'denied';
-    await saveConsent(value);
-    await applyConsent(granted);
-    setConsentState(value);
+    // The answer always takes effect on screen, even if storing or applying it fails (AC-02).
+    try {
+      await saveConsent(value);
+      await applyConsent(granted);
+    } catch (error) {
+      reportError(error, 'apply_consent');
+    } finally {
+      setConsentState(value);
+    }
   }, []);
 
   const toggle = useCallback(

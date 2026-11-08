@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { reportError } from './telemetry';
+
 export type Consent = 'granted' | 'denied' | 'unknown';
 
 const KEY = 'telemetry.consent.v1';
@@ -14,5 +16,9 @@ export async function loadConsent(): Promise<Consent> {
 }
 
 export async function saveConsent(value: 'granted' | 'denied'): Promise<void> {
-  await AsyncStorage.setItem(KEY, value);
+  try {
+    await AsyncStorage.setItem(KEY, value);
+  } catch (error) {
+    reportError(error, 'save_consent');
+  }
 }
