@@ -1,6 +1,8 @@
 // Footprints on the floor (« Traces »), source: shared/three/footprints.js. Each print is an instance of a small
 // textured quad: repeated passes overlap (additive blending) and stand out more, the same information as the walked
-// path on the final plan. Prints are always recorded; the mesh is only shown when footprints are on.
+// path on the final plan. Prints are always recorded; the mesh is only shown when footprints are on. When the buffer
+// is full the oldest prints are recycled (ring buffer), so the latest trail is always there. The final plan's
+// walked path comes from the session journey, not from these prints.
 import * as THREE from 'three';
 
 import { CELL } from './dimensions';
@@ -42,9 +44,9 @@ export function createFootprints({ texture, maxPrints = MAX_PRINTS, rng = Math.r
   let left = false;
   let lastX: number | null = null;
   let lastZ: number | null = null;
+  let next = 0; // instance slot of the next print (wraps around when full)
 
   function place(x: number, z: number, heading: number, side: number) {
-    if (mesh.count >= maxPrints) return;
     const nx = Math.cos(heading + Math.PI / 2) * SPREAD * side;
     const nz = Math.sin(heading + Math.PI / 2) * SPREAD * side;
     position.set(x + nx, HEIGHT, z + nz);
@@ -52,8 +54,9 @@ export function createFootprints({ texture, maxPrints = MAX_PRINTS, rng = Math.r
     const s = 0.92 + rng() * 0.16;
     scale.set(s, 1, s);
     matrix.compose(position, quaternion, scale);
-    mesh.setMatrixAt(mesh.count, matrix);
-    mesh.count += 1;
+    mesh.setMatrixAt(next, matrix);
+    next = (next + 1) % maxPrints;
+    if (mesh.count < maxPrints) mesh.count += 1;
     mesh.instanceMatrix.needsUpdate = true;
   }
 

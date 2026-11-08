@@ -29,7 +29,7 @@ Format: `- [ ] T-01 Title (AC-01, AC-02) - proof: unit|e2e|device`. Check the bo
 - [x] T-22 Language core and English: i18n index, Strings type, I18nProvider, expo-localization, language setting store, per-language formatter (plurals, percentages, ordinals), English dictionary, settings language choice, app wiring, launcher name per language (AC-42, AC-44, AC-45) - proof: unit
 - [x] T-23 Maestro: flows pin French through the settings, language flow with screenshots, README captures (AC-43) - proof: e2e
 - [x] T-24 Plan shows the player marker on the virtual cell outside the entrance (AC-14) - proof: unit
-- [ ] T-25 Footprints recycle the oldest prints when full, so the latest trail is always recorded (AC-15) - proof: unit
+- [x] T-25 Footprints recycle the oldest prints when full, so the latest trail is always recorded (AC-15) - proof: unit
 - [ ] T-26 Malformed testing deep link (bad percent-encoding) is ignored instead of crashing (AC-11) - proof: unit
 - [ ] T-27 Consent write failure is caught and reported; the consent screen always moves on (AC-02) - proof: unit
 - [ ] T-28 GL context recreated: previous frame loop cancelled and scene disposed, an interrupted walk completed (AC-24) - proof: unit
