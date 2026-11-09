@@ -53,7 +53,9 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
   const { t } = useI18n();
   useKeepAwake();
   const { width, height } = useWindowDimensions();
-  const [, bump] = useReducer((n: number) => n + 1, 0);
+  // Every bump re-renders and records the clock reading of that state change: the render below reads `now`
+  // from it instead of calling Date.now() while rendering.
+  const [now, bump] = useReducer((_: number) => Date.now(), undefined, () => Date.now());
   const [session] = useState(
     () => new GameSession({ seed: launch.seed, now: Date.now(), size: launch.size, replay: launch.replay, guided: launch.guided }),
   );
@@ -82,7 +84,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
     scaryRef.current = scary;
     host.scene?.setMood(scary);
     sound.setScary(scary);
-  }, [scary]);
+  }, [host, scary]);
 
   const finish = useCallback(() => {
     if (finishedRef.current) return;
@@ -99,7 +101,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
         .catch((e) => reportError(e, 'record_score'));
     }
     bump();
-  }, [onRecord, session]);
+  }, [host, onRecord, session]);
 
   const onContextCreate = useCallback(
     (gl: ExpoWebGLRenderingContext) => {
@@ -152,7 +154,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
       host.scene?.startRoute(route.cells, startDirOf(route));
     }
     bump();
-  }, [session]);
+  }, [host, session]);
 
   const choose = useCallback(
     (kind: MoveKind) => {
@@ -165,7 +167,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
       host.scene?.startRoute(route.cells, startDirOf(route));
       bump();
     },
-    [session],
+    [host, session],
   );
 
   const peek = useCallback(() => {
@@ -179,7 +181,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
     host.scene?.setTracesVisible(session.tracesVisible);
     sound.click();
     bump();
-  }, [session]);
+  }, [host, session]);
 
   const pause = useCallback(() => {
     session.pause(Date.now());
@@ -194,7 +196,7 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
   const quit = useCallback(() => {
     trackGameAbandon(track, session, Date.now(), host.scene?.stats ?? new FrameStats(), scaryRef.current);
     onHome();
-  }, [onHome, session]);
+  }, [host, onHome, session]);
 
   // App in the background: freeze the game; on return the pause overlay is shown (an open plan stays as it was).
   useEffect(() => {
@@ -223,7 +225,6 @@ export function GameScreen({ launch, scary, onHome, onScores, onPlay, onRecord }
     return () => sub.remove();
   }, [onHome, pause, resume, session]);
 
-  const now = Date.now();
   const planSize = useMemo(() => ({ width: Math.min(width - 24, 900), height: height - 120 }), [width, height]);
   const showArrows = session.phase === 'choosing' && !session.frozen;
   const won = session.phase === 'won';

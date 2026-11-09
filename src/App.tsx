@@ -35,10 +35,13 @@ export default function App() {
   const [launch, setLaunch] = useState<GameLaunch | null>(null);
   // A new key remounts the game screen for every new game (a new maze, a replay).
   const [gameKey, setGameKey] = useState(0);
+  // Latest settings and consent for the callbacks below (read only from handlers, so an effect is early enough).
   const settingsRef = useRef(settings);
-  settingsRef.current = settings;
   const consentRef = useRef(consent);
-  consentRef.current = consent;
+  useEffect(() => {
+    settingsRef.current = settings;
+    consentRef.current = consent;
+  });
 
   // The switch is immediate (context), then saved; a game in progress is not touched.
   const changeLanguage = useCallback((value: LanguageSetting) => {
